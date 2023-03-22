@@ -2,19 +2,19 @@
 {
     class Gameplay
     {
-        private List<WordDataType> _words;
-        private int number_of_words;
-        private Random rnd = new();
+        private List<WordDataType> _words = new();
+        private int _number_of_words;
+        private Random _rnd = new();
         public Gameplay(Difficulty difficuty, WordBank bank)
         {
-            SetNumberOfWords(difficuty);
-            SetRandomWords(difficuty, bank);
+            SetNumberOfWords(difficuty); 
+            FillWithRandomWords(ref _words, difficuty, bank);
             PrintWords();
         }
 
         private void PrintWords()
         {
-            for (int i = 0; i < number_of_words; i++)
+            for (int i = 0; i < _number_of_words; i++)
             {
                 Console.Write(_words[i].Word + " ");
             }
@@ -24,31 +24,22 @@
         // Default is set to EASY.
         private void SetNumberOfWords(Difficulty difficuty)
         {
-            switch (difficuty)
+            _number_of_words = difficuty switch
             {
-                case (Difficulty)0:
-                    number_of_words = 20;
-                    break;
-                case (Difficulty)1:
-                    number_of_words = 50;
-                    break;
-                case (Difficulty)2:
-                    number_of_words = 100;
-                    break;
-                default:    
-                    number_of_words = 20;
-                    break;
-            }
+                (Difficulty)0 => 100,
+                (Difficulty)1 => 200,
+                (Difficulty)2 => 300,
+                _ => 100,
+            };
         }
 
         // Fills list of words with random words from bank of words.
-        private void SetRandomWords(Difficulty difficuty, WordBank bank)
+        private void FillWithRandomWords(ref List<WordDataType> words, Difficulty difficuty, WordBank bank)
         {
-            _words = new List<WordDataType>();
-            for (int i = 0; i < number_of_words; i++)
+            for (int i = 0; i < _number_of_words; i++)
             {
-                int randomIndex = rnd.Next(bank.EasyWords.Count);
-                _words.Add(bank.EasyWords[randomIndex]);
+                int randomIndex = _rnd.Next(bank.Words.Count);
+                words.Add(bank.Words[randomIndex]);
             }
         }
     }

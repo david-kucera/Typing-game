@@ -3,68 +3,27 @@
     // Bank for all words available in the game.
     class WordBank
     {
-        private List<WordDataType>? _easyWords;
-        private List<WordDataType>? _mediumWords;
-        private List<WordDataType>? _hardWords;
+        private List<WordDataType>? _words;
 
-        // Constructors for each type of input files
-        public WordBank(string pathFileEasy, string pathFileMedium, string pathFileHard)
-        {
-            FillEasyWords(WordLoader.ReadWordsFromFile(pathFileEasy));
-            FillMediumWords(WordLoader.ReadWordsFromFile(pathFileMedium));
-            FillHardWords(WordLoader.ReadWordsFromFile(pathFileHard));
-        }
-
-        public WordBank(string pathFileEasy, string pathFileMedium)
-        {
-            FillEasyWords(WordLoader.ReadWordsFromFile(pathFileEasy));
-            FillMediumWords(WordLoader.ReadWordsFromFile(pathFileMedium));
-        }
 
         public WordBank(string pathFileEasy)
         {
             FillEasyWords(WordLoader.ReadWordsFromFile(pathFileEasy));
         }
 
-        // Fills Lists with Word values
-        public void FillEasyWords(List<WordDataType> words) { _easyWords = words; }
-        public void FillMediumWords(List<WordDataType> words) { _mediumWords = words; }
-        public void FillHardWords(List<WordDataType> words) { _hardWords = words; }
+        // Fills List with Word values
+        public void FillEasyWords(List<WordDataType> words) { _words = words; }
 
-        // Getters
-        public List<WordDataType> EasyWords
+        // Getter
+        public List<WordDataType> Words
         {
             get 
             {
-                if (_easyWords == null)
+                if (_words == null)
                 {
                     throw new NullReferenceException("No available data");
                 }
-                return _easyWords; 
-            }
-        }
-
-        public List<WordDataType> MediumWords
-        {
-            get 
-            {
-                if(_mediumWords == null)
-                {
-                    throw new NullReferenceException("No available data");
-                }
-                return _mediumWords; 
-            }
-        }
-
-        public List<WordDataType> HardWords
-        {
-            get 
-            {
-                if(_hardWords == null)
-                {
-                    throw new NullReferenceException("No available data");
-                }
-                return _hardWords; 
+                return _words; 
             }
         }
     }
