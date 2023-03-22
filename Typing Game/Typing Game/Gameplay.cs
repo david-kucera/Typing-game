@@ -28,9 +28,9 @@
         {
             _number_of_words = difficuty switch
             {
-                (Difficulty)0 => 100,
-                (Difficulty)1 => 200,
-                (Difficulty)2 => 300,
+                (Difficulty)0 => 20,
+                (Difficulty)1 => 50,
+                (Difficulty)2 => 100,
                 _ => 100,
             };
         }
