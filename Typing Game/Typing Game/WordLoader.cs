@@ -1,4 +1,6 @@
-﻿namespace Typing_Game
+﻿using System.Text.RegularExpressions;
+
+namespace Typing_Game
 {
     class WordLoader
     {
@@ -8,9 +10,28 @@
             string[] lines = File.ReadAllLines(filePath);
             foreach (string line in lines)
             {
-                words.Add(new WordDataType(line));
+                // Adds word to bank only if it contains only aplhabetical characters (no special characters or numbers)
+                if (CheckWord(line))
+                {
+                    words.Add(new WordDataType(line));
+                }
             }
             return words;
+        }
+
+        // For checking if the imported word does not contain a number or any special character
+        private static bool CheckWord(string line)
+        {
+            // Checking for any number in imported string
+            for (int i = 0; i < 10; i++) 
+            {
+                if (line.Contains((char)i)) return false;
+            }
+            // Checking for any special character in imported string
+            if (!Regex.IsMatch(line, @"^[a-zA-Z]+$")) return false;
+
+            // If both controls have been passed
+            return true;
         }
     }
 }
