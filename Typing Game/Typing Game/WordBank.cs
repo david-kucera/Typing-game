@@ -8,11 +8,11 @@
 
         public WordBank(string pathFileEasy)
         {
-            FillEasyWords(WordLoader.ReadWordsFromFile(pathFileEasy));
+            FillWords(WordLoader.ReadWordsFromFile(pathFileEasy));
         }
 
         // Fills List with Word values
-        public void FillEasyWords(List<WordDataType> words) { _words = words; }
+        public void FillWords(List<WordDataType> words) { _words = words; }
 
         // Getter
         public List<WordDataType> Words

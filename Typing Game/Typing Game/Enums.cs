@@ -6,4 +6,11 @@
         MEDIUM,
         HARD
     }
+
+    enum HealthPoint
+    {
+        ONE,
+        TWO, 
+        THREE
+    }
 }

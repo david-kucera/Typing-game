@@ -9,9 +9,11 @@
         {
             SetNumberOfWords(difficuty); 
             FillWithRandomWords(ref _words, difficuty, bank);
-            PrintWords();
+            // TODO Start a window app here
+            ConsoleInterface ctg = new(_words);
         }
 
+        // For debugging needs
         private void PrintWords()
         {
             for (int i = 0; i < _number_of_words; i++)
@@ -21,7 +23,7 @@
         }
 
         // Sets the number of words that will be displayed in a game.
-        // Default is set to EASY.
+        // Default is set to EASY -> 100.
         private void SetNumberOfWords(Difficulty difficuty)
         {
             _number_of_words = difficuty switch
