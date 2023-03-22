@@ -5,12 +5,13 @@
         private List<WordDataType> _words = new();
         private int _number_of_words;
         private Random _rnd = new();
+        private HealthPoint _healthPoint;
         public Gameplay(Difficulty difficuty, WordBank bank)
         {
-            SetNumberOfWords(difficuty); 
+            SetUp(difficuty); 
             FillWithRandomWords(ref _words, difficuty, bank);
             // TODO Start a window app here
-            ConsoleInterface ctg = new(_words);
+            ConsoleInterface ctg = new(_words, ref _healthPoint);
         }
 
         // For debugging needs
@@ -22,9 +23,9 @@
             }
         }
 
-        // Sets the number of words that will be displayed in a game.
-        // Default is set to EASY -> 20 words.
-        private void SetNumberOfWords(Difficulty difficuty)
+        // Sets the number of words that will be displayed in a game and number of lives.
+        // Default is set to EASY -> 20 words and 3 lives.
+        private void SetUp(Difficulty difficuty)
         {
             _number_of_words = difficuty switch
             {
@@ -32,6 +33,14 @@
                 (Difficulty)1 => 50,
                 (Difficulty)2 => 100,
                 _ => 100,
+            };
+
+            _healthPoint = difficuty switch
+            {
+                (Difficulty)0 => HealthPoint.THREE,
+                (Difficulty)1 => HealthPoint.TWO,
+                (Difficulty)2 => HealthPoint.ONE,
+                _ => HealthPoint.THREE,
             };
         }
 

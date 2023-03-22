@@ -4,7 +4,7 @@ namespace Typing_Game
 {
     class ConsoleInterface
     {
-        public ConsoleInterface(List<WordDataType> _words)
+        public ConsoleInterface(List<WordDataType> _words, ref HealthPoint hp)
         {
             Intro();
             WaitingForStart();
@@ -13,7 +13,7 @@ namespace Typing_Game
             {
                 Console.SetCursorPosition(0, 0); // Console start position
                 Console.WriteLine(word.Word);   // Prints a word that should be re-typed
-                Console.SetCursorPosition(0,1); // Sets cursor to one line under for typing
+                Console.SetCursorPosition(0, 0);
 
                 bool writtenWord = false;
                 char[] chars = word.Chars;
@@ -26,7 +26,13 @@ namespace Typing_Game
                         // Checks if written char matches the char of word and changes the color on console
                         if (!pressedKey.Equals(chars[i]))
                         {
-                            // TODO subtract 1 HP
+                            hp--;
+                            if ((int)hp == -1)
+                            {
+                                EndGame();
+                                // TODO end current game
+                                break;
+                            }
                             UpdateWord(in i, in chars, ConsoleColor.Red);
                         }
                         else
@@ -43,16 +49,22 @@ namespace Typing_Game
             Console.WriteLine("CONGRATS END of words");
         }
 
+        private void EndGame()
+        {
+            Console.Clear();
+            Console.WriteLine("YOU LOST!");
+        }
+
         private void UpdateWord(in int i, in char[] chars, ConsoleColor color)
         {
-            // Change color of good written char to green
+            // Change color of char at index i of word
             Console.SetCursorPosition(i, 0);
             Console.ForegroundColor = color;
             Console.Write(chars[i]);
 
             // Reset color and cursor back to typing area
             Console.ForegroundColor= ConsoleColor.White;
-            Console.SetCursorPosition(i + 1, 1);
+            Console.SetCursorPosition(i + 1, 0);
         }
 
         private char ReadKey()
