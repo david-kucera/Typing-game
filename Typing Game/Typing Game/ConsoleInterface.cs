@@ -9,7 +9,6 @@ namespace Typing_Game
             Intro();
             WaitingForStart();
 
-            // TODO START PROGRAM HERE
             foreach (WordDataType word in _words)
             {
                 Console.SetCursorPosition(0, 0); // Console start position
@@ -24,7 +23,7 @@ namespace Typing_Game
                     {
                         char pressedKey = ReadKey();
 
-                        // Checks if written char matches the char of word
+                        // Checks if written char matches the char of word and changes the color on console
                         if (!pressedKey.Equals(chars[i]))
                         {
                             // TODO subtract 1 HP
@@ -79,7 +78,7 @@ namespace Typing_Game
             Console.WriteLine("- just continue like nothing happened");
             Console.WriteLine("");
             Console.WriteLine("");
-            Console.WriteLine("If you are ready, press any key.");
+            Console.WriteLine("If you are ready, press RETURN.");
         }
 
         private void WaitingForStart()
