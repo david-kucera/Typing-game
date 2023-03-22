@@ -1,0 +1,15 @@
+C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\Typing Game\bin\Debug\net6.0\Typing Game.exe
+C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\Typing Game\bin\Debug\net6.0\Typing Game.deps.json
+C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\Typing Game\bin\Debug\net6.0\Typing Game.runtimeconfig.json
+C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\Typing Game\bin\Debug\net6.0\Typing Game.dll
+C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\Typing Game\bin\Debug\net6.0\Typing Game.pdb
+C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\Typing Game\obj\Debug\net6.0\Typing Game.csproj.AssemblyReference.cache
+C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\Typing Game\obj\Debug\net6.0\Typing Game.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\Typing Game\obj\Debug\net6.0\Typing Game.AssemblyInfoInputs.cache
+C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\Typing Game\obj\Debug\net6.0\Typing Game.AssemblyInfo.cs
+C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\Typing Game\obj\Debug\net6.0\Typing Game.csproj.CoreCompileInputs.cache
+C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\Typing Game\obj\Debug\net6.0\Typing Game.dll
+C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\Typing Game\obj\Debug\net6.0\refint\Typing Game.dll
+C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\Typing Game\obj\Debug\net6.0\Typing Game.pdb
+C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\Typing Game\obj\Debug\net6.0\Typing Game.genruntimeconfig.cache
+C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\Typing Game\obj\Debug\net6.0\ref\Typing Game.dll

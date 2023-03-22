@@ -1,10 +1,15 @@
 ﻿namespace Typing_Game
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            WordBank bank = new WordBank("C:\\Users\\kucer\\OneDrive\\FRI\\2leto\\Jazyk C# a .NET\\_workspace\\semestralna_praca\\typing-game\\Typing Game\\Typing Game\\easy.txt");
+            List<WordDataType> list = bank.EasyWords;
+            foreach (WordDataType word in list)
+            {
+                Console.WriteLine(word.Word);
+            }
         }
     }
 }
