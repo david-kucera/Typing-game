@@ -13,7 +13,7 @@ namespace Typing_Game
                 // Adds word to bank only if it contains only aplhabetical characters (no special characters or numbers)
                 if (CheckWord(line))
                 {
-                    words.Add(new WordDataType(line));
+                    words.Add(new WordDataType(line.ToLower()));    // Adds a word converted to lower case
                 }
             }
             return words;
