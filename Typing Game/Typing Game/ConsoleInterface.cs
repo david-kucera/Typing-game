@@ -13,38 +13,35 @@ namespace Typing_Game
             foreach (WordDataType word in _words)
             {
                 Console.SetCursorPosition(0, 0); // Console start position
-                Console.WriteLine(word.Word);
-                Console.SetCursorPosition(0,1); // One line under
+                Console.WriteLine(word.Word);   // Prints a word that should be re-typed
+                Console.SetCursorPosition(0,1); // Sets cursor to one line under for typing
 
-                bool written = false;
+                bool writtenWord = false;
                 char[] chars = word.Chars;
-                while (!written) 
+                while (!writtenWord) 
                 {
                     for (int i = 0; i < word.Length; i++)   // Checking each char by char
                     {
-                        //char pressedKey = Console.ReadKey().KeyChar; // Char pressed
                         char pressedKey = ReadKey();
 
                         // Checks if written char matches the char of word
                         if (!pressedKey.Equals(chars[i]))
                         {
                             // TODO subtract 1 HP
-                            // TODO red color
-                            Console.WriteLine("WRONG");
+                            // TODO red color wrong chars
+                            Console.Write("WRONG");
                         }
                         else
                         {
                             // TODO green color already typed chars
-                            Console.WriteLine("DOBRE");
                             continue;
                         }    
                     }
-                    written = true; // Jump to another word
+                    writtenWord = true; // Jump to another word
                 }
-                Console.WriteLine("CONGRATS END of word");
-                Console.Clear();
+                Console.Clear();    // Clear console for another word
             }
-
+            // TOTO Write a summary of game ... CPM, total time, wrong chars, ect.
             Console.WriteLine("CONGRATS END of words");
         }
 
@@ -74,18 +71,14 @@ namespace Typing_Game
             Console.WriteLine("If you are ready, press any key.");
         }
 
-        private static void WaitingForStart()
+        private void WaitingForStart()
         {
-            bool keyPressed = false;
-            while (!keyPressed)
+            char keyPressed = ReadKey();
+            while (keyPressed != '\r')
             {
-                if (Console.KeyAvailable)
-                {
-                    Console.Clear();
-                    Console.CursorVisible = false;
-                    keyPressed = true;
-                }
+                keyPressed = ReadKey();
             }
+            Console.Clear();
         }
     }
 }

@@ -23,7 +23,7 @@
         }
 
         // Sets the number of words that will be displayed in a game.
-        // Default is set to EASY -> 100.
+        // Default is set to EASY -> 20 words.
         private void SetNumberOfWords(Difficulty difficuty)
         {
             _number_of_words = difficuty switch
