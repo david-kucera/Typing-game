@@ -19,7 +19,7 @@ namespace Typing_Game
             return words;
         }
 
-        // For checking if the imported word does not contain a number or any special character
+        // For checking if the imported word does not contain a number or any special character, and length is more than 3
         private static bool CheckWord(string line)
         {
             // Checking for any number in imported string
@@ -29,6 +29,8 @@ namespace Typing_Game
             }
             // Checking for any special character in imported string
             if (!Regex.IsMatch(line, @"^[a-zA-Z]+$")) return false;
+
+            if (line.Length < 3) return false;
 
             // If both controls have been passed
             return true;

@@ -4,16 +4,21 @@ namespace Typing_Game
 {
     class ConsoleInterface
     {
+        private int startingPositionX = Console.WindowWidth / 2;
+        private int startingPositionY = Console.WindowHeight / 2;
         public ConsoleInterface(List<WordDataType> _words, ref HealthPoint hp)
         {
             Intro();
+            ReloadFieldsConsole();
             WaitingForStart();
 
             foreach (WordDataType word in _words)
             {
-                Console.SetCursorPosition(0, 0); // Console start position
-                Console.WriteLine(word.Word);   // Prints a word that should be re-typed
-                Console.SetCursorPosition(0, 0);
+                int posX = startingPositionX - (word.Length/2);
+                int posY = startingPositionY;
+                Console.SetCursorPosition(posX, posY);    // Console start position
+                Console.WriteLine(word.Word);       // Prints a word that should be re-typed
+                Console.SetCursorPosition(posX, posY);    // Sets cursor to the start of word
 
                 bool writtenWord = false;
                 char[] chars = word.Chars;
@@ -33,11 +38,11 @@ namespace Typing_Game
                                 // TODO end current game
                                 break;
                             }
-                            UpdateWord(in i, in chars, ConsoleColor.Red);
+                            UpdateWord(in i, in chars, ConsoleColor.Red, in posX, in posY);
                         }
                         else
                         {
-                            UpdateWord(in i, in chars, ConsoleColor.Green);
+                            UpdateWord(in i, in chars, ConsoleColor.Green, in posX, in posY);
                             continue;
                         }    
                     }
@@ -45,8 +50,20 @@ namespace Typing_Game
                 }
                 Console.Clear();    // Clear console for another word
             }
+            WriteSummary();
+        }
+
+        // Reloads field for console dimensions when user changes console window size.
+        private void ReloadFieldsConsole()
+        {
+            startingPositionX = Console.WindowWidth / 2;
+            startingPositionY = Console.WindowHeight / 2;
+        }
+
+        private void WriteSummary()
+        {
             // TOTO Write a summary of game ... CPM, total time, wrong chars, ect.
-            Console.WriteLine("CONGRATS END of words");
+            Console.WriteLine("Summary of the game:");
         }
 
         private void EndGame()
@@ -55,16 +72,16 @@ namespace Typing_Game
             Console.WriteLine("YOU LOST!");
         }
 
-        private void UpdateWord(in int i, in char[] chars, ConsoleColor color)
+        private void UpdateWord(in int i, in char[] chars, ConsoleColor color, in int posX, in int posY)
         {
             // Change color of char at index i of word
-            Console.SetCursorPosition(i, 0);
+            Console.SetCursorPosition(posX + i, posY);
             Console.ForegroundColor = color;
             Console.Write(chars[i]);
 
             // Reset color and cursor back to typing area
             Console.ForegroundColor= ConsoleColor.White;
-            Console.SetCursorPosition(i + 1, 0);
+            Console.SetCursorPosition(posX + i + 1, posY);
         }
 
         private char ReadKey()
@@ -89,6 +106,7 @@ namespace Typing_Game
             Console.WriteLine("If you type incorrect character, don't worry, you'll have total of 3 lives.");
             Console.WriteLine("- just continue like nothing happened");
             Console.WriteLine("");
+            Console.WriteLine("For better experience, set window size to full-screen");
             Console.WriteLine("");
             Console.WriteLine("If you are ready, press RETURN.");
         }
