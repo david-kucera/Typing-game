@@ -11,7 +11,7 @@
             SetUp(difficuty); 
             FillWithRandomWords(ref _words, difficuty, bank);
             // TODO Start a window app here
-            ConsoleInterface ctg = new(_words, ref _healthPoint);
+            CommandLineInterface ctg = new(_words, ref _healthPoint);
         }
 
         // For debugging needs

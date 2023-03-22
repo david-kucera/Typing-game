@@ -2,11 +2,11 @@
 
 namespace Typing_Game
 {
-    class ConsoleInterface
+    class CommandLineInterface
     {
         private int startingPositionX = Console.WindowWidth / 2;
         private int startingPositionY = Console.WindowHeight / 2;
-        public ConsoleInterface(List<WordDataType> _words, ref HealthPoint hp)
+        public CommandLineInterface(List<WordDataType> _words, ref HealthPoint hp)
         {
             Intro();
             ReloadFieldsConsole();
@@ -16,9 +16,9 @@ namespace Typing_Game
             {
                 int posX = startingPositionX - (word.Length/2);
                 int posY = startingPositionY;
-                Console.SetCursorPosition(posX, posY);    // Console start position
-                Console.WriteLine(word.Word);       // Prints a word that should be re-typed
-                Console.SetCursorPosition(posX, posY);    // Sets cursor to the start of word
+                Console.SetCursorPosition(posX, posY);      // Console start position
+                Console.WriteLine(word.Word);               // Prints a word that should be re-typed
+                Console.SetCursorPosition(posX, posY);      // Sets cursor to the start of word
 
                 bool writtenWord = false;
                 char[] chars = word.Chars;
