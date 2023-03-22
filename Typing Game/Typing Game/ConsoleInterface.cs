@@ -28,12 +28,11 @@ namespace Typing_Game
                         if (!pressedKey.Equals(chars[i]))
                         {
                             // TODO subtract 1 HP
-                            // TODO red color wrong chars
-                            Console.Write("WRONG");
+                            UpdateWord(in i, in chars, ConsoleColor.Red);
                         }
                         else
                         {
-                            // TODO green color already typed chars
+                            UpdateWord(in i, in chars, ConsoleColor.Green);
                             continue;
                         }    
                     }
@@ -43,6 +42,18 @@ namespace Typing_Game
             }
             // TOTO Write a summary of game ... CPM, total time, wrong chars, ect.
             Console.WriteLine("CONGRATS END of words");
+        }
+
+        private void UpdateWord(in int i, in char[] chars, ConsoleColor color)
+        {
+            // Change color of good written char to green
+            Console.SetCursorPosition(i, 0);
+            Console.ForegroundColor = color;
+            Console.Write(chars[i]);
+
+            // Reset color and cursor back to typing area
+            Console.ForegroundColor= ConsoleColor.White;
+            Console.SetCursorPosition(i + 1, 1);
         }
 
         private char ReadKey()
