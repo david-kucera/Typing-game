@@ -13,6 +13,7 @@
 
             foreach (DataType word in _words)
             {
+                Console.CursorVisible = false;
                 int posX = startingPositionX - (word.Length/2);
                 int posY = startingPositionY;
                 Console.SetCursorPosition(posX, posY);      // Console start position
@@ -59,9 +60,6 @@
 
             DateTime end_of_game = DateTime.Now;     // End the timer
             var total_time_of_game = end_of_game - start_of_game;
-
-
-
             WriteSummary(total_time_of_game, GetNumberOfChars(_words));
         }
 
