@@ -6,14 +6,31 @@ namespace Typing_Game
     {
         public static List<DataType> ReadWordsFromFile(string filePath)
         {
-            List<DataType> words = new List<DataType>();
+            List<DataType> words = new();
             string[] lines = File.ReadAllLines(filePath);
+
             foreach (string line in lines)
             {
-                // Adds word to bank only if it contains only aplhabetical characters (no special characters or numbers)
-                if (CheckWord(line))
+                // For slovak txt file
+                string word = "";
+                for (int i = 0; i < line.Length; i++)
                 {
-                    words.Add(new DataType(line.ToLower()));    // Adds a word converted to lower case
+                    if (line[i] == '\t' || line[i] == ' ' || line[i] == '\n')
+                    {
+                        word = line.Substring(0, i);
+                        break;
+                    }
+                    if (i == line.Length - 1)
+                    {
+                        word = line;
+                        break;
+                    }
+                }
+
+                // Adds word to bank only if it contains only aplhabetical characters (no special characters or numbers)
+                if (CheckWord(word))
+                {
+                    words.Add(new DataType(word.ToLower()));    // Adds a word converted to lower case
                 }
             }
             return words;
@@ -23,10 +40,8 @@ namespace Typing_Game
         private static bool CheckWord(string line)
         {
             // Checking for any number in imported string
-            for (int i = 0; i < 10; i++) 
-            {
-                if (line.Contains((char)i)) return false;
-            }
+            if (line.Any(char.IsDigit)) return false;
+            
             // Checking for any special character in imported string
             if (!Regex.IsMatch(line, @"^[a-zA-Z]+$")) return false;
 
