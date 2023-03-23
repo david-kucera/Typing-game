@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Data.SqlTypes;
+using System.Runtime.InteropServices;
 
 namespace Typing_Game
 {
@@ -9,9 +10,9 @@ namespace Typing_Game
         public CommandLineInterface(List<WordDataType> _words, ref HealthPoint hp)
         {
             Intro();
-            // TODO try to set console dimensions to full-screen
             ReloadFieldsConsole();
             WaitingForStart();
+            DateTime start_of_game = DateTime.Now;   // Start the timer
 
             foreach (WordDataType word in _words)
             {
@@ -23,6 +24,8 @@ namespace Typing_Game
 
                 bool writtenWord = false;
                 char[] chars = word.Chars;
+                
+
                 while (!writtenWord) 
                 {
                     for (int i = 0; i < word.Length; i++)   // Checking each char by char
@@ -48,10 +51,27 @@ namespace Typing_Game
                         }    
                     }
                     writtenWord = true; // Jump to another word
+                    
                 }
                 Console.Clear();    // Clear console for another word
             }
-            WriteSummary();
+
+            DateTime end_of_game = DateTime.Now;     // End the timer
+            var total_time_of_game = end_of_game - start_of_game;
+
+
+
+            WriteSummary(total_time_of_game, GetNumberOfChars(_words));
+        }
+
+        private int GetNumberOfChars(List<WordDataType> words)
+        {
+            int value = 0;
+            foreach (WordDataType word in words)
+            {
+                value += word.Length;
+            }
+            return value;
         }
 
         // Reloads field for console dimensions when user changes console window size.
@@ -61,10 +81,23 @@ namespace Typing_Game
             startingPositionY = Console.WindowHeight / 2;
         }
 
-        private void WriteSummary()
+        private void WriteSummary(TimeSpan total_time, int number_of_chars)
         {
-            // TOTO Write a summary of game ... CPM, total time, wrong chars, ect.
+            string str_seconds = total_time.ToString();
+            var length_till_comma = str_seconds.LastIndexOf(".");
+            var substring = str_seconds.Substring(0, length_till_comma);
+
+            int seconds = total_time.Seconds;
+            double minutes = (double)seconds / 60;
+
+            double cpm = (double)number_of_chars / minutes;
+            double cps = (double)number_of_chars / (double)seconds;
+
             Console.WriteLine("Summary of the game:");
+            Console.WriteLine("Total time of typing: " + substring);
+            Console.WriteLine("Total number of chars typed: " + number_of_chars);
+            Console.WriteLine("Characters per minute: " + cpm);
+            Console.WriteLine("Characters per second: " + cps);
         }
 
         private void EndGame()
@@ -79,10 +112,13 @@ namespace Typing_Game
             Console.SetCursorPosition(posX + i, posY);
             Console.ForegroundColor = color;
             Console.Write(chars[i]);
+            //Console.BackgroundColor = default;
 
             // Reset color and cursor back to typing area
             Console.ForegroundColor= ConsoleColor.White;
             Console.SetCursorPosition(posX + i + 1, posY);
+            //Console.BackgroundColor = ConsoleColor.Gray;
+
         }
 
         private char ReadKey()
