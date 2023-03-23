@@ -41,7 +41,7 @@
                             if ((int)hp == -1)
                             {
                                 EndGame();
-                                // TODO end current game
+                                // TODO end current game .. rn just skips to next word
                                 break;
                             }
                             UpdateWord(in i, in chars, ConsoleColor.Red, in posX, in posY);
@@ -80,6 +80,7 @@
             startingPositionY = Console.WindowHeight / 2;
         }
 
+        // Writes basic stats about player's game - total typing time, number of typed chars, characters per minute, characters per second.
         private static void WriteSummary(TimeSpan total_time, int number_of_chars)
         {
             string str_seconds = total_time.ToString();
@@ -95,8 +96,8 @@
             Console.WriteLine("Summary of the game:");
             Console.WriteLine("Total time of typing: " + substring);
             Console.WriteLine("Total number of chars typed: " + number_of_chars);
-            Console.WriteLine("Characters per minute: " + cpm);
-            Console.WriteLine("Characters per second: " + cps);
+            Console.WriteLine("Average characters per minute (rounded): " + Math.Round(cpm));
+            Console.WriteLine("Average characters per second (rounded): " + Math.Round(cps));
         }
 
         private static void EndGame()
@@ -129,6 +130,7 @@
 
         }
 
+        // Reads key pressed by user
         private static char ReadKey()
         {
             bool keyPressed = false;
