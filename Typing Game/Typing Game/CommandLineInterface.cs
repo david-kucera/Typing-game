@@ -9,6 +9,7 @@ namespace Typing_Game
         public CommandLineInterface(List<WordDataType> _words, ref HealthPoint hp)
         {
             Intro();
+            // TODO try to set console dimensions to full-screen
             ReloadFieldsConsole();
             WaitingForStart();
 
