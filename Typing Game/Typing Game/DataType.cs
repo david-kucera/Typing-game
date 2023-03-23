@@ -1,13 +1,13 @@
 ﻿namespace Typing_Game
 {
     // Represents a word in game.
-    class WordDataType
+    class DataType
     {
         private readonly string _word;
         private readonly int _length;
         private readonly char[] _chars;
 
-        public WordDataType(string word)
+        public DataType(string word)
         {
             _word = word;
             _length = word.Length;

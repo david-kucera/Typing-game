@@ -1,26 +1,27 @@
-﻿using System.Data.SqlTypes;
-using System.Runtime.InteropServices;
-
-namespace Typing_Game
+﻿namespace Typing_Game
 {
     class CommandLineInterface
     {
         private int startingPositionX = Console.WindowWidth / 2;
         private int startingPositionY = Console.WindowHeight / 2;
-        public CommandLineInterface(List<WordDataType> _words, ref HealthPoint hp)
+        public CommandLineInterface(List<DataType> _words, ref HealthPoint hp)
         {
             Intro();
             ReloadFieldsConsole();
             WaitingForStart();
             DateTime start_of_game = DateTime.Now;   // Start the timer
 
-            foreach (WordDataType word in _words)
+            foreach (DataType word in _words)
             {
                 int posX = startingPositionX - (word.Length/2);
                 int posY = startingPositionY;
                 Console.SetCursorPosition(posX, posY);      // Console start position
                 Console.WriteLine(word.Word);               // Prints a word that should be re-typed
                 Console.SetCursorPosition(posX, posY);      // Sets cursor to the start of word
+                Console.BackgroundColor = ConsoleColor.DarkBlue;
+                Console.Write(word.Chars[0]);
+                Console.SetCursorPosition(posX, posY);
+                Console.BackgroundColor = default;
 
                 bool writtenWord = false;
                 char[] chars = word.Chars;
@@ -64,10 +65,10 @@ namespace Typing_Game
             WriteSummary(total_time_of_game, GetNumberOfChars(_words));
         }
 
-        private int GetNumberOfChars(List<WordDataType> words)
+        private static int GetNumberOfChars(List<DataType> words)
         {
             int value = 0;
-            foreach (WordDataType word in words)
+            foreach (DataType word in words)
             {
                 value += word.Length;
             }
@@ -81,7 +82,7 @@ namespace Typing_Game
             startingPositionY = Console.WindowHeight / 2;
         }
 
-        private void WriteSummary(TimeSpan total_time, int number_of_chars)
+        private static void WriteSummary(TimeSpan total_time, int number_of_chars)
         {
             string str_seconds = total_time.ToString();
             var length_till_comma = str_seconds.LastIndexOf(".");
@@ -100,28 +101,37 @@ namespace Typing_Game
             Console.WriteLine("Characters per second: " + cps);
         }
 
-        private void EndGame()
+        private static void EndGame()
         {
             Console.Clear();
             Console.WriteLine("YOU LOST!");
         }
 
-        private void UpdateWord(in int i, in char[] chars, ConsoleColor color, in int posX, in int posY)
+        private static void UpdateWord(in int i, in char[] chars, ConsoleColor color, in int posX, in int posY)
         {
             // Change color of char at index i of word
             Console.SetCursorPosition(posX + i, posY);
             Console.ForegroundColor = color;
             Console.Write(chars[i]);
-            //Console.BackgroundColor = default;
+
+
+            // Set background to next typed char
+            if ((i + 1) < chars.Length)
+            {
+                Console.BackgroundColor = ConsoleColor.DarkBlue;
+                Console.SetCursorPosition(posX + i + 1, posY);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write(chars[i + 1]);
+                Console.BackgroundColor = default;
+            }
 
             // Reset color and cursor back to typing area
             Console.ForegroundColor= ConsoleColor.White;
             Console.SetCursorPosition(posX + i + 1, posY);
-            //Console.BackgroundColor = ConsoleColor.Gray;
 
         }
 
-        private char ReadKey()
+        private static char ReadKey()
         {
             bool keyPressed = false;
             char charInput = '.';
@@ -148,7 +158,7 @@ namespace Typing_Game
             Console.WriteLine("If you are ready, press RETURN.");
         }
 
-        private void WaitingForStart()
+        private static void WaitingForStart()
         {
             char keyPressed = ReadKey();
             while (keyPressed != '\r')

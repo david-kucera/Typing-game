@@ -2,25 +2,16 @@
 {
     class Gameplay
     {
-        private List<WordDataType> _words = new();
+        private List<DataType> _words = new();
         private int _number_of_words;
         private Random _rnd = new();
         private HealthPoint _healthPoint;
-        public Gameplay(Difficulty difficuty, WordBank bank)
+        public Gameplay(Difficulty difficuty, Bank bank)
         {
             SetUp(difficuty); 
             FillWithRandomWords(ref _words, difficuty, bank);
             // TODO Start a window app here
             CommandLineInterface ctg = new(_words, ref _healthPoint);
-        }
-
-        // For debugging needs
-        private void PrintWords()
-        {
-            for (int i = 0; i < _number_of_words; i++)
-            {
-                Console.Write(_words[i].Word + " ");
-            }
         }
 
         // Sets the number of words that will be displayed in a game and number of lives.
@@ -45,7 +36,7 @@
         }
 
         // Fills list of words with random words from bank of words.
-        private void FillWithRandomWords(ref List<WordDataType> words, Difficulty difficuty, WordBank bank)
+        private void FillWithRandomWords(ref List<DataType> words, Difficulty difficuty, Bank bank)
         {
             for (int i = 0; i < _number_of_words; i++)
             {

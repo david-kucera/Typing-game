@@ -2,18 +2,18 @@
 
 namespace Typing_Game
 {
-    class WordLoader
+    class FileReader
     {
-        public static List<WordDataType> ReadWordsFromFile(string filePath)
+        public static List<DataType> ReadWordsFromFile(string filePath)
         {
-            List<WordDataType> words = new List<WordDataType>();
+            List<DataType> words = new List<DataType>();
             string[] lines = File.ReadAllLines(filePath);
             foreach (string line in lines)
             {
                 // Adds word to bank only if it contains only aplhabetical characters (no special characters or numbers)
                 if (CheckWord(line))
                 {
-                    words.Add(new WordDataType(line.ToLower()));    // Adds a word converted to lower case
+                    words.Add(new DataType(line.ToLower()));    // Adds a word converted to lower case
                 }
             }
             return words;

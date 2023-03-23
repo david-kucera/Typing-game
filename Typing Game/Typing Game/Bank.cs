@@ -1,21 +1,21 @@
 ﻿namespace Typing_Game
 {
     // Bank for all words available in the game.
-    class WordBank
+    class Bank
     {
-        private List<WordDataType>? _words;
+        private List<DataType>? _words;
 
 
-        public WordBank(string pathFileEasy)
+        public Bank(string pathFileEasy)
         {
-            FillWords(WordLoader.ReadWordsFromFile(pathFileEasy));
+            FillWords(FileReader.ReadWordsFromFile(pathFileEasy));
         }
 
         // Fills List with Word values
-        public void FillWords(List<WordDataType> words) { _words = words; }
+        public void FillWords(List<DataType> words) { _words = words; }
 
         // Getter
-        public List<WordDataType> Words
+        public List<DataType> Words
         {
             get 
             {
