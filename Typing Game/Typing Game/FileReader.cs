@@ -7,9 +7,19 @@ namespace Typing_Game
         public static List<DataType> ReadWordsFromFile(string filePath)
         {
             List<DataType> words = new();
-            string[] lines = File.ReadAllLines(filePath);       // No need to real all lines, just get random indexes and load them 
+            string[] lines = File.ReadAllLines(filePath);
 
-            foreach (string line in lines)
+            // For better ram optimalization
+            Random rnd = new();
+            int number_of_random_words = 500;
+            string[] random_words = new string[number_of_random_words];
+            for (int i = 0; i < number_of_random_words; i++)
+            {
+                int random_index = (int)rnd.NextInt64(lines.LongLength);
+                random_words[i] = lines[random_index];
+            }
+
+            foreach (string line in random_words)
             {
                 // For slovak txt file
                 string word = "";
