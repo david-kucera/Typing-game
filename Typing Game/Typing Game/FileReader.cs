@@ -7,7 +7,7 @@ namespace Typing_Game
         public static List<DataType> ReadWordsFromFile(string filePath)
         {
             List<DataType> words = new();
-            string[] lines = File.ReadAllLines(filePath);
+            string[] lines = File.ReadAllLines(filePath);       // No need to real all lines, just get random indexes and load them 
 
             foreach (string line in lines)
             {

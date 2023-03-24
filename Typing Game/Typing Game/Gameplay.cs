@@ -8,6 +8,7 @@
         private HealthPoint _healthPoint;
         public Gameplay(Difficulty difficuty, Bank bank)
         {
+            
             SetUp(difficuty); 
             FillWithRandomWords(ref _words, difficuty, bank);
             // TODO Start a window app here
