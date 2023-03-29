@@ -28,7 +28,6 @@
                 bool writtenWord = false;
                 char[] chars = word.Chars;
 
-
                 while (!writtenWord)
                 {
                     if (ended)
@@ -82,12 +81,9 @@
                     break;
                 }
             }
-            if (!ended)
-            {
-                end_of_game = DateTime.Now;     // End the timer
-                total_time_of_game = end_of_game - start_of_game;
-                WriteSummary(total_time_of_game, number_of_chars_typed, number_of_errors);
-            }
+            end_of_game = DateTime.Now;     // End the timer
+            total_time_of_game = end_of_game - start_of_game;
+            WriteSummary(total_time_of_game, number_of_chars_typed, number_of_errors);
         }
 
         private void SetUp(DataType word, out int posX, out int posY)
