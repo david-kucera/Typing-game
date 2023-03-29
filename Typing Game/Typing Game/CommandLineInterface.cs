@@ -40,7 +40,7 @@
                         char pressedKey = ReadKey();
                         if (pressedKey == 27)
                         {
-                            DateTime end = DateTime.Now;     // End the timer
+                            var end = DateTime.Now;     // End the timer
                             var time = end - start_of_game;
                             WriteSummary(time, number_of_chars_typed, number_of_errors);
                             writtenWord = true;
@@ -156,15 +156,15 @@
              * Info from https://i.redd.it/x9n5gr9d61f41.png
              */
             if (wpm <= 10) Console.WriteLine("Equivalent to one word every 6 seconds. Learn the proper typing technique and practice to improve your speed.");
-            else if (wpm > 10 && wpm <= 20) Console.WriteLine("Equivalent to one word every 3 seconds. Focus on your technique and keep practising.");
-            else if (wpm > 20 && wpm <= 30) Console.WriteLine("Better, but still below average. Keep practising to improve your speed and accuracy.");
-            else if (wpm > 30 && wpm <= 40) Console.WriteLine("At 41 wpm, you are now an average typist. You still have significant room for improvement.");
-            else if (wpm > 40 && wpm <= 50) Console.WriteLine("Congratulations! You're above average!");
-            else if (wpm > 50 && wpm <= 60) Console.WriteLine("This is the speed required for most jobs. You can now be a professional typist.");
-            else if (wpm > 60 && wpm <= 70) Console.WriteLine("You are way above average and would qualify for any typing job, assuming your accuracy is high enough.");
-            else if (wpm > 70 && wpm <= 80) Console.WriteLine("You're a catch! Any employer looking for a typist would love to have you!");
-            else if (wpm > 80 && wpm <= 90) Console.WriteLine("At this speed, you're probably a gamer, coder or genius. You're doing great!");
-            else if (wpm > 90) Console.WriteLine("You're in the top 1% of typists! Congratulations!");
+            else if (wpm > 0 && wpm <= 10) Console.WriteLine("Equivalent to one word every 3 seconds. Focus on your technique and keep practising.");
+            else if (wpm > 10 && wpm <= 20) Console.WriteLine("Better, but still below average. Keep practising to improve your speed and accuracy.");
+            else if (wpm > 20 && wpm <= 30) Console.WriteLine("At 41 wpm, you are now an average typist. You still have significant room for improvement.");
+            else if (wpm > 30 && wpm <= 40) Console.WriteLine("Congratulations! You're above average!");
+            else if (wpm > 40 && wpm <= 50) Console.WriteLine("This is the speed required for most jobs. You can now be a professional typist.");
+            else if (wpm > 50 && wpm <= 60) Console.WriteLine("You are way above average and would qualify for any typing job, assuming your accuracy is high enough.");
+            else if (wpm > 60 && wpm <= 70) Console.WriteLine("You're a catch! Any employer looking for a typist would love to have you!");
+            else if (wpm > 70 && wpm <= 80) Console.WriteLine("At this speed, you're probably a gamer, coder or genius. You're doing great!");
+            else if (wpm > 80) Console.WriteLine("You're in the top 1% of typists! Congratulations!");
         }
 
         private static void EndGame()
