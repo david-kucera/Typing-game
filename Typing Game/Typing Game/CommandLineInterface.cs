@@ -16,27 +16,20 @@
             DateTime start_of_game = DateTime.Now;   // Start the timer
             DateTime end_of_game;
             TimeSpan total_time_of_game;
+            int number_of_chars_typed = 0;
             int number_of_errors = 0;         // Number of false chars
             bool ended = false;
 
             foreach (DataType word in _words)
             {
-                Console.CursorVisible = false;
-                int posX = starting_position_x - (word.Length/2);
-                int posY = starting_position_y;
-                Console.SetCursorPosition(posX, posY);      // Console start position
-                Console.WriteLine(word.Word);               // Prints a word that should be re-typed
-                Console.SetCursorPosition(posX, posY);      // Sets cursor to the start of word
-                Console.BackgroundColor = cursor_color;
-                Console.Write(word.Chars[0]);
-                Console.SetCursorPosition(posX, posY);
-                Console.BackgroundColor = default;
+                int posX, posY;
+                SetUp(word, out posX, out posY);
 
                 bool writtenWord = false;
                 char[] chars = word.Chars;
-                
 
-                while (!writtenWord) 
+
+                while (!writtenWord)
                 {
                     if (ended)
                     {
@@ -50,7 +43,7 @@
                         {
                             DateTime end = DateTime.Now;     // End the timer
                             var time = end - start_of_game;
-                            WriteSummary(time, GetNumberOfChars(_words), number_of_errors);
+                            WriteSummary(time, number_of_chars_typed, number_of_errors);
                             writtenWord = true;
                             ended = true;
                             break;
@@ -67,15 +60,16 @@
                                 // TODO end current game .. rn just skips to next word
                                 //break;
                             }
-                            
+
                             UpdateWord(in i, in chars, wrong_color, in posX, in posY);
                             Console.Beep(1000, 100); // Sound indication that char is wrong
                         }
                         else
                         {
+                            number_of_chars_typed++;
                             UpdateWord(in i, in chars, right_color, in posX, in posY);
                             continue;
-                        }    
+                        }
                     }
                     writtenWord = true; // Jump to another word
                     if (!ended)
@@ -92,8 +86,22 @@
             {
                 end_of_game = DateTime.Now;     // End the timer
                 total_time_of_game = end_of_game - start_of_game;
-                WriteSummary(total_time_of_game, GetNumberOfChars(_words), number_of_errors);
+                WriteSummary(total_time_of_game, number_of_chars_typed, number_of_errors);
             }
+        }
+
+        private void SetUp(DataType word, out int posX, out int posY)
+        {
+            Console.CursorVisible = false;
+            posX = starting_position_x - (word.Length / 2);
+            posY = starting_position_y;
+            Console.SetCursorPosition(posX, posY);      // Console start position
+            Console.WriteLine(word.Word);               // Prints a word that should be re-typed
+            Console.SetCursorPosition(posX, posY);      // Sets cursor to the start of word
+            Console.BackgroundColor = cursor_color;
+            Console.Write(word.Chars[0]);
+            Console.SetCursorPosition(posX, posY);
+            Console.BackgroundColor = default;
         }
 
         private static int GetNumberOfChars(List<DataType> words)
@@ -127,8 +135,15 @@
 
             int number_of_written = number_of_chars - number_of_errors;
 
-            double cpm = number_of_written / minutes;
+            double cpm = number_of_written / minutes;   
             double wpm = (double)(number_of_written / 4.7) / minutes;
+            
+            /*
+             * Checks if values are not negative
+             */
+            if (cpm < 0) cpm =0;
+            if (wpm < 0) wpm = 0;
+            if (number_of_chars < 0) number_of_chars = 0;
 
             Console.WriteLine("Summary of the game:");
             Console.WriteLine("Total time of typing: " + substring);
@@ -142,7 +157,7 @@
         private static void WriteLevel(double wpm)
         {
             /*
-             * https://i.redd.it/x9n5gr9d61f41.png
+             * Info from https://i.redd.it/x9n5gr9d61f41.png
              */
             if (wpm <= 10) Console.WriteLine("Equivalent to one word every 6 seconds. Learn the proper typing technique and practice to improve your speed.");
             else if (wpm > 10 && wpm <= 20) Console.WriteLine("Equivalent to one word every 3 seconds. Focus on your technique and keep practising.");
