@@ -2,8 +2,8 @@
 {
     class CommandLineInterface
     {
-        private int startingPositionX = Console.WindowWidth / 2;
-        private int startingPositionY = Console.WindowHeight / 2;
+        private int starting_position_x = Console.WindowWidth / 2;
+        private int starting_position_y = Console.WindowHeight / 2;
         private ConsoleColor cursor_color = ConsoleColor.DarkGreen;
         private ConsoleColor basic_color = ConsoleColor.White;
         private ConsoleColor wrong_color = ConsoleColor.Red;
@@ -14,13 +14,16 @@
             ReloadFieldsConsole();
             WaitingForStart();
             DateTime start_of_game = DateTime.Now;   // Start the timer
+            DateTime end_of_game;
+            TimeSpan total_time_of_game;
             int number_of_errors = 0;         // Number of false chars
+            bool ended = false;
 
             foreach (DataType word in _words)
             {
                 Console.CursorVisible = false;
-                int posX = startingPositionX - (word.Length/2);
-                int posY = startingPositionY;
+                int posX = starting_position_x - (word.Length/2);
+                int posY = starting_position_y;
                 Console.SetCursorPosition(posX, posY);      // Console start position
                 Console.WriteLine(word.Word);               // Prints a word that should be re-typed
                 Console.SetCursorPosition(posX, posY);      // Sets cursor to the start of word
@@ -35,10 +38,23 @@
 
                 while (!writtenWord) 
                 {
+                    if (ended)
+                    {
+                        break;
+                    }
                     Console.Beep(2000, 100);
                     for (int i = 0; i < word.Length; i++)   // Checking each char by char
                     {
                         char pressedKey = ReadKey();
+                        if (pressedKey == 27)
+                        {
+                            DateTime end = DateTime.Now;     // End the timer
+                            var time = end - start_of_game;
+                            WriteSummary(time, GetNumberOfChars(_words), number_of_errors);
+                            writtenWord = true;
+                            ended = true;
+                            break;
+                        }
 
                         // Checks if written char matches the char of word and changes the color on console
                         if (!pressedKey.Equals(chars[i]))
@@ -62,13 +78,22 @@
                         }    
                     }
                     writtenWord = true; // Jump to another word
+                    if (!ended)
+                    {
+                        Console.Clear();
+                    }
                 }
-                Console.Clear();    // Clear console for another word
+                if (ended)
+                {
+                    break;
+                }
             }
-
-            DateTime end_of_game = DateTime.Now;     // End the timer
-            var total_time_of_game = end_of_game - start_of_game;
-            WriteSummary(total_time_of_game, GetNumberOfChars(_words), number_of_errors);
+            if (!ended)
+            {
+                end_of_game = DateTime.Now;     // End the timer
+                total_time_of_game = end_of_game - start_of_game;
+                WriteSummary(total_time_of_game, GetNumberOfChars(_words), number_of_errors);
+            }
         }
 
         private static int GetNumberOfChars(List<DataType> words)
@@ -84,13 +109,15 @@
         // Reloads field for console dimensions when user changes console window size.
         private void ReloadFieldsConsole()
         {
-            startingPositionX = Console.WindowWidth / 2;
-            startingPositionY = Console.WindowHeight / 2;
+            starting_position_x = Console.WindowWidth / 2;
+            starting_position_y = Console.WindowHeight / 2;
         }
 
         // Writes basic stats about player's game - total typing time, number of typed chars, characters per minute, characters per second.
         private static void WriteSummary(TimeSpan total_time, int number_of_chars, int number_of_errors)
         {
+            Console.Clear();
+            Console.SetCursorPosition(0, 0);
             string str_seconds = total_time.ToString();
             var length_till_comma = str_seconds.LastIndexOf(".");
             var substring = str_seconds.Substring(0, length_till_comma);
@@ -114,6 +141,9 @@
 
         private static void WriteLevel(double wpm)
         {
+            /*
+             * https://i.redd.it/x9n5gr9d61f41.png
+             */
             if (wpm <= 10) Console.WriteLine("Equivalent to one word every 6 seconds. Learn the proper typing technique and practice to improve your speed.");
             else if (wpm > 10 && wpm <= 20) Console.WriteLine("Equivalent to one word every 3 seconds. Focus on your technique and keep practising.");
             else if (wpm > 20 && wpm <= 30) Console.WriteLine("Better, but still below average. Keep practising to improve your speed and accuracy.");
