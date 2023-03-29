@@ -4,12 +4,17 @@
     {
         private int startingPositionX = Console.WindowWidth / 2;
         private int startingPositionY = Console.WindowHeight / 2;
+        private ConsoleColor cursor_color = ConsoleColor.DarkGreen;
+        private ConsoleColor basic_color = ConsoleColor.White;
+        private ConsoleColor wrong_color = ConsoleColor.Red;
+        private ConsoleColor right_color = ConsoleColor.Green;
         public CommandLineInterface(List<DataType> _words, ref HealthPoint hp)
         {
             Intro();
             ReloadFieldsConsole();
             WaitingForStart();
             DateTime start_of_game = DateTime.Now;   // Start the timer
+            int number_of_errors = 0;         // Number of false chars
 
             foreach (DataType word in _words)
             {
@@ -19,7 +24,7 @@
                 Console.SetCursorPosition(posX, posY);      // Console start position
                 Console.WriteLine(word.Word);               // Prints a word that should be re-typed
                 Console.SetCursorPosition(posX, posY);      // Sets cursor to the start of word
-                Console.BackgroundColor = ConsoleColor.DarkBlue;
+                Console.BackgroundColor = cursor_color;
                 Console.Write(word.Chars[0]);
                 Console.SetCursorPosition(posX, posY);
                 Console.BackgroundColor = default;
@@ -30,6 +35,7 @@
 
                 while (!writtenWord) 
                 {
+                    Console.Beep(2000, 100);
                     for (int i = 0; i < word.Length; i++)   // Checking each char by char
                     {
                         char pressedKey = ReadKey();
@@ -37,32 +43,32 @@
                         // Checks if written char matches the char of word and changes the color on console
                         if (!pressedKey.Equals(chars[i]))
                         {
+                            number_of_errors++;
                             hp--;
                             if ((int)hp == -1)
                             {
-                                EndGame();
+                                //EndGame();
                                 // TODO end current game .. rn just skips to next word
-                                break;
+                                //break;
                             }
                             
-                            UpdateWord(in i, in chars, ConsoleColor.Red, in posX, in posY);
-                            Console.Beep(1000,100); // Sound indication that char is wrong
+                            UpdateWord(in i, in chars, wrong_color, in posX, in posY);
+                            Console.Beep(1000, 100); // Sound indication that char is wrong
                         }
                         else
                         {
-                            UpdateWord(in i, in chars, ConsoleColor.Green, in posX, in posY);
+                            UpdateWord(in i, in chars, right_color, in posX, in posY);
                             continue;
                         }    
                     }
                     writtenWord = true; // Jump to another word
-                    Console.Beep(2000, 100);
                 }
                 Console.Clear();    // Clear console for another word
             }
 
             DateTime end_of_game = DateTime.Now;     // End the timer
             var total_time_of_game = end_of_game - start_of_game;
-            WriteSummary(total_time_of_game, GetNumberOfChars(_words));
+            WriteSummary(total_time_of_game, GetNumberOfChars(_words), number_of_errors);
         }
 
         private static int GetNumberOfChars(List<DataType> words)
@@ -83,7 +89,7 @@
         }
 
         // Writes basic stats about player's game - total typing time, number of typed chars, characters per minute, characters per second.
-        private static void WriteSummary(TimeSpan total_time, int number_of_chars)
+        private static void WriteSummary(TimeSpan total_time, int number_of_chars, int number_of_errors)
         {
             string str_seconds = total_time.ToString();
             var length_till_comma = str_seconds.LastIndexOf(".");
@@ -92,14 +98,32 @@
             int seconds = total_time.Seconds;
             double minutes = (double)seconds / 60;
 
-            double cpm = (double)number_of_chars / minutes;
-            double wpm = (double)(number_of_chars/4.7) / minutes;
+            int number_of_written = number_of_chars - number_of_errors;
+
+            double cpm = number_of_written / minutes;
+            double wpm = (double)(number_of_written / 4.7) / minutes;
 
             Console.WriteLine("Summary of the game:");
             Console.WriteLine("Total time of typing: " + substring);
-            Console.WriteLine("Total number of chars typed: " + number_of_chars);
+            Console.WriteLine("Total number of chars typed: " + number_of_written);
+            Console.WriteLine("Number of errors: " + number_of_errors);
             Console.WriteLine("Average characters per minute (rounded): " + Math.Round(cpm));
             Console.WriteLine("Average words (4.7 char) per minute: " + Math.Round(wpm,2));
+            WriteLevel(wpm);
+        }
+
+        private static void WriteLevel(double wpm)
+        {
+            if (wpm <= 10) Console.WriteLine("Equivalent to one word every 6 seconds. Learn the proper typing technique and practice to improve your speed.");
+            else if (wpm > 10 && wpm <= 20) Console.WriteLine("Equivalent to one word every 3 seconds. Focus on your technique and keep practising.");
+            else if (wpm > 20 && wpm <= 30) Console.WriteLine("Better, but still below average. Keep practising to improve your speed and accuracy.");
+            else if (wpm > 30 && wpm <= 40) Console.WriteLine("At 41 wpm, you are now an average typist. You still have significant room for improvement.");
+            else if (wpm > 40 && wpm <= 50) Console.WriteLine("Congratulations! You're above average!");
+            else if (wpm > 50 && wpm <= 60) Console.WriteLine("This is the speed required for most jobs. You can now be a professional typist.");
+            else if (wpm > 60 && wpm <= 70) Console.WriteLine("You are way above average and would qualify for any typing job, assuming your accuracy is high enough.");
+            else if (wpm > 70 && wpm <= 80) Console.WriteLine("You're a catch! Any employer looking for a typist would love to have you!");
+            else if (wpm > 80 && wpm <= 90) Console.WriteLine("At this speed, you're probably a gamer, coder or genius. You're doing great!");
+            else if (wpm > 90) Console.WriteLine("You're in the top 1% of typists! Congratulations!");
         }
 
         private static void EndGame()
@@ -108,7 +132,7 @@
             Console.WriteLine("YOU LOST!");
         }
 
-        private static void UpdateWord(in int i, in char[] chars, ConsoleColor color, in int posX, in int posY)
+        private void UpdateWord(in int i, in char[] chars, ConsoleColor color, in int posX, in int posY)
         {
             // Change color of char at index i of word
             Console.SetCursorPosition(posX + i, posY);
@@ -119,15 +143,15 @@
             // Set background to next typed char
             if ((i + 1) < chars.Length)
             {
-                Console.BackgroundColor = ConsoleColor.DarkBlue;
+                Console.BackgroundColor = cursor_color;
                 Console.SetCursorPosition(posX + i + 1, posY);
-                Console.ForegroundColor = ConsoleColor.White;
+                Console.ForegroundColor = basic_color;
                 Console.Write(chars[i + 1]);
                 Console.BackgroundColor = default;
             }
 
             // Reset color and cursor back to typing area
-            Console.ForegroundColor= ConsoleColor.White;
+            Console.ForegroundColor = basic_color;
             Console.SetCursorPosition(posX + i + 1, posY);
 
         }
