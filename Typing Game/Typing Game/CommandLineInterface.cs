@@ -44,7 +44,9 @@
                                 // TODO end current game .. rn just skips to next word
                                 break;
                             }
+                            
                             UpdateWord(in i, in chars, ConsoleColor.Red, in posX, in posY);
+                            Console.Beep(1000,100); // Sound indication that char is wrong
                         }
                         else
                         {
@@ -53,7 +55,7 @@
                         }    
                     }
                     writtenWord = true; // Jump to another word
-                    
+                    Console.Beep(2000, 100);
                 }
                 Console.Clear();    // Clear console for another word
             }
@@ -91,13 +93,13 @@
             double minutes = (double)seconds / 60;
 
             double cpm = (double)number_of_chars / minutes;
-            double cps = (double)number_of_chars / (double)seconds;
+            double wpm = (double)(number_of_chars/4.7) / minutes;
 
             Console.WriteLine("Summary of the game:");
             Console.WriteLine("Total time of typing: " + substring);
             Console.WriteLine("Total number of chars typed: " + number_of_chars);
             Console.WriteLine("Average characters per minute (rounded): " + Math.Round(cpm));
-            Console.WriteLine("Average characters per second (rounded): " + Math.Round(cps));
+            Console.WriteLine("Average words (4.7 char) per minute: " + Math.Round(wpm,2));
         }
 
         private static void EndGame()

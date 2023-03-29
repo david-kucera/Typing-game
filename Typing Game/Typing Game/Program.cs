@@ -2,7 +2,7 @@
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             // English
             //Bank bank = new Bank("C:\\Users\\kucer\\OneDrive\\FRI\\2leto\\Jazyk C# a .NET\\_workspace\\semestralna_praca\\typing-game\\Typing Game\\Typing Game\\english.txt");
