@@ -5,8 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Typing Game Menu" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="157*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="215*"/>
+        </Grid.RowDefinitions>
+        <Label Content="WELCOME TO TYPING GAME" HorizontalAlignment="Left" Height="65" Margin="197,56,0,0" VerticalAlignment="Top" Width="376" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="24" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="SELECT DICTIONARY:" HorizontalAlignment="Left" Margin="75,136,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Grid.Row="1" Grid.Column="1"/>
+        <ListBox x:Name="Language_ListBox" HorizontalAlignment="Left" Height="26" Margin="220,136,0,0" VerticalAlignment="Top" Width="280" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="SELECT DIFFICULTY:" HorizontalAlignment="Left" Margin="75,200,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="1" Grid.Column="1"/>
+        <CheckBox x:Name="Easy_CheckBox" Content="EASY" HorizontalAlignment="Left" Margin="235,205,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
+        <CheckBox x:Name="Medium_CheckBox" Content="MEDIUM" HorizontalAlignment="Left" Margin="325,205,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
+        <CheckBox x:Name="Hard_CheckBox" Content="HARD" HorizontalAlignment="Left" Margin="435,205,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,0.303" Grid.Row="1" Grid.Column="1"/>
+        <Rectangle HorizontalAlignment="Left" Height="26" Margin="220,200,0,0" Stroke="Black" VerticalAlignment="Top" Width="280" Grid.Row="1" Grid.Column="1"/>
+        <Button x:Name="Start_The_Game_Button" Content="START" HorizontalAlignment="Left" Margin="297,265,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="50" Width="126" Grid.Row="1" Grid.Column="1"/>
+        <Button x:Name="Play_On_Console_Button" Content="If you want to play in console, click here" HorizontalAlignment="Left" Height="30" Margin="0,390,0,0" VerticalAlignment="Top" Width="800" Grid.Row="1" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>
