@@ -1,4 +1,9 @@
-﻿namespace Typing_Game
+﻿using System;
+using System.Collections.Generic;
+using Typing_Game;
+using TypingGame.Mech;
+
+namespace TypingGame.CLI
 {
     class CommandLineInterface
     {
@@ -10,6 +15,16 @@
         private ConsoleColor right_color = ConsoleColor.Green;
         public CommandLineInterface(List<DataType> _words, ref HealthPoint hp)
         {
+
+            //// TODO dorobit nasledovne
+
+            //// Programming words
+            //Bank bank = new("C:\\Users\\kucer\\OneDrive\\FRI\\2leto\\Jazyk C# a .NET\\_workspace\\semestralna_praca\\typing-game\\Typing Game\\Typing Game\\programmer.txt");
+
+            //Gameplay hra = new(Difficulty.EASY, bank);
+
+            //// TODO dorobit predosle
+            /// 
             Intro();
             ReloadFieldsConsole();
             WaitingForStart();
@@ -89,7 +104,7 @@
         private void SetUp(DataType word, out int posX, out int posY)
         {
             Console.CursorVisible = false;
-            posX = starting_position_x - (word.Length / 2);
+            posX = starting_position_x - word.Length / 2;
             posY = starting_position_y;
             Console.SetCursorPosition(posX, posY);      // Console start position
             Console.WriteLine(word.Word);               // Prints a word that should be re-typed
@@ -131,13 +146,13 @@
 
             int number_of_written = number_of_chars - number_of_errors;
 
-            double cpm = number_of_written / minutes;   
+            double cpm = number_of_written / minutes;
             double wpm = (double)(number_of_written / 4.7) / minutes;
-            
+
             /*
              * Checks if values are not negative
              */
-            if (cpm < 0) cpm =0;
+            if (cpm < 0) cpm = 0;
             if (wpm < 0) wpm = 0;
             if (number_of_chars < 0) number_of_chars = 0;
 
@@ -146,7 +161,7 @@
             Console.WriteLine("Total number of chars typed: " + number_of_written);
             Console.WriteLine("Number of errors: " + number_of_errors);
             Console.WriteLine("Average characters per minute (rounded): " + Math.Round(cpm));
-            Console.WriteLine("Average words (4.7 char) per minute: " + Math.Round(wpm,2));
+            Console.WriteLine("Average words (4.7 char) per minute: " + Math.Round(wpm, 2));
             WriteLevel(wpm);
         }
 
@@ -182,7 +197,7 @@
 
 
             // Set background to next typed char
-            if ((i + 1) < chars.Length)
+            if (i + 1 < chars.Length)
             {
                 Console.BackgroundColor = cursor_color;
                 Console.SetCursorPosition(posX + i + 1, posY);

@@ -1,4 +1,8 @@
-﻿namespace Typing_Game
+﻿using System;
+using System.Collections.Generic;
+using Typing_Game;
+
+namespace TypingGame.Mech
 {
     // Bank for all words available in the game.
     class Bank

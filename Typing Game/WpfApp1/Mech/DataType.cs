@@ -1,4 +1,4 @@
-﻿namespace Typing_Game
+﻿namespace TypingGame.Mech
 {
     // Represents a word in game.
     class DataType
