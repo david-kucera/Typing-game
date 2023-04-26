@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using TypingGame.Mech;
 
 namespace TypingGame.CLI
@@ -8,22 +9,13 @@ namespace TypingGame.CLI
     {
         private int starting_position_x = Console.WindowWidth / 2;
         private int starting_position_y = Console.WindowHeight / 2;
-        private ConsoleColor cursor_color = ConsoleColor.DarkGreen;
-        private ConsoleColor basic_color = ConsoleColor.White;
-        private ConsoleColor wrong_color = ConsoleColor.Red;
-        private ConsoleColor right_color = ConsoleColor.Green;
+        private const ConsoleColor CursorColor = ConsoleColor.DarkGreen;
+        private const ConsoleColor BasicColor = ConsoleColor.White;
+        private const ConsoleColor WrongColor = ConsoleColor.Red;
+        private const ConsoleColor RightColor = ConsoleColor.Green;
+
         public CommandLineInterface(List<DataType> _words, ref HealthPoint hp)
         {
-
-            //// TODO dorobit nasledovne
-
-            //// Programming words
-            //Bank bank = new("C:\\Users\\kucer\\OneDrive\\FRI\\2leto\\Jazyk C# a .NET\\_workspace\\semestralna_praca\\typing-game\\Typing Game\\Typing Game\\programmer.txt");
-
-            //Gameplay hra = new(Difficulty.EASY, bank);
-
-            //// TODO dorobit predosle
-            /// 
             Intro();
             ReloadFieldsConsole();
             WaitingForStart();
@@ -74,13 +66,13 @@ namespace TypingGame.CLI
                                 //break;
                             }
 
-                            UpdateWord(in i, in chars, wrong_color, in posX, in posY);
+                            UpdateWord(in i, in chars, WrongColor, in posX, in posY);
                             Console.Beep(1000, 100); // Sound indication that char is wrong
                         }
                         else
                         {
                             number_of_chars_typed++;
-                            UpdateWord(in i, in chars, right_color, in posX, in posY);
+                            UpdateWord(in i, in chars, RightColor, in posX, in posY);
                             continue;
                         }
                     }
@@ -98,6 +90,11 @@ namespace TypingGame.CLI
             end_of_game = DateTime.Now;     // End the timer
             total_time_of_game = end_of_game - start_of_game;
             WriteSummary(total_time_of_game, number_of_chars_typed, number_of_errors);
+            Console.WriteLine();
+            Console.WriteLine("...Press any key to end the app...");
+            Console.CursorVisible = true;
+            Console.ReadLine(); // For not closing console window
+            // Here the App ends
         }
 
         private void SetUp(DataType word, out int posX, out int posY)
@@ -108,7 +105,7 @@ namespace TypingGame.CLI
             Console.SetCursorPosition(posX, posY);      // Console start position
             Console.WriteLine(word.Word);               // Prints a word that should be re-typed
             Console.SetCursorPosition(posX, posY);      // Sets cursor to the start of word
-            Console.BackgroundColor = cursor_color;
+            Console.BackgroundColor = CursorColor;
             Console.Write(word.Chars[0]);
             Console.SetCursorPosition(posX, posY);
             Console.BackgroundColor = default;
@@ -116,12 +113,7 @@ namespace TypingGame.CLI
 
         private static int GetNumberOfChars(List<DataType> words)
         {
-            int value = 0;
-            foreach (DataType word in words)
-            {
-                value += word.Length;
-            }
-            return value;
+            return words.Sum(word => word.Length); // Uses LINQ
         }
 
         // Reloads field for console dimensions when user changes console window size.
@@ -198,15 +190,15 @@ namespace TypingGame.CLI
             // Set background to next typed char
             if (i + 1 < chars.Length)
             {
-                Console.BackgroundColor = cursor_color;
+                Console.BackgroundColor = CursorColor;
                 Console.SetCursorPosition(posX + i + 1, posY);
-                Console.ForegroundColor = basic_color;
+                Console.ForegroundColor = BasicColor;
                 Console.Write(chars[i + 1]);
                 Console.BackgroundColor = default;
             }
 
             // Reset color and cursor back to typing area
-            Console.ForegroundColor = basic_color;
+            Console.ForegroundColor = BasicColor;
             Console.SetCursorPosition(posX + i + 1, posY);
 
         }

@@ -16,6 +16,7 @@ namespace TypingGame.Mech
             SetUp(difficuty); 
             FillWithRandomWords(ref _words, difficuty, bank);
             // TODO Start a window app here
+            // Now works only with CLI
             CommandLineInterface ctg = new(_words, ref _healthPoint);
         }
 

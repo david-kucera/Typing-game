@@ -15,7 +15,7 @@
     <Page Update="GameWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MainWindow.xaml">
+    <Page Update="MenuWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
