@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Typing_Game;
 using TypingGame.Mech;
 
 namespace TypingGame.CLI

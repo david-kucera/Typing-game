@@ -1,4 +1,8 @@
-﻿namespace Typing_Game
+﻿using System;
+using System.Collections.Generic;
+using TypingGame.CLI;
+
+namespace TypingGame.Mech
 {
     class Gameplay
     {

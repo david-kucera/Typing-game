@@ -21,6 +21,7 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
@@ -30,17 +31,23 @@ namespace WpfApp1
             dictionaries.Add("Programmer");
             foreach (var dic in dictionaries)
             {
-                Language_ComboBox.Items.Add(dic);
+                LanguageComboBox.Items.Add(dic);
             }
-            Language_ComboBox.SelectedIndex = 0;
+            LanguageComboBox.SelectedIndex = 0;
+
         }
 
         private void Start_The_Game_Button_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            throw new NotImplementedException();
         }
 
         private void Play_On_Console_Button_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void MI_Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
