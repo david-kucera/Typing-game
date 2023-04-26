@@ -23,6 +23,25 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            List<string> dictionaries = new List<string>();
+            dictionaries.Add("Slovak");
+            dictionaries.Add("English");
+            dictionaries.Add("Programmer");
+            foreach (var dic in dictionaries)
+            {
+                Language_ComboBox.Items.Add(dic);
+            }
+            Language_ComboBox.SelectedIndex = 0;
+        }
+
+        private void Start_The_Game_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Play_On_Console_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
