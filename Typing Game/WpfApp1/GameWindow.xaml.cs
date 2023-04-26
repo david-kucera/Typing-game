@@ -36,14 +36,15 @@ namespace TypingGame
             _words = words;
 
             _index_current_word = 0;
-            SetUpTextBlock();
+            ChangeTextBlock();
         }
 
         /*
          * Sets the current word to bold.
          */
-        private void SetUpTextBlock()
+        private void ChangeTextBlock()
         {
+            TextBlock_Template.Text = "";
             string previous = string.Empty;
             for (int i = 0; i < _index_current_word; i++)
             {
@@ -67,10 +68,20 @@ namespace TypingGame
         {
             if (TB_Answer.Text.Contains(' '))
             {
-                // TODO skontroluj ci sa text rovna template-u
-                // TODO ak ano, pokracuj na dalsie slovo, nastav farbu predosleho na zelenu
-                // TODO ak nie, pokracuj na dalsie slovo, nastav farbu predosleho na cervenu
-                Close();
+                string input = TB_Answer.Text.Remove(TB_Answer.Text.Length - 1, 1);
+
+                if (input.Equals(_words[_index_current_word].Word))
+                {
+                    // TODO nastav farbu predosleho na zelenu
+                }
+                else
+                {
+                    // TODO nastav farbu predosleho na cervenu
+                }
+
+                _index_current_word++;
+                TB_Answer.Text = "";
+                ChangeTextBlock();
             }
         }
     }
