@@ -13,4 +13,12 @@
         TWO, 
         THREE
     }
+
+    public enum State
+    {
+        CURRENT,
+        CORRECT,
+        INCORRECT,
+        TBT
+    }
 }

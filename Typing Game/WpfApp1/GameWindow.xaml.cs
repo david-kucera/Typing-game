@@ -21,6 +21,7 @@ namespace TypingGame
     public partial class GameWindow : Window
     {
         private List<DataType> _words;
+        private State[] _states;
         private int _index_current_word;
 
         public GameWindow(List<DataType> words, ref HealthPoint hp)
@@ -35,7 +36,14 @@ namespace TypingGame
 
             _words = words;
 
-            _index_current_word = 0;
+            // Set state for each word
+            _states = new State[words.Count];
+            for (int i = 0; i < words.Count; i++)
+            {
+                _states[i] = State.TBT;
+            }
+
+            _states[0] = State.CURRENT;
             ChangeTextBlock();
         }
 
@@ -45,23 +53,29 @@ namespace TypingGame
         private void ChangeTextBlock()
         {
             TextBlock_Template.Text = "";
-            string previous = string.Empty;
-            for (int i = 0; i < _index_current_word; i++)
+            for (int i = 0; i < _words.Count; i++)
             {
-                previous += _words[i].Word;
-                previous += " ";
+                string word = _words[i].Word;
+                switch (_states[i])
+                {
+                    case State.TBT:
+                        TextBlock_Template.Inlines.Add(word);
+                        TextBlock_Template.Inlines.Add(" ");
+                        break;
+                    case State.CURRENT:
+                        TextBlock_Template.Inlines.Add(new Run(word) { FontWeight = FontWeights.Bold });
+                        TextBlock_Template.Inlines.Add(" ");
+                        break;
+                    case State.CORRECT:
+                        TextBlock_Template.Inlines.Add(new Run(word) { Foreground = Brushes.Green });
+                        TextBlock_Template.Inlines.Add(" ");
+                        break;
+                    case State.INCORRECT:
+                        TextBlock_Template.Inlines.Add(new Run(word) { Foreground = Brushes.Red });
+                        TextBlock_Template.Inlines.Add(" ");
+                        break;
+                }
             }
-            TextBlock_Template.Inlines.Add(previous);
-            TextBlock_Template.Inlines.Add(new Run(_words[_index_current_word].Word) { FontWeight = FontWeights.Bold });
-            TextBlock_Template.Inlines.Add(" ");
-
-            string next = string.Empty;
-            for (int i = _index_current_word + 1; i < _words.Count; i++)
-            {
-                next += _words[i].Word;
-                next += " ";
-            }
-            TextBlock_Template.Inlines.Add(next);
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -72,14 +86,16 @@ namespace TypingGame
 
                 if (input.Equals(_words[_index_current_word].Word))
                 {
-                    // TODO nastav farbu predosleho na zelenu
+                    _states[_index_current_word] = State.CORRECT;
                 }
                 else
                 {
-                    // TODO nastav farbu predosleho na cervenu
+                    _states[_index_current_word] = State.INCORRECT;
                 }
 
+                
                 _index_current_word++;
+                _states[_index_current_word] = State.CURRENT;
                 TB_Answer.Text = "";
                 ChangeTextBlock();
             }
