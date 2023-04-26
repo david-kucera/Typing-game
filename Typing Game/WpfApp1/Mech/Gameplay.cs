@@ -8,16 +8,23 @@ namespace TypingGame.Mech
     {
         private List<DataType> _words = new();
         private int _number_of_words;
-        private Random _rnd = new();
+        private readonly Random _rnd = new();
         private HealthPoint _healthPoint;
-        public Gameplay(Difficulty difficuty, Bank bank)
+        public Gameplay(Difficulty difficuty, Bank bank, string UI)
         {
             
             SetUp(difficuty); 
             FillWithRandomWords(ref _words, difficuty, bank);
-            // TODO Start a window app here
-            // Now works only with CLI
-            CommandLineInterface ctg = new(_words, ref _healthPoint);
+
+            if (UI == "cli")
+            {
+                CommandLineInterface ctg = new(_words, ref _healthPoint);
+            }
+            else
+            { 
+                GameWindow gw = new GameWindow(_words, ref _healthPoint);
+            }
+            
         }
 
         // Sets the number of words that will be displayed in a game and number of lives.

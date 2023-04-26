@@ -26,12 +26,12 @@ namespace TypingGame
             // Sets the window icon
             // https://cdn-icons-png.flaticon.com/512/945/945414.png
             Uri iconUri = new Uri("C:\\Users\\kucer\\OneDrive\\FRI\\2leto\\Jazyk C# a .NET\\_workspace\\semestralna_praca\\typing-game\\Typing Game\\WpfApp1\\Files\\icon.ico", UriKind.RelativeOrAbsolute);
-            Menu.Icon = BitmapFrame.Create(iconUri);
+            Icon = BitmapFrame.Create(iconUri);
 
             // Paths to text files
             _paths = new List<string>
             {
-                "C:\\Users\\kucer\\OneDrive\\FRI\\2leto\\Jazyk C# a .NET\\_workspace\\semestralna_praca\\typing-game\\Typing Game\\WpfApp1\\Files\\slovak.txt",
+                "C:\\Users\\kucer\\OneDrive\\FRI\\2leto\\Jazyk C# a .NET\\_workspace\\semestralna_praca\\typing-game\\Typing Game\\WpfApp1\\Files\\slovak_words_generated.txt",
                 "C:\\Users\\kucer\\OneDrive\\FRI\\2leto\\Jazyk C# a .NET\\_workspace\\semestralna_praca\\typing-game\\Typing Game\\WpfApp1\\Files\\english.txt",
                 "C:\\Users\\kucer\\OneDrive\\FRI\\2leto\\Jazyk C# a .NET\\_workspace\\semestralna_praca\\typing-game\\Typing Game\\WpfApp1\\Files\\programmer.txt"
             };
@@ -79,15 +79,20 @@ namespace TypingGame
          */
         [DllImport("Kernel32")]
         public static extern void AllocConsole();
+
         [DllImport("Kernel32")]
         public static extern void FreeConsole();
 
+        /*
+         * Method closes the WPH window and starts GUI of game into new WPF window.
+         */
         private void Start_The_Game_Button_Click(object sender, RoutedEventArgs e)
         {
+            var lang = LanguageComboBox.SelectedIndex;
+            Bank bank = new(_paths[lang]);
             _difficulty = get_difficulty();
+            Gameplay hra = new(_difficulty, bank, "gui"); // Starts a new GUI game
             Close();
-            // TODO Here start a new main game window
-            throw new NotImplementedException();
         }
 
         /*
@@ -104,7 +109,7 @@ namespace TypingGame
             var lang = LanguageComboBox.SelectedIndex;
             Bank bank = new(_paths[lang]);
             _difficulty = get_difficulty();
-            Gameplay hra = new(_difficulty, bank); // Starts a new CLI game
+            Gameplay hra = new(_difficulty, bank, "cli"); // Starts a new CLI game
         }
 
         /*
@@ -115,6 +120,9 @@ namespace TypingGame
             Close();
         }
 
+        /*
+         * Method changes background color of menu WPF.
+         */
         private void MI_Change_Background(object sender, RoutedEventArgs e)
         {
             // Get all brush colors

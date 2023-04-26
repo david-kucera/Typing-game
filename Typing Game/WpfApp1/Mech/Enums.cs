@@ -1,13 +1,13 @@
 ﻿namespace TypingGame.Mech
 {
-    enum Difficulty
+    public enum Difficulty
     {
         EASY,
         MEDIUM,
         HARD
     }
 
-    enum HealthPoint
+    public enum HealthPoint
     {
         ONE,
         TWO, 

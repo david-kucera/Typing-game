@@ -1,7 +1,7 @@
 ﻿namespace TypingGame.Mech
 {
     // Represents a word in game.
-    class DataType
+    public class DataType
     {
         private readonly string _word;
         private readonly int _length;

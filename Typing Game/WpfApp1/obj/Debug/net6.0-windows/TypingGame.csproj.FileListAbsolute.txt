@@ -1,7 +1,6 @@
 C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\WpfApp1\obj\Debug\net6.0-windows\TypingGame.csproj.AssemblyReference.cache
 C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\WpfApp1\obj\Debug\net6.0-windows\App.g.cs
 C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\WpfApp1\obj\Debug\net6.0-windows\TypingGame_MarkupCompile.cache
-C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\WpfApp1\obj\Debug\net6.0-windows\TypingGame_MarkupCompile.lref
 C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\WpfApp1\bin\Debug\net6.0-windows\TypingGame.exe
 C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\WpfApp1\bin\Debug\net6.0-windows\TypingGame.deps.json
 C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\WpfApp1\bin\Debug\net6.0-windows\TypingGame.runtimeconfig.json
