@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using TypingGame.Mech;
 
 namespace TypingGame
@@ -45,10 +39,12 @@ namespace TypingGame
 
             _states[0] = State.CURRENT;
             ChangeTextBlock();
+
+            TB_Answer.Focus();
         }
 
         /*
-         * Sets the current word to bold.
+         * Sets the colors depending on the state of the word.
          */
         private void ChangeTextBlock()
         {
@@ -93,8 +89,14 @@ namespace TypingGame
                     _states[_index_current_word] = State.INCORRECT;
                 }
 
-                
                 _index_current_word++;
+
+                if (_index_current_word == _words.Count)
+                {
+                    // TODO end game here, show stats
+                    Close();
+                }
+
                 _states[_index_current_word] = State.CURRENT;
                 TB_Answer.Text = "";
                 ChangeTextBlock();

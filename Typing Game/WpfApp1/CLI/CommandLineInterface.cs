@@ -91,7 +91,7 @@ namespace TypingGame.CLI
             total_time_of_game = end_of_game - start_of_game;
             WriteSummary(total_time_of_game, number_of_chars_typed, number_of_errors);
             Console.WriteLine();
-            Console.WriteLine("...Press any key to end the app...");
+            Console.Write("...Press RETURN key to end the app...");
             Console.CursorVisible = true;
             Console.ReadLine(); // For not closing console window
             // Here the App ends
