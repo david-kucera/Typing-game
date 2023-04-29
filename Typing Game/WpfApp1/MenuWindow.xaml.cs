@@ -132,5 +132,35 @@ namespace TypingGame
             var rnd = new Random();
             Menu.Background = brushes[rnd.NextInt64(brushes.Length)].Brush;
         }
+
+        private void MI_Show_stats(object sender, RoutedEventArgs e)
+        {
+            // TODO show stats menubox
+            throw new NotImplementedException();
+        }
+
+        private void MI_About_game(object sender, RoutedEventArgs e)
+        {
+            // TODO about game menubox
+            throw new NotImplementedException();
+        }
+
+        private void MI_About_author(object sender, RoutedEventArgs e)
+        {
+            // TODO about author menubox
+            throw new NotImplementedException();
+        }
+
+        private void MI_How_to_play(object sender, RoutedEventArgs e)
+        {
+            // TODO how to play menubox
+            throw new NotImplementedException();
+        }
+
+        private void MI_Game_version(object sender, RoutedEventArgs e)
+        {
+            //TODO game version menubox
+            throw new NotImplementedException();
+        }
     }
 }

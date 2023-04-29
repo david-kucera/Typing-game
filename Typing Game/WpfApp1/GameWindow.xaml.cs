@@ -44,7 +44,7 @@ namespace TypingGame
         }
 
         /*
-         * Sets the colors depending on the state of the word.
+         * Sets the color of word depending on the state of the word.
          */
         private void ChangeTextBlock()
         {
@@ -74,6 +74,12 @@ namespace TypingGame
             }
         }
 
+        /*
+         * Checks wether the textbox contains space (' ') - that means that the word was typed.
+         * Then checks if it was correctly typed and jumps to another word, with clearing the text box.
+         * If the player reaches the last word of the game, the window closes and
+         * TODO new window with stats opens up, where player can see his statistics about the run.
+         */
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (TB_Answer.Text.Contains(' '))

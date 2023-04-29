@@ -33,15 +33,15 @@
                 <MenuItem x:Name="MiChangeWallpaper" Header="Change to random background color" Click="MI_Change_Background"/>
             </MenuItem>
             <MenuItem Header="Stats">
-                <MenuItem x:Name="MiShowStats" Header="Show my stats"/>
+                <MenuItem x:Name="MiShowStats" Header="Show my stats" Click="MI_Show_stats"/>
             </MenuItem>
             <MenuItem Header="About">
-                <MenuItem x:Name="MiAboutGame" Header="About game"/>
-                <MenuItem x:Name="MiAboutAuthor" Header="About author"/>
+                <MenuItem x:Name="MiAboutGame" Header="About game" Click="MI_About_game"/>
+                <MenuItem x:Name="MiAboutAuthor" Header="About author" Click="MI_About_author"/>
             </MenuItem>
             <MenuItem Header="Help">
-                <MenuItem x:Name="MiHowToPlay" Header="How to play"/>
-                <MenuItem x:Name="MiGameVersion" Header="Game version"/>
+                <MenuItem x:Name="MiHowToPlay" Header="How to play" Click="MI_How_to_play"/>
+                <MenuItem x:Name="MiGameVersion" Header="Game version" Click="MI_Game_version"/>
             </MenuItem>
         </Menu>
 
