@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using TypingGame.Mech;
 
 namespace TypingGame.CLI
@@ -61,9 +63,8 @@ namespace TypingGame.CLI
                             hp--;
                             if ((int)hp == -1)
                             {
-                                //EndGame();
-                                // TODO end current game .. rn just skips to next word
-                                //break;
+                                EndConsoleApp(true);
+                                break;
                             }
 
                             UpdateWord(in i, in chars, WrongColor, in posX, in posY);
@@ -90,11 +91,21 @@ namespace TypingGame.CLI
             end_of_game = DateTime.Now;     // End the timer
             total_time_of_game = end_of_game - start_of_game;
             WriteSummary(total_time_of_game, number_of_chars_typed, number_of_errors);
+            EndConsoleApp(false);
+        }
+
+        private static void EndConsoleApp(bool lost)
+        {
+            // Here the App ends
+            if (lost)
+            {
+                Console.Clear();
+                Console.WriteLine("YOU LOST!");
+            }
             Console.WriteLine();
             Console.Write("...Press RETURN key to end the app...");
             Console.CursorVisible = true;
-            Console.ReadLine(); // For not closing console window
-            // Here the App ends
+            Console.ReadLine(); // For not closing console window immediately
         }
 
         private void SetUp(DataType word, out int posX, out int posY)
@@ -140,6 +151,22 @@ namespace TypingGame.CLI
             double cpm = number_of_written / minutes;
             double wpm = (double)(number_of_written / 4.7) / minutes;
 
+            // Save to csv file
+            const string file = "D:\\data.csv";
+            var output = new StringBuilder();
+            const string separator = ";";
+            String[] newLine = { total_time.ToString(), number_of_chars.ToString(), number_of_errors.ToString(), Math.Round(wpm, 2).ToString(), Math.Round(cpm).ToString() };
+            output.AppendLine(string.Join(separator, newLine));
+            try
+            {
+                File.AppendAllText(file, output.ToString());
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("Error while saving data to csv file.");
+                return;
+            }
+
             /*
              * Checks if values are not negative
              */
@@ -171,12 +198,6 @@ namespace TypingGame.CLI
             else if (wpm > 60 && wpm <= 70) Console.WriteLine("You're a catch! Any employer looking for a typist would love to have you!");
             else if (wpm > 70 && wpm <= 80) Console.WriteLine("At this speed, you're probably a gamer, coder or genius. You're doing great!");
             else if (wpm > 80) Console.WriteLine("You're in the top 1% of typists! Congratulations!");
-        }
-
-        private static void EndGame()
-        {
-            Console.Clear();
-            Console.WriteLine("YOU LOST!");
         }
 
         private void UpdateWord(in int i, in char[] chars, ConsoleColor color, in int posX, in int posY)

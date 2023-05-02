@@ -1,7 +1,0 @@
-java
-csharp
-python
-cpp
-query
-quest
-word
