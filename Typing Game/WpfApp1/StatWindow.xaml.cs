@@ -22,6 +22,8 @@ namespace TypingGame
             WriteIntoTextBoxes(totalTime, numberOfChars, numberOfErrors, cpm, wpm);
             WriteIntoTextBlock(wpm);
             SaveToCsv(totalTime, numberOfChars, numberOfErrors, cpm, wpm);
+
+            // TODO add button to play again
         }
 
         private void WriteIntoTextBoxes(TimeSpan totalTime, int numberOfChars, int numberOfErrors, double cpm, double wpm)

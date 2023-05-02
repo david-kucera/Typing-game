@@ -85,7 +85,7 @@ namespace TypingGame {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/TypingGame;component/statswindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/TypingGame;V1.0.0.0;component/statswindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\StatsWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
