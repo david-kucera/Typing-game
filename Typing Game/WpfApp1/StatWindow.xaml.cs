@@ -19,12 +19,11 @@ namespace TypingGame
     /// </summary>
     public partial class StatWindow : Window
     {
-        public StatWindow()
+        public StatWindow(TimeSpan totalTime, int numberOfChars, int numberOfErrors, double cpm, double wpm)
         {
             InitializeComponent();
             Show();
-            var wpm = 0;
-            WriteIntoTextBoxes(total_time, number_of_chars, number_of_errors, cpm, wpm);
+            WriteIntoTextBoxes(totalTime, numberOfChars, numberOfErrors, cpm, wpm);
             WriteIntoTextBlock(wpm);
         }
 
@@ -33,11 +32,11 @@ namespace TypingGame
             TextBoxTotalTimeOfTyping.Text = totalTime.ToString();
             TextBoxTotalNumberOfChars.Text = numberOfChars.ToString();
             TextBoxNumberOfErrors.Text = numberOfErrors.ToString();
-            TextBoxAvgWpm.Text = wpm.ToString();
-            TextBoxAvgCpm.Text = cpm.ToString();
+            TextBoxAvgWpm.Text = Math.Round(wpm, 2).ToString();
+            TextBoxAvgCpm.Text = Math.Round(cpm).ToString();
         }
 
-        private void WriteIntoTextBlock(int wpm)
+        private void WriteIntoTextBlock(double wpm)
         {
             var level = "";
             if (wpm <= 10) level = "Equivalent to one word every 6 seconds. Learn the proper typing technique and practice to improve your speed.";

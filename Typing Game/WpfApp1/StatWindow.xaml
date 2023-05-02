@@ -1,11 +1,11 @@
-﻿<Window x:Class="TypingGame.StatWindow" 
+﻿<Window x:Name="StatWindow1" x:Class="TypingGame.StatWindow" 
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TypingGame"
         mc:Ignorable="d"
-        Title="Your game stats" Height="450" Width="800">
+        Title="Your game stats" Height="450" Width="800" ResizeMode="NoResize" Topmost="True">
     <Grid>
         <Label Content="Summary of the game" HorizontalAlignment="Left" Height="45" Margin="35,35,0,0" VerticalAlignment="Top" Width="265" FontSize="24" FontWeight="Bold"/>
         <Label Content="Total time of typing: " HorizontalAlignment="Left" Height="35" Margin="35,100,0,0" VerticalAlignment="Top" Width="155" FontSize="16"/>
@@ -13,7 +13,7 @@
         <Label Content="Number of errors: " HorizontalAlignment="Left" Height="35" Margin="35,0,0,0" VerticalAlignment="Center" Width="145" FontSize="16"/>
         <Label Content="Average characters per minute (rounded): " HorizontalAlignment="Left" Height="35" Margin="35,249,0,0" VerticalAlignment="Top" Width="310" FontSize="16"/>
         <Label Content="Average words (4.7 char) per minute: " HorizontalAlignment="Left" Height="40" Margin="35,304,0,0" VerticalAlignment="Top" Width="275" FontSize="16"/>
-        <TextBlock x:Name="TextBlockLevel" HorizontalAlignment="Left" Height="55" Margin="35,349,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="735" IsEnabled="False" FontSize="16" FontStyle="Italic"/>
+        <TextBlock x:Name="TextBlockLevel" HorizontalAlignment="Left" Height="55" Margin="35,349,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="735" IsEnabled="False" FontSize="16" FontStyle="Italic" Grid.ColumnSpan="2"/>
         <TextBox x:Name="TextBoxTotalTimeOfTyping" HorizontalAlignment="Left" Height="35" Margin="355,100,0,0" TextWrapping="Wrap" Text="Total_time_of_typing" VerticalAlignment="Top" Width="250" FontSize="16" FontWeight="Bold" TextAlignment="Center"/>
         <TextBox x:Name="TextBoxTotalNumberOfChars" HorizontalAlignment="Left" Height="35" Margin="355,150,0,0" TextWrapping="Wrap" Text="Total_number_of_chars" VerticalAlignment="Top" Width="250" FontSize="16" FontWeight="Bold" TextAlignment="Center"/>
         <TextBox x:Name="TextBoxNumberOfErrors" HorizontalAlignment="Left" Height="35" Margin="355,0,0,0" TextWrapping="Wrap" Text="Number_of_errors" VerticalAlignment="Center" Width="250" FontSize="16" TextAlignment="Center" FontWeight="Bold"/>

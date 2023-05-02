@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -16,7 +17,10 @@ namespace TypingGame
     {
         private List<DataType> _words;
         private State[] _states;
-        private int _index_current_word;
+        private int _indexCurrentWord;
+        private DateTime _startOfGame;
+        private DateTime _endOfGame;
+        private int _numberOfErrors;
 
         public GameWindow(List<DataType> words, ref HealthPoint hp)
         {
@@ -41,6 +45,7 @@ namespace TypingGame
             ChangeTextBlock();
 
             TB_Answer.Focus();
+            _startOfGame = DateTime.Now;   // Start the timer
         }
 
         /*
@@ -85,27 +90,49 @@ namespace TypingGame
             {
                 string input = TB_Answer.Text.Remove(TB_Answer.Text.Length - 1, 1);
 
-                if (input.Equals(_words[_index_current_word].Word))
+                if (input.Equals(_words[_indexCurrentWord].Word))
                 {
-                    _states[_index_current_word] = State.CORRECT;
+                    _states[_indexCurrentWord] = State.CORRECT;
                 }
                 else
                 {
-                    _states[_index_current_word] = State.INCORRECT;
+                    _states[_indexCurrentWord] = State.INCORRECT;
+                    _numberOfErrors++;
                 }
 
-                _index_current_word++;
+                _indexCurrentWord++;
 
-                if (_index_current_word == _words.Count)
-                {
-                    StatWindow statWindow = new StatWindow();
+                if (_indexCurrentWord == _words.Count)
+                { 
+                    _endOfGame = DateTime.Now;     // End the timer
+                    var totalTime = _endOfGame - _startOfGame;
+                    var numberOfChars = GetNumberOfChars(_words);
+
+                    var seconds = totalTime.Seconds;
+                    var minutes = (double)seconds / 60;
+
+                    var numberOfWritten = numberOfChars - _numberOfErrors;
+
+                    var cpm = numberOfWritten / minutes;
+                    var wpm = (double)(numberOfWritten / 4.7) / minutes;
+
+                    StatWindow statWindow = new StatWindow(totalTime, numberOfChars, _numberOfErrors, cpm, wpm);
                     Close();
+                    return;
                 }
 
-                _states[_index_current_word] = State.CURRENT;
+                _states[_indexCurrentWord] = State.CURRENT;
                 TB_Answer.Text = "";
                 ChangeTextBlock();
             }
+        }
+
+        /*
+         * Method uses LINQ to sum the number of chars in words list.
+         */
+        private static int GetNumberOfChars(List<DataType> words)
+        {
+            return words.Sum(word => word.Length);
         }
     }
 }
