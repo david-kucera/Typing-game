@@ -4,11 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Typing Game Menu" Height="461" Width="800" ResizeMode="NoResize">
+        Title="Typing Game Menu" Height="461" Width="800" ResizeMode="CanMinimize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="157*"/>
+            <ColumnDefinition Width="153*"/>
+            <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -23,9 +24,9 @@
         <RadioButton x:Name="HardRadioBox" Content="HARD" HorizontalAlignment="Left" Margin="435,205,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,0.303" Grid.Row="1" Grid.Column="1" IsChecked="False"/>
         <Rectangle HorizontalAlignment="Left" Height="26" Margin="220,200,0,0" Stroke="Black" VerticalAlignment="Top" Width="280" Grid.Row="1" Grid.Column="1"/>
         <Button x:Name="StartTheGameButton" Content="START" HorizontalAlignment="Left" Margin="297,265,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="50" Width="126" Grid.Row="1" Grid.Column="1" Click="Start_The_Game_Button_Click"/>
-        <Button x:Name="PlayOnConsoleButton" Content="If you want to play in console, click here" HorizontalAlignment="Left" Height="30" Margin="0,390,0,0" VerticalAlignment="Top" Width="800" Grid.Row="1" Grid.ColumnSpan="2"
+        <Button x:Name="PlayOnConsoleButton" Content="If you want to play in console, click here" HorizontalAlignment="Left" Height="30" Margin="0,390,0,0" VerticalAlignment="Top" Width="800" Grid.Row="1" Grid.ColumnSpan="3"
                 Grid.Column="0" Click="Play_On_Console_Button_Click"/>
-        <Menu x:Name="AboutMenu" Grid.ColumnSpan="2" Margin="0,0,0,406" AllowDrop="True" Grid.Row="0" Grid.RowSpan="2">
+        <Menu x:Name="AboutMenu" Grid.ColumnSpan="3" Margin="0,0,0,406" AllowDrop="True" Grid.Row="0" Grid.RowSpan="2">
             <MenuItem Header="File">
                 <MenuItem x:Name="MiExit" Header="Exit" Click="MI_Exit_Click"/>
             </MenuItem>

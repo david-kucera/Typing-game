@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TypingGame"
         mc:Ignorable="d"
-        Title="Your game stats" Height="450" Width="800" ResizeMode="NoResize" Topmost="True">
+        Title="Your game stats" Height="450" Width="800" ResizeMode="CanMinimize" Topmost="False">
     <Grid>
         <Label Content="Summary of the game" HorizontalAlignment="Left" Height="45" Margin="35,35,0,0" VerticalAlignment="Top" Width="265" FontSize="24" FontWeight="Bold"/>
         <Label Content="Total time of typing: " HorizontalAlignment="Left" Height="35" Margin="35,100,0,0" VerticalAlignment="Top" Width="155" FontSize="16"/>

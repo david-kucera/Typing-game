@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,22 @@ namespace TypingGame
             TextBoxNumberOfErrors.Text = numberOfErrors.ToString();
             TextBoxAvgWpm.Text = Math.Round(wpm, 2).ToString();
             TextBoxAvgCpm.Text = Math.Round(cpm).ToString();
+
+            // TODO work out how to output to file in this project
+            const string file = "D:\\data.csv";
+            var output = new StringBuilder();
+            const string separator = ";";
+            String[] newLine = { totalTime.ToString(), numberOfChars.ToString(), numberOfErrors.ToString(), Math.Round(wpm, 2).ToString(), Math.Round(cpm).ToString() };
+               output.AppendLine(string.Join(separator, newLine));
+            try
+            {
+                File.AppendAllText(file, output.ToString());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error while saving data to csv file.");
+                throw;
+            }
         }
 
         private void WriteIntoTextBlock(double wpm)
