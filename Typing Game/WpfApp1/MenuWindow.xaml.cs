@@ -139,7 +139,42 @@ namespace TypingGame
 
         private void MI_Show_stats(object sender, RoutedEventArgs e)
         {
-            // TODO show stats menubox
+            var avgTotalTime = getAverageTotalTime();
+            var avgNumberOfChars = getAverageNumberOfChars();
+            var avgNumberOfErrors = getAverageNumberOfErrors();
+            var avgCpm = getAverageNumberOfCpm();
+            var avgWpm = getAverageNumberOfWpm();
+            StatWindow statWindow = new StatWindow(avgTotalTime, avgNumberOfChars, avgNumberOfErrors, avgCpm, avgWpm);
+            Close();
+        }
+
+        private double getAverageNumberOfWpm()
+        {
+            // TODO get average number of wpm
+            throw new NotImplementedException();
+        }
+
+        private double getAverageNumberOfCpm()
+        {
+            // TODO average number of cpm
+            throw new NotImplementedException();
+        }
+
+        private int getAverageNumberOfErrors()
+        {
+            // TODO average number of errors
+            throw new NotImplementedException();
+        }
+
+        private int getAverageNumberOfChars()
+        {
+            // TODO average number of chars
+            throw new NotImplementedException();
+        }
+
+        private TimeSpan getAverageTotalTime()
+        {
+            // TODO average total time spent
             throw new NotImplementedException();
         }
 
