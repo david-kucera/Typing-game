@@ -1,0 +1,21 @@
+﻿<Window x:Class="TypingGame.StatsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TypingGame"
+        mc:Ignorable="d"
+        Title="Your overall statistics in typing game" Height="450" Width="800" ResizeMode="CanMinimize">
+    <Grid>
+        <Label Content="Your overall statistics" HorizontalAlignment="Left" Height="45" Margin="35,35,0,0" VerticalAlignment="Top" Width="265" FontSize="24" FontWeight="Bold"/>
+        <Label Content="Average number of chars typed in a game: " HorizontalAlignment="Left" Height="35" Margin="35,150,0,0" VerticalAlignment="Top" Width="310" FontSize="16"/>
+        <Label Content="Average number of errors in a game: " HorizontalAlignment="Left" Height="35" Margin="35,0,0,0" VerticalAlignment="Center" Width="275" FontSize="16"/>
+        <Label Content="Average characters per minute (rounded): " HorizontalAlignment="Left" Height="35" Margin="35,249,0,0" VerticalAlignment="Top" Width="310" FontSize="16"/>
+        <Label Content="Average words (4.7 char) per minute: " HorizontalAlignment="Left" Height="40" Margin="35,304,0,0" VerticalAlignment="Top" Width="275" FontSize="16"/>
+        <TextBox x:Name="TextBoxTotalNumberOfChars" HorizontalAlignment="Left" Height="35" Margin="355,150,0,0" TextWrapping="Wrap" Text="Total_number_of_chars" VerticalAlignment="Top" Width="250" FontSize="16" FontWeight="Bold" TextAlignment="Center"/>
+        <TextBox x:Name="TextBoxNumberOfErrors" HorizontalAlignment="Left" Height="35" Margin="355,0,0,0" TextWrapping="Wrap" Text="Number_of_errors" VerticalAlignment="Center" Width="250" FontSize="16" TextAlignment="Center" FontWeight="Bold"/>
+        <TextBox x:Name="TextBoxAvgCpm" HorizontalAlignment="Left" Height="35" Margin="355,249,0,0" TextWrapping="Wrap" Text="Avg_cpm" VerticalAlignment="Top" Width="250" TextAlignment="Center" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="TextBoxAvgWpm" HorizontalAlignment="Left" Height="30" Margin="355,304,0,0" TextWrapping="Wrap" Text="Avg_wpm" VerticalAlignment="Top" Width="250" TextAlignment="Center" FontSize="16" FontWeight="Bold"/>
+
+    </Grid>
+</Window>

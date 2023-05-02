@@ -35,6 +35,7 @@
             </MenuItem>
             <MenuItem Header="Stats">
                 <MenuItem x:Name="MiShowStats" Header="Show my stats" Click="MI_Show_stats"/>
+                <MenuItem x:Name="MiResetStats" Header="Reset my stats" Click="MI_Reset_stats"/>
             </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem x:Name="MiAboutGame" Header="About game" Click="MI_About_game"/>

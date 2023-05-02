@@ -10,6 +10,9 @@
     <Compile Update="GameWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="StatsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="StatWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -19,6 +22,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MenuWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="StatsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="StatWindow.xaml">

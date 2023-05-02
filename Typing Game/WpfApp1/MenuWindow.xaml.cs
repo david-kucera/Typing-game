@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using TypingGame.Mech;
+using TypingGame.UserData;
 
 
 namespace TypingGame
@@ -18,7 +20,7 @@ namespace TypingGame
     {
         private Difficulty _difficulty;
         private readonly List<string> _paths;
-        private const string Version = "1.2";
+        private const string Version = "1.3";
 
         public MenuWindow()
         {
@@ -139,43 +141,12 @@ namespace TypingGame
 
         private void MI_Show_stats(object sender, RoutedEventArgs e)
         {
-            var avgTotalTime = getAverageTotalTime();
-            var avgNumberOfChars = getAverageNumberOfChars();
-            var avgNumberOfErrors = getAverageNumberOfErrors();
-            var avgCpm = getAverageNumberOfCpm();
-            var avgWpm = getAverageNumberOfWpm();
-            StatWindow statWindow = new StatWindow(avgTotalTime, avgNumberOfChars, avgNumberOfErrors, avgCpm, avgWpm);
-            Close();
-        }
-
-        private double getAverageNumberOfWpm()
-        {
-            // TODO get average number of wpm
-            throw new NotImplementedException();
-        }
-
-        private double getAverageNumberOfCpm()
-        {
-            // TODO average number of cpm
-            throw new NotImplementedException();
-        }
-
-        private int getAverageNumberOfErrors()
-        {
-            // TODO average number of errors
-            throw new NotImplementedException();
-        }
-
-        private int getAverageNumberOfChars()
-        {
-            // TODO average number of chars
-            throw new NotImplementedException();
-        }
-
-        private TimeSpan getAverageTotalTime()
-        {
-            // TODO average total time spent
-            throw new NotImplementedException();
+            Reader r = new("D:\\data.csv");
+            var avgNumberOfChars = r.GetAverageNumberOfChars();
+            var avgNumberOfErrors = r.GetAverageNumberOfErrors();
+            var avgCpm = r.GetAverageNumberOfCpm();
+            var avgWpm = r.GetAverageNumberOfWpm();
+            StatsWindow statsWindow = new StatsWindow(avgNumberOfChars, avgNumberOfErrors, avgCpm, avgWpm);
         }
 
         private void MI_About_game(object sender, RoutedEventArgs e)
@@ -191,6 +162,11 @@ namespace TypingGame
                             "Then click on START\n" +
                             "After starting, try to retype as much words as possible.\n" +
                             "At the end, your stats will be shown.", "How to play", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void MI_Reset_stats(object sender, RoutedEventArgs e)
+        {
+            File.WriteAllText("D:\\data.csv", string.Empty);
         }
     }
 }
