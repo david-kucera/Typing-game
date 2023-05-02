@@ -75,14 +75,6 @@ namespace TypingGame
             return value;
         }
 
-        /*
-         * For console manipulation.
-         */
-        [DllImport("Kernel32")]
-        public static extern void AllocConsole();
-
-        [DllImport("Kernel32")]
-        public static extern void FreeConsole();
 
         /*
          * Method closes the WPH window and starts GUI of game into new WPF window.
@@ -95,6 +87,15 @@ namespace TypingGame
             Gameplay hra = new(_difficulty, bank, "gui"); // Starts a new GUI game
             Close();
         }
+
+        /*
+         * For console manipulation.
+         */
+        [DllImport("Kernel32")]
+        public static extern void AllocConsole();
+
+        [DllImport("Kernel32")]
+        public static extern void FreeConsole();
 
         /*
          * Method closes the WPF window and starts the "original" console version of the game.
@@ -111,6 +112,7 @@ namespace TypingGame
             Bank bank = new(_paths[lang]);
             _difficulty = get_difficulty();
             Gameplay hra = new(_difficulty, bank, "cli"); // Starts a new CLI game
+            FreeConsole();
         }
 
         /*

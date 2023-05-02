@@ -77,8 +77,7 @@ namespace TypingGame
         /*
          * Checks wether the textbox contains space (' ') - that means that the word was typed.
          * Then checks if it was correctly typed and jumps to another word, with clearing the text box.
-         * If the player reaches the last word of the game, the window closes and
-         * TODO new window with stats opens up, where player can see his statistics about the run.
+         * If the player reaches the last word of the game, the window closes and shows window with his stats.
          */
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -99,7 +98,7 @@ namespace TypingGame
 
                 if (_index_current_word == _words.Count)
                 {
-                    // TODO end game here, show stats
+                    StatWindow statWindow = new StatWindow();
                     Close();
                 }
 

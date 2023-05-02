@@ -20,3 +20,6 @@ C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\t
 C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\WpfApp1\obj\Debug\net6.0-windows\GameWindow.baml
 C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\WpfApp1\obj\Debug\net6.0-windows\MenuWindow.baml
 C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\WpfApp1\obj\Debug\net6.0-windows\MenuWindow.g.cs
+C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\WpfApp1\obj\Debug\net6.0-windows\StatWindow.g.cs
+C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\WpfApp1\obj\Debug\net6.0-windows\TypingGame_MarkupCompile.lref
+C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\WpfApp1\obj\Debug\net6.0-windows\StatWindow.baml
