@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\WpfApp1\App.xaml
-31479258957
+4418284015
 
-11-916681653
+121232337549
 1941709816142
-GameWindow.xaml;MenuWindow.xaml;StatWindow.xaml;
+GameWindow.xaml;MenuWindow.xaml;OverallStatsWindow.xaml;StatWindow.xaml;
 
-False
+True
 
