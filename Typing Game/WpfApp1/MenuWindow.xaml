@@ -14,7 +14,7 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="215*"/>
         </Grid.RowDefinitions>
-        <Label Content="WELCOME TO TYPING GAME" HorizontalAlignment="Left" Height="65" Margin="197,56,0,0" VerticalAlignment="Top" Width="376" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="24" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="WELCOME TO TYPING GAME" HorizontalAlignment="Left" Height="65" Margin="172,55,0,0" VerticalAlignment="Top" Width="376" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="24" Grid.Row="1" Grid.Column="1"/>
         <Label Content="SELECT DICTIONARY:" HorizontalAlignment="Left" Margin="75,136,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Grid.Row="1" Grid.Column="1"/>
         <ComboBox x:Name="LanguageComboBox" HorizontalAlignment="Left" Height="26" Margin="220,136,0,0" VerticalAlignment="Top" Width="280" Grid.Row="1" Grid.Column="1"/>
         <Label Content="SELECT DIFFICULTY:" HorizontalAlignment="Left" Margin="75,200,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="1" Grid.Column="1"/>
@@ -35,13 +35,9 @@
             <MenuItem Header="Stats">
                 <MenuItem x:Name="MiShowStats" Header="Show my stats" Click="MI_Show_stats"/>
             </MenuItem>
-            <MenuItem Header="About">
-                <MenuItem x:Name="MiAboutGame" Header="About game" Click="MI_About_game"/>
-                <MenuItem x:Name="MiAboutAuthor" Header="About author" Click="MI_About_author"/>
-            </MenuItem>
             <MenuItem Header="Help">
+                <MenuItem x:Name="MiAboutGame" Header="About game" Click="MI_About_game"/>
                 <MenuItem x:Name="MiHowToPlay" Header="How to play" Click="MI_How_to_play"/>
-                <MenuItem x:Name="MiGameVersion" Header="Game version" Click="MI_Game_version"/>
             </MenuItem>
         </Menu>
 

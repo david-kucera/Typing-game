@@ -18,6 +18,8 @@ namespace TypingGame
     {
         private Difficulty _difficulty;
         private readonly List<string> _paths;
+        private const string Version = "1.2";
+
         public MenuWindow()
         {
             InitializeComponent();
@@ -120,7 +122,7 @@ namespace TypingGame
         }
 
         /*
-         * Method changes background color of menu WPF.
+         * Method changes background color of menu window to random color.
          */
         private void MI_Change_Background(object sender, RoutedEventArgs e)
         {
@@ -141,26 +143,17 @@ namespace TypingGame
 
         private void MI_About_game(object sender, RoutedEventArgs e)
         {
-            // TODO about game menubox
-            throw new NotImplementedException();
-        }
-
-        private void MI_About_author(object sender, RoutedEventArgs e)
-        {
-            // TODO about author menubox
-            throw new NotImplementedException();
+            MessageBox.Show("Game version: " + Version  + "\n"
+                            + "Made by David Kučera in 2023 at FRI UNIZA", "About game", MessageBoxButton.OK, MessageBoxImage.None);
         }
 
         private void MI_How_to_play(object sender, RoutedEventArgs e)
         {
-            // TODO how to play menubox
-            throw new NotImplementedException();
-        }
-
-        private void MI_Game_version(object sender, RoutedEventArgs e)
-        {
-            //TODO game version menubox
-            throw new NotImplementedException();
+            MessageBox.Show("Choose the dictionary, from which the words will be taken.\n" +
+                            "Next, choose the difficulty of the game, that determines the number of words displayed.\n" +
+                            "Then click on START\n" +
+                            "After starting, try to retype as much words as possible.\n" +
+                            "At the end, your stats will be shown.", "How to play", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
