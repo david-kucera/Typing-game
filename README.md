@@ -1,2 +1,2 @@
-# typing-game
- typing game for CLI
+# Typing game
+ Typing game made in C#. Playable in CLI and GUI.
