@@ -24,12 +24,22 @@ namespace TypingGame
             InitializeComponent();
             Show();
             var wpm = 0;
+            WriteIntoTextBoxes(total_time, number_of_chars, number_of_errors, cpm, wpm);
             WriteIntoTextBlock(wpm);
+        }
+
+        private void WriteIntoTextBoxes(TimeSpan totalTime, int numberOfChars, int numberOfErrors, double cpm, double wpm)
+        {
+            TextBoxTotalTimeOfTyping.Text = totalTime.ToString();
+            TextBoxTotalNumberOfChars.Text = numberOfChars.ToString();
+            TextBoxNumberOfErrors.Text = numberOfErrors.ToString();
+            TextBoxAvgWpm.Text = wpm.ToString();
+            TextBoxAvgCpm.Text = cpm.ToString();
         }
 
         private void WriteIntoTextBlock(int wpm)
         {
-            string level = null;
+            var level = "";
             if (wpm <= 10) level = "Equivalent to one word every 6 seconds. Learn the proper typing technique and practice to improve your speed.";
             else if (wpm > 0 && wpm <= 10) level = "Equivalent to one word every 3 seconds. Focus on your technique and keep practising.";
             else if (wpm > 10 && wpm <= 20) level = "Better, but still below average. Keep practising to improve your speed and accuracy.";

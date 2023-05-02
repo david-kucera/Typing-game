@@ -14,11 +14,11 @@
         <Label Content="Average characters per minute (rounded): " HorizontalAlignment="Left" Height="35" Margin="35,249,0,0" VerticalAlignment="Top" Width="310" FontSize="16"/>
         <Label Content="Average words (4.7 char) per minute: " HorizontalAlignment="Left" Height="40" Margin="35,304,0,0" VerticalAlignment="Top" Width="275" FontSize="16"/>
         <TextBlock x:Name="TextBlockLevel" HorizontalAlignment="Left" Height="55" Margin="35,349,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="735" IsEnabled="False" FontSize="16" FontStyle="Italic"/>
-        <TextBox HorizontalAlignment="Left" Height="35" Margin="355,100,0,0" TextWrapping="Wrap" Text="Total_time_of_typing" VerticalAlignment="Top" Width="250" FontSize="16" FontWeight="Bold" TextAlignment="Center"/>
-        <TextBox HorizontalAlignment="Left" Height="35" Margin="355,150,0,0" TextWrapping="Wrap" Text="Total_number_of_chars" VerticalAlignment="Top" Width="250" FontSize="16" FontWeight="Bold" TextAlignment="Center"/>
-        <TextBox HorizontalAlignment="Left" Height="35" Margin="355,0,0,0" TextWrapping="Wrap" Text="Number_of_errors" VerticalAlignment="Center" Width="250" FontSize="16" TextAlignment="Center" FontWeight="Bold"/>
-        <TextBox HorizontalAlignment="Left" Height="35" Margin="355,249,0,0" TextWrapping="Wrap" Text="Avg_cpm" VerticalAlignment="Top" Width="250" TextAlignment="Center" FontSize="16" FontWeight="Bold"/>
-        <TextBox HorizontalAlignment="Left" Height="30" Margin="355,304,0,0" TextWrapping="Wrap" Text="Avg_wpm" VerticalAlignment="Top" Width="250" TextAlignment="Center" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="TextBoxTotalTimeOfTyping" HorizontalAlignment="Left" Height="35" Margin="355,100,0,0" TextWrapping="Wrap" Text="Total_time_of_typing" VerticalAlignment="Top" Width="250" FontSize="16" FontWeight="Bold" TextAlignment="Center"/>
+        <TextBox x:Name="TextBoxTotalNumberOfChars" HorizontalAlignment="Left" Height="35" Margin="355,150,0,0" TextWrapping="Wrap" Text="Total_number_of_chars" VerticalAlignment="Top" Width="250" FontSize="16" FontWeight="Bold" TextAlignment="Center"/>
+        <TextBox x:Name="TextBoxNumberOfErrors" HorizontalAlignment="Left" Height="35" Margin="355,0,0,0" TextWrapping="Wrap" Text="Number_of_errors" VerticalAlignment="Center" Width="250" FontSize="16" TextAlignment="Center" FontWeight="Bold"/>
+        <TextBox x:Name="TextBoxAvgCpm" HorizontalAlignment="Left" Height="35" Margin="355,249,0,0" TextWrapping="Wrap" Text="Avg_cpm" VerticalAlignment="Top" Width="250" TextAlignment="Center" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="TextBoxAvgWpm" HorizontalAlignment="Left" Height="30" Margin="355,304,0,0" TextWrapping="Wrap" Text="Avg_wpm" VerticalAlignment="Top" Width="250" TextAlignment="Center" FontSize="16" FontWeight="Bold"/>
 
     </Grid>
 </Window>
