@@ -35,7 +35,10 @@ namespace TypingGame
 
         private static void SaveToCsv(TimeSpan totalTime, int numberOfChars, int numberOfErrors, double cpm, double wpm)
         {
+            //
             // TODO work out how to output to file in this project
+            //
+
             const string file = "D:\\data.csv";
             var output = new StringBuilder();
             const string separator = ";";
@@ -70,13 +73,13 @@ namespace TypingGame
             TextBlockLevel.Text = level;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void PlayAgainButtonClick(object sender, RoutedEventArgs e)
         {
             MenuWindow mw = new MenuWindow();
             Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void ShowStatsButtonClick(object sender, RoutedEventArgs e)
         {
             StatsWindow sw = new StatsWindow();
         }
