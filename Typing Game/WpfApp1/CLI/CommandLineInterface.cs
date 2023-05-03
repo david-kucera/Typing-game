@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using TypingGame.Mech;
 
 namespace TypingGame.CLI
 {
+    /// <summary>
+    /// Class for command line interface of the game.
+    /// All necessary code for console is here.
+    /// </summary>
     class CommandLineInterface
     {
         private int _startingPositionX = Console.WindowWidth / 2;
@@ -17,6 +20,11 @@ namespace TypingGame.CLI
         private const ConsoleColor WrongColor = ConsoleColor.Red;
         private const ConsoleColor RightColor = ConsoleColor.Green;
 
+        /// <summary>
+        /// Constructor of the game.
+        /// </summary>
+        /// <param name="words">List of words to be retyped</param>
+        /// <param name="hp">Number of health points depending on the difficulty chosen by player in game menu.</param>
         public CommandLineInterface(List<DataType> words, ref HealthPoint hp)
         {
             Intro();
@@ -93,9 +101,16 @@ namespace TypingGame.CLI
             EndConsoleApp(false);
         }
 
+        /// <summary>
+        /// Used for console manipulation
+        /// </summary>
         [DllImport("Kernel32")]
         public static extern void FreeConsole();
 
+        /// <summary>
+        /// Method used to close the console.
+        /// </summary>
+        /// <param name="lost">If true, prints that the player lost and closes console.</param>
         private static void EndConsoleApp(bool lost)
         {
             if (lost)
@@ -107,9 +122,15 @@ namespace TypingGame.CLI
             Console.Write("...Press RETURN key to end the app...");
             Console.CursorVisible = true;
             Console.ReadLine(); // For not closing console window immediately
-            FreeConsole();
+            FreeConsole(); // Closes the console
         }
 
+        /// <summary>
+        /// Method to set-up the first word and print it in the middle of console.
+        /// </summary>
+        /// <param name="word">Datatype of the word to be retyped</param>
+        /// <param name="posX"></param>
+        /// <param name="posY"></param>
         private void SetUp(DataType word, out int posX, out int posY)
         {
             Console.CursorVisible = false;
@@ -124,14 +145,21 @@ namespace TypingGame.CLI
             Console.BackgroundColor = default;
         }
 
-        // Reloads field for console dimensions when user changes console window size.
+        /// <summary>
+        /// Reloads fields for console dimensions when user changes console window size.
+        /// </summary>
         private void ReloadFieldsConsole()
         {
             _startingPositionX = Console.WindowWidth / 2;
             _startingPositionY = Console.WindowHeight / 2;
         }
 
-        // Writes basic stats about player's game - total typing time, number of typed chars, characters per minute, characters per second.
+        /// <summary>
+        /// Writes basic stats about player's game - total typing time, number of typed chars, characters per minute, characters per second.
+        /// </summary>
+        /// <param name="totalTime">Total time spent typing</param>
+        /// <param name="numberOfChars">Number of chars typed</param>
+        /// <param name="numberOfErrors">Number of errors occured when typing</param>
         private static void WriteSummary(TimeSpan totalTime, int numberOfChars, int numberOfErrors)
         {
             Console.Clear();
@@ -180,6 +208,10 @@ namespace TypingGame.CLI
             WriteLevel(wpm);
         }
 
+        /// <summary>
+        /// Prints the typing skill level after successfull game. 
+        /// </summary>
+        /// <param name="wpm">WPM stat of player</param>
         private static void WriteLevel(double wpm)
         {
             /*
@@ -197,6 +229,14 @@ namespace TypingGame.CLI
             else if (wpm > 80) Console.WriteLine("You're in the top 1% of typists! Congratulations!");
         }
 
+        /// <summary>
+        /// Method updates color of each char from word depending on wether they were typed right, or not.
+        /// </summary>
+        /// <param name="i">Index of current char in word</param>
+        /// <param name="chars">Array of chars of word</param>
+        /// <param name="color">Color which to be colored by</param>
+        /// <param name="posX">Cursor position on X axis</param>
+        /// <param name="posY">Cursor position on Y axis</param>
         private static void UpdateWord(in int i, in char[] chars, ConsoleColor color, in int posX, in int posY)
         {
             // Change color of char at index i of word
@@ -221,7 +261,10 @@ namespace TypingGame.CLI
 
         }
 
-        // Reads key pressed by user
+        /// <summary>
+        /// Reads the key pressed by player
+        /// </summary>
+        /// <returns>Character typed</returns>
         private static char ReadKey()
         {
             bool keyPressed = false;
@@ -237,6 +280,9 @@ namespace TypingGame.CLI
             return charInput;
         }
 
+        /// <summary>
+        /// Prints basic start info how to play the game.
+        /// </summary>
         private static void Intro()
         {
             Console.WriteLine("Welcome to typing game!");
@@ -249,6 +295,9 @@ namespace TypingGame.CLI
             Console.WriteLine("If you are ready, press RETURN.");
         }
 
+        /// <summary>
+        /// Method used for waiting for right user input to start the game.
+        /// </summary>
         private static void WaitingForStart()
         {
             char keyPressed = ReadKey();

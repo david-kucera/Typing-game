@@ -1,5 +1,8 @@
 ﻿namespace TypingGame.Mech
 {
+    /// <summary>
+    /// Enum containing levels of difficulty of the game.
+    /// </summary>
     public enum Difficulty
     {
         EASY,
@@ -7,6 +10,9 @@
         HARD
     }
 
+    /// <summary>
+    /// Enum containing number of lives in CLI.
+    /// </summary>
     public enum HealthPoint
     {
         ONE,
@@ -14,6 +20,9 @@
         THREE
     }
 
+    /// <summary>
+    /// Enum containing states of word typed in GUI.
+    /// </summary>
     public enum State
     {
         CURRENT,

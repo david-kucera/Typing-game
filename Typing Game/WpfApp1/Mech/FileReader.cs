@@ -6,8 +6,16 @@ using System.Text.RegularExpressions;
 
 namespace TypingGame.Mech
 {
-    class FileReader
+    /// <summary>
+    /// Class used to read words from file.
+    /// </summary>
+    internal class FileReader
     {
+        /// <summary>
+        /// Static method that reads words from file and writes them in List of DataTypes
+        /// </summary>
+        /// <param name="filePath">Path to the .txt file containing data.</param>
+        /// <returns></returns>
         public static List<DataType> ReadWordsFromFile(string filePath)
         {
             List<DataType> words = new();
@@ -15,17 +23,16 @@ namespace TypingGame.Mech
 
             // For better ram optimalization
             Random rnd = new();
-            int number_of_random_words = 500;
-            string[] random_words = new string[number_of_random_words];
-            for (int i = 0; i < number_of_random_words; i++)
+            int numberOfRandomWords = 500;
+            string[] randomWords = new string[numberOfRandomWords];
+            for (int i = 0; i < numberOfRandomWords; i++)
             {
-                int random_index = (int)rnd.NextInt64(lines.LongLength);
-                random_words[i] = lines[random_index];
+                int randomIndex = (int)rnd.NextInt64(lines.LongLength);
+                randomWords[i] = lines[randomIndex];
             }
 
-            foreach (string line in random_words)
+            foreach (string line in randomWords)
             {
-                // For slovak txt file
                 string word = "";
                 for (int i = 0; i < line.Length; i++)
                 {
@@ -50,7 +57,11 @@ namespace TypingGame.Mech
             return words;
         }
 
-        // For checking if the imported word does not contain a number or any special character, and length is more than 3
+        /// <summary>
+        /// For checking if the imported word does not contain a number or any special character, and length is more than 3.
+        /// </summary>
+        /// <param name="line">String of line</param>
+        /// <returns>True if the word passed the checks.</returns>
         private static bool CheckWord(string line)
         {
             // Checking for any number in imported string

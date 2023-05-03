@@ -4,17 +4,25 @@ using TypingGame.CLI;
 
 namespace TypingGame.Mech
 {
-    class Gameplay
+    internal class Gameplay
     {
         private List<DataType> _words = new();
-        private int _number_of_words;
+        private int _numberOfWords;
         private readonly Random _rnd = new();
         private HealthPoint _healthPoint;
+
+        /// <summary>
+        /// Constructor of class Gameplay.
+        /// Sets up difficulty and words to be retyped and starts the chosen UI.
+        /// </summary>
+        /// <param name="difficuty"></param>
+        /// <param name="bank"></param>
+        /// <param name="UI"></param>
         public Gameplay(Difficulty difficuty, Bank bank, string UI)
         {
             
             SetUp(difficuty); 
-            FillWithRandomWords(ref _words, difficuty, bank);
+            FillWithRandomWords(ref _words, bank);
 
             if (UI == "cli")
             {
@@ -27,11 +35,14 @@ namespace TypingGame.Mech
             
         }
 
-        // Sets the number of words that will be displayed in a game and number of lives.
-        // Default is set to EASY -> 20 words and 3 lives.
+        /// <summary>
+        /// Sets the number of words that will be displayed in a game and number of lives.
+        /// Default is set to EASY -> 20 words and 3 lives.
+        /// </summary>
+        /// <param name="difficuty">Difficulty set by player.</param>
         private void SetUp(Difficulty difficuty)
         {
-            _number_of_words = difficuty switch
+            _numberOfWords = difficuty switch
             {
                 (Difficulty)0 => 20,    
                 (Difficulty)1 => 50,    
@@ -48,10 +59,14 @@ namespace TypingGame.Mech
             };
         }
 
-        // Fills list of words with random words from bank of words.
-        private void FillWithRandomWords(ref List<DataType> words, Difficulty difficuty, Bank bank)
+        /// <summary>
+        /// Fills list of words with random words from bank of words.
+        /// </summary>
+        /// <param name="words">List of words to be retyped in the game.</param>
+        /// <param name="bank">Bank of available words.</param>
+        private void FillWithRandomWords(ref List<DataType> words, Bank bank)
         {
-            for (int i = 0; i < _number_of_words; i++)
+            for (int i = 0; i < _numberOfWords; i++)
             {
                 int randomIndex = _rnd.Next(bank.Words.Count);
                 words.Add(bank.Words[randomIndex]);

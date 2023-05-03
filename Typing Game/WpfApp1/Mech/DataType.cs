@@ -1,12 +1,18 @@
 ﻿namespace TypingGame.Mech
 {
-    // Represents a word in game.
+    /// <summary>
+    /// Represents a word in game.
+    /// </summary>
     public class DataType
     {
         private readonly string _word;
         private readonly int _length;
         private readonly char[] _chars;
 
+        /// <summary>
+        /// Constructor, which fills each field with values according to the word parameter.
+        /// </summary>
+        /// <param name="word"></param>
         public DataType(string word)
         {
             _word = word;
@@ -15,6 +21,9 @@
             FillChars();
         }
 
+        /// <summary>
+        /// Fills field _chars with individual characters of word
+        /// </summary>
         private void FillChars()
         {
             for (int i = 0; i < _length; i++)
@@ -23,19 +32,10 @@
             }
         }
 
-        public string Word
-        {
-            get { return _word; }
-        }
+        public string Word => _word;
 
-        public int Length
-        {
-            get { return _length; }
-        }
+        public int Length => _length;
 
-        public char[] Chars 
-        {
-            get { return _chars; } 
-        }
+        public char[] Chars => _chars;
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -11,7 +13,7 @@ using TypingGame.Mech;
 namespace TypingGame
 {
     /// <summary>
-    /// Interaction logic for GameWindow.xaml
+    /// Gameplay takes place here in this window.
     /// </summary>
     public partial class GameWindow : Window
     {
@@ -22,6 +24,12 @@ namespace TypingGame
         private DateTime _endOfGame;
         private int _numberOfErrors;
 
+        /// <summary>
+        /// Constructor of GameWindow.
+        /// All necessary inicializations are here.
+        /// </summary>
+        /// <param name="words"></param>
+        /// <param name="hp"></param>
         public GameWindow(List<DataType> words, ref HealthPoint hp)
         {
             InitializeComponent();
@@ -48,9 +56,11 @@ namespace TypingGame
             _startOfGame = DateTime.Now;   // Start the timer
         }
 
-        /*
-         * Sets the color of word depending on the state of the word.
-         */
+        
+        /// <summary>
+        /// Sets the color of word depending on the state of the word.
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         private void ChangeTextBlock()
         {
             TextBlock_Template.Text = "";
@@ -81,11 +91,12 @@ namespace TypingGame
             }
         }
 
-        /*
-         * Checks wether the textbox contains space (' ') - that means that the word was typed.
-         * Then checks if it was correctly typed and jumps to another word, with clearing the text box.
-         * If the player reaches the last word of the game, the window closes and shows window with his stats.
-         */
+
+        /// <summary>
+        /// Checks wether the textbox contains space (' ') - that means that the word was typed.
+        /// Then checks if it was correctly typed and jumps to another word, with clearing the text box.
+        ///If the player reaches the last word of the game, the window closes and shows window with his stats.
+        /// </summary>
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (TB_Answer.Text.Contains(' '))
@@ -129,9 +140,11 @@ namespace TypingGame
             }
         }
 
-        /*
-         * Method uses LINQ to sum the number of chars in words list.
-         */
+        /// <summary>
+        /// Method uses LINQ to sum the number of chars in words list.
+        /// </summary>
+        /// <param name="words">List of words</param>
+        /// <returns>Int value of number of chars in words list.</returns>
         private static int GetNumberOfChars(List<DataType> words)
         {
             return words.Sum(word => word.Length);
