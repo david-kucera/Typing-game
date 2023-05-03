@@ -8,11 +8,14 @@ using TypingGame.UserData;
 namespace TypingGame
 {
     /// <summary>
-    /// Interaction logic for StatsWindow.xaml
+    /// Window to show overall stats of player that are stored in a .csv file.
     /// </summary>
     [SuppressMessage("ReSharper", "SuggestVarOrType_SimpleTypes")]
     public partial class StatsWindow : Window
     {
+        /// <summary>
+        /// Constructor that sets up all necessarycomponents and shows the window.
+        /// </summary>
         public StatsWindow()
         {
             InitializeComponent();

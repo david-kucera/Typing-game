@@ -7,10 +7,25 @@ using System.Windows.Media.Imaging;
 namespace TypingGame
 {
     /// <summary>
-    /// Interaction logic for StatWindow.xaml
+    /// Window of a current game stats.
     /// </summary>
     public partial class StatWindow : Window
     {
+        private readonly TimeSpan _totalTime;
+        private readonly int _numberOfChars;
+        private readonly int _numberOfErrors;
+        private readonly double _cpm;
+        private readonly double _wpm;
+
+        /// <summary>
+        /// Constructor of StatWindow class.
+        /// Shows basic information about the previous game.
+        /// </summary>
+        /// <param name="totalTime">Total time spent typing.</param>
+        /// <param name="numberOfChars">Number of chars typed.</param>
+        /// <param name="numberOfErrors">Number of errors.</param>
+        /// <param name="cpm">Characters per minute.</param>
+        /// <param name="wpm">Words per minute.</param>
         public StatWindow(TimeSpan totalTime, int numberOfChars, int numberOfErrors, double cpm, double wpm)
         {
             InitializeComponent();
@@ -19,21 +34,32 @@ namespace TypingGame
             Uri iconUri = new Uri("C:\\Users\\kucer\\OneDrive\\FRI\\2leto\\Jazyk C# a .NET\\_workspace\\semestralna_praca\\typing-game\\Typing Game\\WpfApp1\\Files\\icon.ico", UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(iconUri);
             Show();
-            WriteIntoTextBoxes(totalTime, numberOfChars, numberOfErrors, cpm, wpm);
-            WriteIntoTextBlock(wpm);
-            SaveToCsv(totalTime, numberOfChars, numberOfErrors, cpm, wpm);
+            _totalTime = totalTime;
+            _numberOfChars = numberOfChars;
+            _numberOfErrors = numberOfErrors;
+            _cpm = cpm;
+            _wpm = wpm;
+            WriteIntoTextBoxes();
+            WriteIntoTextBlock();
+            SaveToCsv();
         }
 
-        private void WriteIntoTextBoxes(TimeSpan totalTime, int numberOfChars, int numberOfErrors, double cpm, double wpm)
+        /// <summary>
+        /// Method writes information to correct textboxes.
+        /// </summary>
+        private void WriteIntoTextBoxes()
         {
-            TextBoxTotalTimeOfTyping.Text = totalTime.ToString();
-            TextBoxTotalNumberOfChars.Text = numberOfChars.ToString();
-            TextBoxNumberOfErrors.Text = numberOfErrors.ToString();
-            TextBoxAvgWpm.Text = Math.Round(wpm, 2).ToString();
-            TextBoxAvgCpm.Text = Math.Round(cpm).ToString();
+            TextBoxTotalTimeOfTyping.Text = _totalTime.ToString();
+            TextBoxTotalNumberOfChars.Text = _numberOfChars.ToString();
+            TextBoxNumberOfErrors.Text = _numberOfErrors.ToString();
+            TextBoxAvgWpm.Text = Math.Round(_wpm, 2).ToString();
+            TextBoxAvgCpm.Text = Math.Round(_cpm).ToString();
         }
 
-        private static void SaveToCsv(TimeSpan totalTime, int numberOfChars, int numberOfErrors, double cpm, double wpm)
+        /// <summary>
+        /// Method appends information into .csv file.
+        /// </summary>
+        private void SaveToCsv()
         {
             //
             // TODO work out how to output to file in this project
@@ -44,7 +70,7 @@ namespace TypingGame
             const string separator = ";";
             String[] newLine =
             {
-                totalTime.ToString(), numberOfChars.ToString(), numberOfErrors.ToString(), Math.Round(wpm, 2).ToString(), Math.Round(cpm).ToString()
+                _totalTime.ToString(), _numberOfChars.ToString(), _numberOfErrors.ToString(), Math.Round(_wpm, 2).ToString(), Math.Round(_cpm).ToString()
             };
             output.AppendLine(string.Join(separator, newLine));
             try
@@ -57,28 +83,41 @@ namespace TypingGame
             }
         }
 
-        private void WriteIntoTextBlock(double wpm)
+        /// <summary>
+        /// Method writes level of typist into textblock located in the bottom of window.
+        /// </summary>
+        private void WriteIntoTextBlock()
         {
             var level = "";
-            if (wpm <= 10) level = "Equivalent to one word every 6 seconds. Learn the proper typing technique and practice to improve your speed.";
-            else if (wpm > 0 && wpm <= 10) level = "Equivalent to one word every 3 seconds. Focus on your technique and keep practising.";
-            else if (wpm > 10 && wpm <= 20) level = "Better, but still below average. Keep practising to improve your speed and accuracy.";
-            else if (wpm > 20 && wpm <= 30) level = "At 41 wpm, you are now an average typist. You still have significant room for improvement.";
-            else if (wpm > 30 && wpm <= 40) level = "Congratulations! You're above average!";
-            else if (wpm > 40 && wpm <= 50) level = "This is the speed required for most jobs. You can now be a professional typist.";
-            else if (wpm > 50 && wpm <= 60) level = "You are way above average and would qualify for any typing job, assuming your accuracy is high enough.";
-            else if (wpm > 60 && wpm <= 70) level = "You're a catch! Any employer looking for a typist would love to have you!";
-            else if (wpm > 70 && wpm <= 80) level = "At this speed, you're probably a gamer, coder or genius. You're doing great!";
-            else if (wpm > 80) level = "You're in the top 1% of typists! Congratulations!";
+            if (_wpm <= 10) level = "Equivalent to one word every 6 seconds. Learn the proper typing technique and practice to improve your speed.";
+            else if (_wpm is > 0 and <= 10) level = "Equivalent to one word every 3 seconds. Focus on your technique and keep practising.";
+            else if (_wpm is > 10 and <= 20) level = "Better, but still below average. Keep practising to improve your speed and accuracy.";
+            else if (_wpm is > 20 and <= 30) level = "At 41 wpm, you are now an average typist. You still have significant room for improvement.";
+            else if (_wpm is > 30 and <= 40) level = "Congratulations! You're above average!";
+            else if (_wpm is > 40 and <= 50) level = "This is the speed required for most jobs. You can now be a professional typist.";
+            else if (_wpm is > 50 and <= 60) level = "You are way above average and would qualify for any typing job, assuming your accuracy is high enough.";
+            else if (_wpm is > 60 and <= 70) level = "You're a catch! Any employer looking for a typist would love to have you!";
+            else if (_wpm is > 70 and <= 80) level = "At this speed, you're probably a gamer, coder or genius. You're doing great!";
+            else if (_wpm > 80) level = "You're in the top 1% of typists! Congratulations!";
             TextBlockLevel.Text = level;
         }
 
+        /// <summary>
+        /// Button for playing again.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PlayAgainButtonClick(object sender, RoutedEventArgs e)
         {
             MenuWindow mw = new MenuWindow();
             Close();
         }
 
+        /// <summary>
+        /// Button to show overall stats.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ShowStatsButtonClick(object sender, RoutedEventArgs e)
         {
             StatsWindow sw = new StatsWindow();
