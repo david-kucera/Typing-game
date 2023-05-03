@@ -97,9 +97,6 @@ namespace TypingGame
         [DllImport("Kernel32")]
         public static extern void AllocConsole();
 
-        [DllImport("Kernel32")]
-        public static extern void FreeConsole();
-
         /*
          * Method closes the WPF window and starts the "original" console version of the game.
          * Allocates the console and sets its window width and height to maximum size.
@@ -115,7 +112,6 @@ namespace TypingGame
             Bank bank = new(_paths[lang]);
             _difficulty = get_difficulty();
             Gameplay hra = new(_difficulty, bank, "cli"); // Starts a new CLI game
-            FreeConsole();
         }
 
         /*
