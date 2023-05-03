@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace TypingGame.UserData
 {
-    class Reader
+    internal class Reader
     {
         private List<string> _numberOfCharsList;
         private List<string> _numberOfErrorsList;

@@ -19,6 +19,8 @@
         <TextBox x:Name="TextBoxNumberOfErrors" HorizontalAlignment="Left" Height="35" Margin="355,0,0,0" TextWrapping="Wrap" Text="Number_of_errors" VerticalAlignment="Center" Width="250" FontSize="16" TextAlignment="Center" FontWeight="Bold"/>
         <TextBox x:Name="TextBoxAvgCpm" HorizontalAlignment="Left" Height="35" Margin="355,249,0,0" TextWrapping="Wrap" Text="Avg_cpm" VerticalAlignment="Top" Width="250" TextAlignment="Center" FontSize="16" FontWeight="Bold"/>
         <TextBox x:Name="TextBoxAvgWpm" HorizontalAlignment="Left" Height="30" Margin="355,304,0,0" TextWrapping="Wrap" Text="Avg_wpm" VerticalAlignment="Top" Width="250" TextAlignment="Center" FontSize="16" FontWeight="Bold"/>
-       
+        <Button Content="Play again" HorizontalAlignment="Left" Height="44" Margin="630,124,0,0" VerticalAlignment="Top" Width="130" Click="Button_Click"/>
+        <Button Content="Show stats" HorizontalAlignment="Left" Height="44" Margin="630,200,0,0" VerticalAlignment="Top" Width="130" Click="Button_Click_1"/>
+
     </Grid>
 </Window>

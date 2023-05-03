@@ -22,8 +22,6 @@ namespace TypingGame
             WriteIntoTextBoxes(totalTime, numberOfChars, numberOfErrors, cpm, wpm);
             WriteIntoTextBlock(wpm);
             SaveToCsv(totalTime, numberOfChars, numberOfErrors, cpm, wpm);
-
-            // TODO add button to play again
         }
 
         private void WriteIntoTextBoxes(TimeSpan totalTime, int numberOfChars, int numberOfErrors, double cpm, double wpm)
@@ -70,6 +68,17 @@ namespace TypingGame
             else if (wpm > 70 && wpm <= 80) level = "At this speed, you're probably a gamer, coder or genius. You're doing great!";
             else if (wpm > 80) level = "You're in the top 1% of typists! Congratulations!";
             TextBlockLevel.Text = level;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MenuWindow mw = new MenuWindow();
+            Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            StatsWindow sw = new StatsWindow();
         }
     }
 }

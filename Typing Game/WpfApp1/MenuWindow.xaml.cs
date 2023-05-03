@@ -25,6 +25,7 @@ namespace TypingGame
         public MenuWindow()
         {
             InitializeComponent();
+            Show();
 
             // Sets the window icon
             // https://cdn-icons-png.flaticon.com/512/945/945414.png
@@ -141,12 +142,7 @@ namespace TypingGame
 
         private void MI_Show_stats(object sender, RoutedEventArgs e)
         {
-            Reader r = new("D:\\data.csv");
-            var avgNumberOfChars = r.GetAverageNumberOfChars();
-            var avgNumberOfErrors = r.GetAverageNumberOfErrors();
-            var avgCpm = r.GetAverageNumberOfCpm();
-            var avgWpm = r.GetAverageNumberOfWpm();
-            StatsWindow statsWindow = new StatsWindow(avgNumberOfChars, avgNumberOfErrors, avgCpm, avgWpm);
+            StatsWindow statsWindow = new StatsWindow();
         }
 
         private void MI_About_game(object sender, RoutedEventArgs e)
@@ -155,6 +151,9 @@ namespace TypingGame
                             + "Made by David Kučera in 2023 at FRI UNIZA", "About game", MessageBoxButton.OK, MessageBoxImage.None);
         }
 
+        /*
+         * Shows messagebox containing information about how to play the game.
+         */
         private void MI_How_to_play(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Choose the dictionary, from which the words will be taken.\n" +
@@ -164,6 +163,9 @@ namespace TypingGame
                             "At the end, your stats will be shown.", "How to play", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
+        /*
+         * Clears the .csv file containing data about player statistics.
+         */
         private void MI_Reset_stats(object sender, RoutedEventArgs e)
         {
             File.WriteAllText("D:\\data.csv", string.Empty);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using TypingGame.UserData;
 
 namespace TypingGame
 {
@@ -9,7 +10,7 @@ namespace TypingGame
     /// </summary>
     public partial class StatsWindow : Window
     {
-        public StatsWindow(int avgNumberOfChars, int avgNumberOfErrors, double avgCpm, double avgWpm)
+        public StatsWindow()
         {
             InitializeComponent();
             // Sets the window icon
@@ -17,10 +18,11 @@ namespace TypingGame
             Uri iconUri = new Uri("C:\\Users\\kucer\\OneDrive\\FRI\\2leto\\Jazyk C# a .NET\\_workspace\\semestralna_praca\\typing-game\\Typing Game\\WpfApp1\\Files\\icon.ico", UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(iconUri);
             Show();
-            TextBoxTotalNumberOfChars.Text = avgNumberOfChars.ToString();
-            TextBoxNumberOfErrors.Text = avgNumberOfErrors.ToString();
-            TextBoxAvgWpm.Text = Math.Round(avgWpm, 2).ToString();
-            TextBoxAvgCpm.Text = Math.Round(avgCpm).ToString();
+            Reader reader = new Reader("D:\\data.csv");
+            TextBoxTotalNumberOfChars.Text = reader.GetAverageNumberOfChars().ToString();
+            TextBoxNumberOfErrors.Text = reader.GetAverageNumberOfErrors().ToString();
+            TextBoxAvgWpm.Text = Math.Round(reader.GetAverageNumberOfWpm(), 2).ToString();
+            TextBoxAvgCpm.Text = Math.Round(reader.GetAverageNumberOfCpm()).ToString();
         }
     }
 }
