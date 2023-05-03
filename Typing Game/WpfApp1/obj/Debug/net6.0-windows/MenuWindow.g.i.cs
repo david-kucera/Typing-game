@@ -164,7 +164,7 @@ namespace TypingGame {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/TypingGame;component/menuwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/TypingGame;V1.0.0.0;component/menuwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\MenuWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

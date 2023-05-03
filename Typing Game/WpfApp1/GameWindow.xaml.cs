@@ -29,14 +29,14 @@ namespace TypingGame
 
             // Sets the window icon
             // https://cdn-icons-png.flaticon.com/512/945/945414.png
-            Uri iconUri = new Uri("C:\\Users\\kucer\\OneDrive\\FRI\\2leto\\Jazyk C# a .NET\\_workspace\\semestralna_praca\\typing-game\\Typing Game\\WpfApp1\\Files\\icon.ico", UriKind.RelativeOrAbsolute);
+            var iconUri = new Uri("C:\\Users\\kucer\\OneDrive\\FRI\\2leto\\Jazyk C# a .NET\\_workspace\\semestralna_praca\\typing-game\\Typing Game\\WpfApp1\\Files\\icon.ico", UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(iconUri);
 
             _words = words;
 
             // Set state for each word
             _states = new State[words.Count];
-            for (int i = 0; i < words.Count; i++)
+            for (var i = 0; i < words.Count; i++)
             {
                 _states[i] = State.TBT;
             }
@@ -54,9 +54,9 @@ namespace TypingGame
         private void ChangeTextBlock()
         {
             TextBlock_Template.Text = "";
-            for (int i = 0; i < _words.Count; i++)
+            for (var i = 0; i < _words.Count; i++)
             {
-                string word = _words[i].Word;
+                var word = _words[i].Word;
                 switch (_states[i])
                 {
                     case State.TBT:
@@ -75,6 +75,8 @@ namespace TypingGame
                         TextBlock_Template.Inlines.Add(new Run(word) { Foreground = Brushes.Red });
                         TextBlock_Template.Inlines.Add(" ");
                         break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
             }
         }
@@ -88,7 +90,7 @@ namespace TypingGame
         {
             if (TB_Answer.Text.Contains(' '))
             {
-                string input = TB_Answer.Text.Remove(TB_Answer.Text.Length - 1, 1);
+                var input = TB_Answer.Text.Remove(TB_Answer.Text.Length - 1, 1);
 
                 if (input.Equals(_words[_indexCurrentWord].Word))
                 {
@@ -116,7 +118,7 @@ namespace TypingGame
                     var cpm = numberOfWritten / minutes;
                     var wpm = (double)(numberOfWritten / 4.7) / minutes;
 
-                    StatWindow statWindow = new StatWindow(totalTime, numberOfChars, _numberOfErrors, cpm, wpm);
+                    var statWindow = new StatWindow(totalTime, numberOfChars, _numberOfErrors, cpm, wpm);
                     Close();
                     return;
                 }

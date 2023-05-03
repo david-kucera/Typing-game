@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using TypingGame.UserData;
@@ -8,6 +10,7 @@ namespace TypingGame
     /// <summary>
     /// Interaction logic for StatsWindow.xaml
     /// </summary>
+    [SuppressMessage("ReSharper", "SuggestVarOrType_SimpleTypes")]
     public partial class StatsWindow : Window
     {
         public StatsWindow()
@@ -21,8 +24,8 @@ namespace TypingGame
             Reader reader = new Reader("D:\\data.csv");
             TextBoxTotalNumberOfChars.Text = reader.GetAverageNumberOfChars().ToString();
             TextBoxNumberOfErrors.Text = reader.GetAverageNumberOfErrors().ToString();
-            TextBoxAvgWpm.Text = Math.Round(reader.GetAverageNumberOfWpm(), 2).ToString();
-            TextBoxAvgCpm.Text = Math.Round(reader.GetAverageNumberOfCpm()).ToString();
+            TextBoxAvgWpm.Text = Math.Round(reader.GetAverageNumberOfWpm(), 2).ToString(CultureInfo.CurrentCulture);
+            TextBoxAvgCpm.Text = Math.Round(reader.GetAverageNumberOfCpm()).ToString(CultureInfo.CurrentCulture);
         }
     }
 }

@@ -51,7 +51,7 @@ namespace TypingGame
             {
                 File.AppendAllText(file, output.ToString());
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 MessageBox.Show("Error while saving data to csv file.", "Failed to save to CSV file" , MessageBoxButton.OK , MessageBoxImage.Error);
             }

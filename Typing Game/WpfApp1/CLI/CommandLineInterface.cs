@@ -161,7 +161,7 @@ namespace TypingGame.CLI
             {
                 File.AppendAllText(file, output.ToString());
             }
-            catch (IOException e)
+            catch (IOException)
             {
                 Console.WriteLine("Error while saving data to csv file.");
                 return;
