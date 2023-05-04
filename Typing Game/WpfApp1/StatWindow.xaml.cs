@@ -61,11 +61,7 @@ namespace TypingGame
         /// </summary>
         private void SaveToCsv()
         {
-            //
-            // TODO work out how to output to file in this project
-            //
-
-            const string file = "D:\\data.csv";
+            const string file = "Files\\Data.csv";
             var output = new StringBuilder();
             const string separator = ";";
             String[] newLine =

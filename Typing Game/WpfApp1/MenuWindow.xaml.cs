@@ -193,7 +193,7 @@ namespace TypingGame
         /// <param name="e"></param>
         private void MI_Reset_stats(object sender, RoutedEventArgs e)
         {
-            File.WriteAllText("D:\\data.csv", string.Empty);
+            File.WriteAllText("Files\\Data.csv", string.Empty);
         }
     }
 }

@@ -29,3 +29,4 @@ C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\t
 C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\WpfApp1\bin\Debug\net6.0-windows\Files\english.txt
 C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\WpfApp1\bin\Debug\net6.0-windows\Files\icon.ico
 C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\WpfApp1\bin\Debug\net6.0-windows\Files\programmer.txt
+C:\Users\kucer\OneDrive\FRI\2leto\Jazyk C# a .NET\_workspace\semestralna_praca\typing-game\Typing Game\WpfApp1\bin\Debug\net6.0-windows\Files\Data.csv

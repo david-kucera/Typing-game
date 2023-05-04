@@ -184,7 +184,7 @@ namespace TypingGame.CLI
             if (numberOfChars < 0) numberOfChars = 0;
 
             // Save to csv file
-            const string file = "D:\\data.csv";
+            const string file = "Files\\Data.csv";
             var output = new StringBuilder();
             const string separator = ";";
             String[] newLine = { totalTime.ToString(), numberOfChars.ToString(), numberOfErrors.ToString(), Math.Round(wpm, 2).ToString(), Math.Round(cpm).ToString() };
