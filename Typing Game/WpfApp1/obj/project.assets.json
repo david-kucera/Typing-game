@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kucer\\OneDrive\\FRI\\2leto\\Jazyk C# a .NET\\_workspace\\semestralna_praca\\typing-game\\Typing Game\\WpfApp1\\TypingGame.csproj",
+      "projectUniqueName": "D:\\Workspace\\typing-game\\Typing Game\\WpfApp1\\TypingGame.csproj",
       "projectName": "TypingGame",
-      "projectPath": "C:\\Users\\kucer\\OneDrive\\FRI\\2leto\\Jazyk C# a .NET\\_workspace\\semestralna_praca\\typing-game\\Typing Game\\WpfApp1\\TypingGame.csproj",
+      "projectPath": "D:\\Workspace\\typing-game\\Typing Game\\WpfApp1\\TypingGame.csproj",
       "packagesPath": "C:\\Users\\kucer\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kucer\\OneDrive\\FRI\\2leto\\Jazyk C# a .NET\\_workspace\\semestralna_praca\\typing-game\\Typing Game\\WpfApp1\\obj\\",
+      "outputPath": "D:\\Workspace\\typing-game\\Typing Game\\WpfApp1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

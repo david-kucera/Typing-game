@@ -35,10 +35,6 @@ namespace TypingGame
             var iconUri = new Uri("Files\\icon.ico", UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(iconUri);
 
-            //
-            // TODO poriesit paths a dictionaries
-            //
-
             // Paths to text files
             _paths = new List<string>
             {
@@ -182,7 +178,7 @@ namespace TypingGame
             MessageBox.Show("Choose the dictionary, from which the words will be taken.\n" +
                             "Next, choose the difficulty of the game, that determines the number of words displayed.\n" +
                             "Then click on START\n" +
-                            "After starting, try to retype as much words as possible.\n" +
+                            "After starting, retype shown words withou as little errors as possible.\n" +
                             "At the end, your stats will be shown.", "How to play", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
@@ -193,7 +189,7 @@ namespace TypingGame
         /// <param name="e"></param>
         private void MI_Reset_stats(object sender, RoutedEventArgs e)
         {
-            File.WriteAllText("Files\\Data.csv", string.Empty);
+            File.WriteAllText("UserData\\Data.csv", string.Empty);
         }
     }
 }

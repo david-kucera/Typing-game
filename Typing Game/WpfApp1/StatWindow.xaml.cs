@@ -61,7 +61,7 @@ namespace TypingGame
         /// </summary>
         private void SaveToCsv()
         {
-            const string file = "Files\\Data.csv";
+            const string file = "UserData\\Data.csv";
             var output = new StringBuilder();
             const string separator = ";";
             String[] newLine =
@@ -73,9 +73,10 @@ namespace TypingGame
             {
                 File.AppendAllText(file, output.ToString());
             }
-            catch (Exception)
+            catch (IOException)
             {
                 MessageBox.Show("Error while saving data to csv file.", "Failed to save to CSV file" , MessageBoxButton.OK , MessageBoxImage.Error);
+                Close();
             }
         }
 

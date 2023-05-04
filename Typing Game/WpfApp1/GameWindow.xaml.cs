@@ -122,12 +122,17 @@ namespace TypingGame
                     var numberOfChars = GetNumberOfChars(_words);
 
                     var seconds = totalTime.Seconds;
-                    var minutes = (double)seconds / 60;
+                    var minutes = totalTime.Minutes;
+                    var hours = totalTime.Hours;
+
+                    var totalSeconds = seconds + minutes * 60 + hours * 60 * 60;
+
+                    var inminutes = (double)totalSeconds / 60;
 
                     var numberOfWritten = numberOfChars - _numberOfErrors;
 
-                    var cpm = numberOfWritten / minutes;
-                    var wpm = (double)(numberOfWritten / 4.7) / minutes;
+                    var cpm = numberOfWritten / inminutes;
+                    var wpm = cpm / 4.7;
 
                     var statWindow = new StatWindow(totalTime, numberOfChars, _numberOfErrors, cpm, wpm);
                     Close();

@@ -24,7 +24,7 @@ namespace TypingGame
             Uri iconUri = new Uri("C:\\Users\\kucer\\OneDrive\\FRI\\2leto\\Jazyk C# a .NET\\_workspace\\semestralna_praca\\typing-game\\Typing Game\\WpfApp1\\Files\\icon.ico", UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(iconUri);
             Show();
-            Reader reader = new Reader("Files\\Data.csv");
+            Reader reader = new Reader("UserData\\Data.csv");
             TextBoxTotalNumberOfChars.Text = reader.GetAverageNumberOfChars().ToString();
             TextBoxNumberOfErrors.Text = reader.GetAverageNumberOfErrors().ToString();
             TextBoxAvgWpm.Text = Math.Round(reader.GetAverageNumberOfWpm(), 2).ToString(CultureInfo.CurrentCulture);

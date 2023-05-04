@@ -176,15 +176,13 @@ namespace TypingGame.CLI
             double cpm = numberOfWritten / minutes;
             double wpm = (double)(numberOfWritten / 4.7) / minutes;
 
-            /*
-             * Checks if values are not negative
-             */
+            // Checks if values are not negative
             if (cpm < 0) cpm = 0;
             if (wpm < 0) wpm = 0;
             if (numberOfChars < 0) numberOfChars = 0;
 
             // Save to csv file
-            const string file = "Files\\Data.csv";
+            const string file = "UserData\\Data.csv";
             var output = new StringBuilder();
             const string separator = ";";
             String[] newLine = { totalTime.ToString(), numberOfChars.ToString(), numberOfErrors.ToString(), Math.Round(wpm, 2).ToString(), Math.Round(cpm).ToString() };
@@ -214,9 +212,7 @@ namespace TypingGame.CLI
         /// <param name="wpm">WPM stat of player</param>
         private static void WriteLevel(double wpm)
         {
-            /*
-             * Info from https://i.redd.it/x9n5gr9d61f41.png
-             */
+            // Info from https://i.redd.it/x9n5gr9d61f41.png
             if (wpm <= 10) Console.WriteLine("Equivalent to one word every 6 seconds. Learn the proper typing technique and practice to improve your speed.");
             else if (wpm is > 0 and <= 10) Console.WriteLine("Equivalent to one word every 3 seconds. Focus on your technique and keep practising.");
             else if (wpm is > 10 and <= 20) Console.WriteLine("Better, but still below average. Keep practising to improve your speed and accuracy.");
