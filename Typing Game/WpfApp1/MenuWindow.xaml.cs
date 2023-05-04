@@ -36,6 +36,10 @@ namespace TypingGame
             var iconUri = new Uri("C:\\Users\\kucer\\OneDrive\\FRI\\2leto\\Jazyk C# a .NET\\_workspace\\semestralna_praca\\typing-game\\Typing Game\\WpfApp1\\Files\\icon.ico", UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(iconUri);
 
+            //
+            // TODO poriesit paths a dictionaries
+            //
+
             // Paths to text files
             _paths = new List<string>
             {
