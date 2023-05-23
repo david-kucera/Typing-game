@@ -35,25 +35,27 @@ namespace TypingGame.App
             var iconUri = new Uri("icon.ico", UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(iconUri);
 
-            // Paths to text files
             _dicts = new List<Dictionary>
             {
                 Dictionary.SLOVAK,
                 Dictionary.ENGLISH,
                 Dictionary.PROGRAMMER
             };
-            // Names of files for diplay in Combo Box
+
+            // Names of files for display in Combo Box
             var dictionaries = new List<string>
             {
                 "Slovak",
                 "English",
                 "Programmer"
             };
+
             // Filling values into Combo Box
             foreach (var dic in dictionaries)
             {
                 LanguageComboBox.Items.Add(dic);
             }
+
             // Selects the first to be selected by native.
             LanguageComboBox.SelectedIndex = 0;
         }
@@ -61,7 +63,7 @@ namespace TypingGame.App
         /// <summary>
         /// Gets the difficulty selected from radio boxes and saves to field.
         /// </summary>
-        /// <returns>Difficultyof the game</returns>
+        /// <returns>Difficulty of the game</returns>
         private Difficulty get_difficulty()
         {
             Difficulty value;
