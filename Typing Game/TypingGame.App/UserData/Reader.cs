@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace TypingGame.UserData
+namespace TypingGame.App.UserData
 {
     internal class Reader
     {
