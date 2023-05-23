@@ -38,3 +38,4 @@ D:\Workspace\typing-game\Typing Game\TypingGame.App\bin\Debug\net7.0-windows\Typ
 D:\Workspace\typing-game\Typing Game\TypingGame.App\bin\Debug\net7.0-windows\TypingGame.Console.exe
 D:\Workspace\typing-game\Typing Game\TypingGame.App\bin\Debug\net7.0-windows\TypingGame.Console.dll
 D:\Workspace\typing-game\Typing Game\TypingGame.App\bin\Debug\net7.0-windows\TypingGame.Console.pdb
+D:\Workspace\typing-game\Typing Game\TypingGame.App\bin\Debug\net7.0-windows\version.txt

@@ -19,7 +19,6 @@ namespace TypingGame.App
     public partial class MenuWindow : Window
     {
         private readonly List<Dictionary> _dicts;
-        private const string Version = "1.3";
 
         /// <summary>
         /// Constructor of class.
@@ -166,7 +165,9 @@ namespace TypingGame.App
         /// <param name="e"></param>
         private void MI_About_game(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Game version: " + Version  + "\n"
+            var version = File.ReadAllText("version.txt");
+
+            MessageBox.Show("Game version: " + version  + "\n"
                             + "Made by David Kučera in 2023 at FRI UNIZA", "About game", MessageBoxButton.OK, MessageBoxImage.None);
         }
 
