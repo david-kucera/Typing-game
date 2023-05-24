@@ -109,6 +109,8 @@ namespace TypingGame.App
                 else
                 {
                     _states[_indexCurrentWord] = State.INCORRECT;
+                    // TODO count number of errors
+                    // TODO save original word and retyped to new file of errors
                     _numberOfErrors++;
                 }
 
@@ -149,9 +151,9 @@ namespace TypingGame.App
         /// </summary>
         /// <param name="words">List of words</param>
         /// <returns>Int value of number of chars in words list.</returns>
-        private static int GetNumberOfChars(List<DataType> words)
+        private static int GetNumberOfChars(IEnumerable<DataType> words)
         {
-            return words.Sum(word => word.Length);
+            return words.Sum(word => word.Length); // TODO docs - used linq
         }
     }
 }

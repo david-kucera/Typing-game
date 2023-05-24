@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 D:\Workspace\typing-game\Typing Game\TypingGame.App\App.xaml
-4-263347455
+61891841443
 
 7440718039
 200-1856657357
-GameWindow.xaml;MenuWindow.xaml;StatsWindow.xaml;StatWindow.xaml;
+GameWindow.xaml;LanguageResources.en.xaml;LanguageResources.sk.xaml;MenuWindow.xaml;StatsWindow.xaml;StatWindow.xaml;
 
 False
 

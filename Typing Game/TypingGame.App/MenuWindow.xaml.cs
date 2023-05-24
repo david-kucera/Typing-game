@@ -27,6 +27,7 @@ namespace TypingGame.App
         public MenuWindow()
         {
             InitializeComponent();
+            Change_Language("en");
             Show();
 
             // Sets the window icon
@@ -195,6 +196,34 @@ namespace TypingGame.App
             File.WriteAllText("UserData\\Data.csv", string.Empty);
             string header = "total_time;number_of_chars;number_of_errors;cpm;wpm\n";
             File.WriteAllText("UserData\\Data.csv", header);
+        }
+
+        private void Language_English(object sender, RoutedEventArgs e)
+        {
+            Change_Language("en");
+        }
+
+        private void Language_Slovak(object sender, RoutedEventArgs e)
+        {
+            Change_Language("sk");
+        }
+
+        private void Change_Language(string code)
+        {
+            ResourceDictionary dictionary = new ResourceDictionary();
+            switch (code)
+            {
+                case "sk":
+                    dictionary.Source = new Uri("..\\LanguageResources.sk.xaml", UriKind.Relative);
+                    break;
+                case "en":
+                    dictionary.Source = new Uri("..\\LanguageResources.en.xaml", UriKind.Relative);
+                    break;
+                default:
+                    dictionary.Source = new Uri("..\\LanguageResources.en.xaml", UriKind.Relative);
+                    break;
+            }
+            this.Resources.MergedDictionaries.Add(dictionary);
         }
     }
 }

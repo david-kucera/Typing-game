@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+    <system:String x:Key="StringWelcome">Welcome to typing game!</system:String>
+    <system:String x:Key="StringChooseDictionary">Select dictionary:</system:String>
+    <system:String x:Key="StringChooseDifficulty">Select difficulty:</system:String>
+    <system:String x:Key="StringDifficultyEasy">EASY</system:String>
+    <system:String x:Key="StringDifficultyMedium">MEDIUM</system:String>
+    <system:String x:Key="StringDifficultyHard">HARD</system:String>
+    <system:String x:Key="StringStart">START</system:String>
+    <system:String x:Key="StringStartConsole">If you want to play in console, click here</system:String>
+</ResourceDictionary>

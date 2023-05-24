@@ -15,18 +15,18 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="215*"/>
         </Grid.RowDefinitions>
-        <Label Content="WELCOME TO TYPING GAME" HorizontalAlignment="Left" Height="65" Margin="172,55,0,0" VerticalAlignment="Top" Width="376" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="24" Grid.Row="1" Grid.Column="1"/>
-        <Label Content="SELECT DICTIONARY:" HorizontalAlignment="Left" Margin="75,136,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="{DynamicResource StringWelcome}" HorizontalAlignment="Left" Height="65" Margin="172,55,0,0" VerticalAlignment="Top" Width="376" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="24" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="{DynamicResource StringChooseDictionary}" HorizontalAlignment="Left" Margin="75,136,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Grid.Row="1" Grid.Column="1"/>
         <ComboBox x:Name="LanguageComboBox" HorizontalAlignment="Left" Height="26" Margin="220,136,0,0" VerticalAlignment="Top" Width="280" Grid.Row="1" Grid.Column="1"/>
-        <Label Content="SELECT DIFFICULTY:" HorizontalAlignment="Left" Margin="75,200,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="1" Grid.Column="1"/>
-        <RadioButton x:Name="EasyRadioBox" Content="EASY" HorizontalAlignment="Left" Margin="235,205,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" IsChecked="True"/>
-        <RadioButton x:Name="MediumRadioBox" Content="MEDIUM" HorizontalAlignment="Left" Margin="325,205,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" IsChecked="False"/>
-        <RadioButton x:Name="HardRadioBox" Content="HARD" HorizontalAlignment="Left" Margin="435,205,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,0.303" Grid.Row="1" Grid.Column="1" IsChecked="False"/>
+        <Label Content="{DynamicResource StringChooseDifficulty}" HorizontalAlignment="Left" Margin="75,200,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="1" Grid.Column="1"/>
+        <RadioButton x:Name="EasyRadioBox" Content="{DynamicResource StringDifficultyEasy}" HorizontalAlignment="Left" Margin="235,205,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" IsChecked="True"/>
+        <RadioButton x:Name="MediumRadioBox" Content="{DynamicResource StringDifficultyMedium}" HorizontalAlignment="Left" Margin="325,205,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" IsChecked="False"/>
+        <RadioButton x:Name="HardRadioBox" Content="{DynamicResource StringDifficultyHard}" HorizontalAlignment="Left" Margin="435,205,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,0.303" Grid.Row="1" Grid.Column="1" IsChecked="False"/>
         <Rectangle HorizontalAlignment="Left" Height="26" Margin="220,200,0,0" Stroke="Black" VerticalAlignment="Top" Width="280" Grid.Row="1" Grid.Column="1"/>
-        <Button x:Name="StartTheGameButton" Content="START" HorizontalAlignment="Left" Margin="297,265,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="50" Width="126" Grid.Row="1" Grid.Column="1" Click="Start_The_Game_Button_Click"/>
-        <Button x:Name="PlayOnConsoleButton" Content="If you want to play in console, click here" HorizontalAlignment="Left" Height="30" Margin="0,390,0,0" VerticalAlignment="Top" Width="800" Grid.Row="1" Grid.ColumnSpan="3"
+        <Button x:Name="StartTheGameButton" Content="{DynamicResource StringStart}" HorizontalAlignment="Left" Margin="297,265,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="50" Width="126" Grid.Row="1" Grid.Column="1" Click="Start_The_Game_Button_Click"/>
+        <Button x:Name="PlayOnConsoleButton" Content="{DynamicResource StringStartConsole}" HorizontalAlignment="Left" Height="30" Margin="0,390,0,0" VerticalAlignment="Top" Width="800" Grid.Row="1" Grid.ColumnSpan="3"
                 Grid.Column="0" Click="Play_On_Console_Button_Click"/>
-        <Menu x:Name="AboutMenu" Grid.ColumnSpan="3" Margin="0,0,0,400" AllowDrop="True" Grid.Row="0" Grid.RowSpan="2">
+        <Menu x:Name="AboutMenu" Grid.ColumnSpan="3" Grid.Column="0" Margin="0,0,0,400" AllowDrop="True" Grid.Row="0" Grid.RowSpan="2">
             <MenuItem Header="File">
                 <MenuItem x:Name="MiExit" Header="Exit" Click="MI_Exit_Click"/>
             </MenuItem>
@@ -36,6 +36,10 @@
             <MenuItem Header="Stats">
                 <MenuItem x:Name="MiShowStats" Header="Show my stats" Click="MI_Show_stats"/>
                 <MenuItem x:Name="MiResetStats" Header="Reset my stats" Click="MI_Reset_stats"/>
+            </MenuItem>
+            <MenuItem Header="Language">
+                <MenuItem Name="English" Header="English" Click="Language_English"></MenuItem>
+                <MenuItem Name="Slovak" Header="Slovensky" Click="Language_Slovak"></MenuItem>
             </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem x:Name="MiAboutGame" Header="About game" Click="MI_About_game"/>

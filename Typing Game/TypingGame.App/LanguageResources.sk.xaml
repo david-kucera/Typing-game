@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+    <system:String x:Key="StringWelcome">Vitaj v strojopisnej hre!</system:String>
+    <system:String x:Key="StringChooseDictionary">Vyber slovník:</system:String>
+    <system:String x:Key="StringChooseDifficulty">Vyber obtiažnosť:</system:String>
+    <system:String x:Key="StringDifficultyEasy">ĽAHKÁ</system:String>
+    <system:String x:Key="StringDifficultyMedium">STREDNÁ</system:String>
+    <system:String x:Key="StringDifficultyHard">ŤAŽKÁ</system:String>
+    <system:String x:Key="StringStart">SPUSTI</system:String>
+    <system:String x:Key="StringStartConsole">Ak chceš hrať v konzoli, klikni sem</system:String>
+</ResourceDictionary>
