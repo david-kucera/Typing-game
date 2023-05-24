@@ -13,6 +13,9 @@
     <None Update="Files\programmer.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Files\slovak.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Files\slovak_words_generated.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

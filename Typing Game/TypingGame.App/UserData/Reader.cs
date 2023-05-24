@@ -20,6 +20,10 @@ namespace TypingGame.App.UserData
             while (!reader.EndOfStream)
             {
                 var line = reader.ReadLine();
+                if (line!.Contains("total"))
+                {
+                    continue;
+                }
                 var values = line.Split(';');
 
                 _numberOfCharsList.Add(values[1]);

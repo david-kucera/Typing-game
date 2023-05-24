@@ -23,10 +23,10 @@
                     path = "Files\\programmer.txt";
                     break;
                 case Dictionary.SLOVAK:
-                    path = "Files\\slovak_words_generated.txt";
+                    path = "Files\\slovak.txt";
                     break;
                 default:
-                    path = "Files\\slovak_words_generated.txt";
+                    path = "Files\\slovak.txt";
                     break;
             }
             FillWords(FileReader.ReadWordsFromFile(path));

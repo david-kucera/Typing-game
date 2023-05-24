@@ -4,14 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Game Window" Height="450" Width="800" WindowStartupLocation="CenterScreen" Topmost="False" ResizeMode="CanMinimize">
+        Title="Game Window" Height="450" Width="800" WindowStartupLocation="CenterScreen" Topmost="False" ResizeMode="CanResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>
             <ColumnDefinition Width="9*"/>
             <ColumnDefinition Width="61*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="TextBlock_Template" HorizontalAlignment="Left" Height="304" Margin="20,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="570" IsEnabled="False" Focusable="True" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Column="1" Grid.ColumnSpan="2" FontSize="18">
+        <TextBlock x:Name="TextBlock_Template" HorizontalAlignment="Left" Height="304" Margin="20,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="570" IsEnabled="False" Focusable="True" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Column="1" Grid.ColumnSpan="2" FontSize="24">
             <TextBlock.Background>
                 <SolidColorBrush Color="#FFF4F7EA" Opacity="0.4"/>
             </TextBlock.Background>

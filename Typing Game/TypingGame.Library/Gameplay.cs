@@ -5,17 +5,17 @@
         private List<DataType> _words = new();
         private int _numberOfWords;
         private readonly Random _rnd = new();
-        private Difficulty _difficulty;
+        private readonly Difficulty _difficulty;
 
         /// <summary>
         /// Constructor of class Gameplay.
-        /// Sets up difficulty and words to be retyped and starts the chosen UI.
+        /// Sets up difficulty and words to be retyped and starts.
         /// </summary>
-        /// <param name="difficuty"></param>
-        /// <param name="bank"></param>
-        /// <param name="UI"></param>
+        /// <param name="difficuty">Difficulty of the game</param>
+        /// <param name="bank">Bank of words of the game</param>
         public Gameplay(Difficulty difficuty, Bank bank)
         {
+            _difficulty = difficuty;
             SetUp(difficuty); 
             FillWithRandomWords(ref _words, bank);
         }

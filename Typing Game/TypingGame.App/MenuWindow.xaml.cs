@@ -193,6 +193,8 @@ namespace TypingGame.App
         private void MI_Reset_stats(object sender, RoutedEventArgs e)
         {
             File.WriteAllText("UserData\\Data.csv", string.Empty);
+            string header = "total_time;number_of_chars;number_of_errors;cpm;wpm\n";
+            File.WriteAllText("UserData\\Data.csv", header);
         }
     }
 }
