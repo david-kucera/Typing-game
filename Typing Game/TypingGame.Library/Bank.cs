@@ -17,16 +17,16 @@
             switch (dictionary)
             {
                 case Dictionary.ENGLISH:
-                    path = "Files\\english.txt";
+                    path = @"Files\\english.txt";
                     break;
                 case Dictionary.PROGRAMMER:
-                    path = "Files\\programmer.txt";
+                    path = @"Files\\programmer.txt";
                     break;
                 case Dictionary.SLOVAK:
-                    path = "Files\\slovak_words_generated.txt";
+                    path = @"Files\\slovak_words_generated.txt";
                     break;
                 default:
-                    path = "Files\\slovak_words_generated.txt";
+                    path = @"Files\\slovak_words_generated.txt";
                     break;
             }
             FillWords(FileReader.ReadWordsFromFile(path));

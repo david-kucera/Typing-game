@@ -130,7 +130,7 @@ namespace TypingGame.App
             // Get all brush colors
             var brushes = typeof(Brushes).GetProperties().
                 Select(p => new { Name = p.Name, Brush = p.GetValue(null) as Brush }).
-                ToArray();
+                ToArray(); // TODO docs - linq usage
             // Choose random color from brushes and set it as window background
             var rnd = new Random();
             Menu.Background = brushes[rnd.NextInt64(brushes.Length)].Brush;
@@ -190,12 +190,16 @@ namespace TypingGame.App
         {
             File.WriteAllText(Language, string.Empty);
             File.WriteAllText(Language, "en");
+            var newWindow = new MenuWindow();
+            Close();
         }
 
         private void Language_Slovak(object sender, RoutedEventArgs e)
         {
             File.WriteAllText(Language, string.Empty);
             File.WriteAllText(Language, "sk");
+            var newWindow = new MenuWindow();
+            Close();
         }
 
         private void Change_Language()

@@ -1,0 +1,16 @@
+D:\Workspace\typing-game\Typing Game\TypingGame.Library\bin\Release\net7.0\Files\english.txt
+D:\Workspace\typing-game\Typing Game\TypingGame.Library\bin\Release\net7.0\Files\programmer.txt
+D:\Workspace\typing-game\Typing Game\TypingGame.Library\bin\Release\net7.0\Files\slovak.txt
+D:\Workspace\typing-game\Typing Game\TypingGame.Library\bin\Release\net7.0\Files\slovak_words_generated.txt
+D:\Workspace\typing-game\Typing Game\TypingGame.Library\bin\Release\net7.0\TypingGame.Library.deps.json
+D:\Workspace\typing-game\Typing Game\TypingGame.Library\bin\Release\net7.0\TypingGame.Library.dll
+D:\Workspace\typing-game\Typing Game\TypingGame.Library\bin\Release\net7.0\TypingGame.Library.pdb
+D:\Workspace\typing-game\Typing Game\TypingGame.Library\obj\Release\net7.0\TypingGame.Library.csproj.AssemblyReference.cache
+D:\Workspace\typing-game\Typing Game\TypingGame.Library\obj\Release\net7.0\TypingGame.Library.GeneratedMSBuildEditorConfig.editorconfig
+D:\Workspace\typing-game\Typing Game\TypingGame.Library\obj\Release\net7.0\TypingGame.Library.AssemblyInfoInputs.cache
+D:\Workspace\typing-game\Typing Game\TypingGame.Library\obj\Release\net7.0\TypingGame.Library.AssemblyInfo.cs
+D:\Workspace\typing-game\Typing Game\TypingGame.Library\obj\Release\net7.0\TypingGame.Library.csproj.CoreCompileInputs.cache
+D:\Workspace\typing-game\Typing Game\TypingGame.Library\obj\Release\net7.0\TypingGame.Library.dll
+D:\Workspace\typing-game\Typing Game\TypingGame.Library\obj\Release\net7.0\refint\TypingGame.Library.dll
+D:\Workspace\typing-game\Typing Game\TypingGame.Library\obj\Release\net7.0\TypingGame.Library.pdb
+D:\Workspace\typing-game\Typing Game\TypingGame.Library\obj\Release\net7.0\ref\TypingGame.Library.dll

@@ -23,7 +23,7 @@ namespace TypingGame.App
         private DateTime _startOfGame;
         private DateTime _endOfGame;
         private int _numberOfErrors;
-        private const string ErrorWords = "UserData\\errors.csv";
+        private const string ErrorWords = @"UserData\\errors.csv";
 
         /// <summary>
         /// Constructor of GameWindow.

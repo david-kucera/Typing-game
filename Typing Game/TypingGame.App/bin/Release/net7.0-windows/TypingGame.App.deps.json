@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "TypingGame.App/1.0.0": {
+        "dependencies": {
+          "TypingGame.Console": "1.0.0",
+          "TypingGame.Library": "1.0.0"
+        },
+        "runtime": {
+          "TypingGame.App.dll": {}
+        }
+      },
+      "TypingGame.Console/1.0.0": {
+        "dependencies": {
+          "TypingGame.Library": "1.0.0"
+        },
+        "runtime": {
+          "TypingGame.Console.dll": {}
+        }
+      },
+      "TypingGame.Library/1.0.0": {
+        "runtime": {
+          "TypingGame.Library.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TypingGame.App/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TypingGame.Console/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TypingGame.Library/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
