@@ -19,7 +19,7 @@ namespace TypingGame.App
     public partial class MenuWindow : Window
     {
         private readonly List<Dictionary> _dicts;
-        private const string _language = "lang.txt";
+        private const string Language = "lang.txt";
 
         /// <summary>
         /// Constructor of class.
@@ -188,19 +188,19 @@ namespace TypingGame.App
 
         private void Language_English(object sender, RoutedEventArgs e)
         {
-            File.WriteAllText(_language, string.Empty);
-            File.WriteAllText(_language, "en");
+            File.WriteAllText(Language, string.Empty);
+            File.WriteAllText(Language, "en");
         }
 
         private void Language_Slovak(object sender, RoutedEventArgs e)
         {
-            File.WriteAllText(_language, string.Empty);
-            File.WriteAllText(_language, "sk");
+            File.WriteAllText(Language, string.Empty);
+            File.WriteAllText(Language, "sk");
         }
 
         private void Change_Language()
         {
-            var code = File.ReadAllText(_language);
+            var code = File.ReadAllText(Language);
             ResourceDictionary dictionary = new();
             switch (code)
             {

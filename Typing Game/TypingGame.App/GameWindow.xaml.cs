@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,13 +23,13 @@ namespace TypingGame.App
         private DateTime _startOfGame;
         private DateTime _endOfGame;
         private int _numberOfErrors;
+        private const string ErrorWords = "UserData\\errors.csv";
 
         /// <summary>
         /// Constructor of GameWindow.
         /// All necessary inicializations are here.
         /// </summary>
         /// <param name="words"></param>
-        /// <param name="hp"></param>
         public GameWindow(List<DataType> words)
         {
             InitializeComponent();
@@ -94,56 +95,54 @@ namespace TypingGame.App
         /// <summary>
         /// Checks wether the textbox contains space (' ') - that means that the word was typed.
         /// Then checks if it was correctly typed and jumps to another word, with clearing the text box.
-        ///If the player reaches the last word of the game, the window closes and shows window with his stats.
+        /// If the player reaches the last word of the game, the window closes and shows window with his stats.
         /// </summary>
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (TB_Answer.Text.Contains(' '))
+            if (!TB_Answer.Text.Contains(' ')) return;
+            var input = TB_Answer.Text.Remove(TB_Answer.Text.Length - 1, 1);
+
+            if (input.Equals(_words[_indexCurrentWord].Word))
             {
-                var input = TB_Answer.Text.Remove(TB_Answer.Text.Length - 1, 1);
-
-                if (input.Equals(_words[_indexCurrentWord].Word))
-                {
-                    _states[_indexCurrentWord] = State.CORRECT;
-                }
-                else
-                {
-                    _states[_indexCurrentWord] = State.INCORRECT;
-                    // TODO count number of errors
-                    // TODO save original word and retyped to new file of errors
-                    _numberOfErrors++;
-                }
-
-                _indexCurrentWord++;
-
-                if (_indexCurrentWord == _words.Count)
-                { 
-                    _endOfGame = DateTime.Now;     // End the timer
-                    var totalTime = _endOfGame - _startOfGame;
-                    var numberOfChars = GetNumberOfChars(_words);
-
-                    var seconds = totalTime.Seconds;
-                    var minutes = totalTime.Minutes;
-                    var hours = totalTime.Hours;
-
-                    var totalSeconds = seconds + minutes * 60 + hours * 60 * 60;
-
-                    var inminutes = (double)totalSeconds / 60;
-
-                    var numberOfWritten = numberOfChars - _numberOfErrors;
-
-                    var cpm = numberOfWritten / inminutes;
-                    var wpm = cpm / 4.7;
-
-                    var statWindow = new StatWindow(totalTime, numberOfChars, _numberOfErrors, cpm, wpm);
-                    Close();
-                    return;
-                }
-
-                _states[_indexCurrentWord] = State.CURRENT;
-                TB_Answer.Text = "";
-                ChangeTextBlock();
+                _states[_indexCurrentWord] = State.CORRECT;
             }
+            else
+            {
+                _states[_indexCurrentWord] = State.INCORRECT;
+                var output = _words[_indexCurrentWord].Word + ";" + TB_Answer.Text + "\n";
+                File.AppendAllText(ErrorWords, output);
+                _numberOfErrors++;
+            }
+
+            _indexCurrentWord++;
+
+            if (_indexCurrentWord == _words.Count)
+            { 
+                _endOfGame = DateTime.Now;     // End the timer
+                var totalTime = _endOfGame - _startOfGame;
+                var numberOfChars = GetNumberOfChars(_words);
+
+                var seconds = totalTime.Seconds;
+                var minutes = totalTime.Minutes;
+                var hours = totalTime.Hours;
+
+                var totalSeconds = seconds + minutes * 60 + hours * 60 * 60;
+
+                var inminutes = (double)totalSeconds / 60;
+
+                var numberOfWritten = numberOfChars - _numberOfErrors;
+
+                var cpm = numberOfWritten / inminutes;
+                var wpm = cpm / 4.7;
+
+                var statWindow = new StatWindow(totalTime, numberOfChars, _numberOfErrors, cpm, wpm);
+                Close();
+                return;
+            }
+
+            _states[_indexCurrentWord] = State.CURRENT;
+            TB_Answer.Text = "";
+            ChangeTextBlock();
         }
 
         /// <summary>
