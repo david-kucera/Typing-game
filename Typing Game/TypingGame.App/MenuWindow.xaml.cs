@@ -167,7 +167,6 @@ namespace TypingGame.App
         private void MI_About_game(object sender, RoutedEventArgs e)
         {
             var version = File.ReadAllText("version.txt");
-
             MessageBox.Show("Game version: " + version  + "\n"
                             + "Made by David Kučera in 2023 at FRI UNIZA", "About game", MessageBoxButton.OK, MessageBoxImage.None);
         }

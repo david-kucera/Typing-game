@@ -1,12 +1,30 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=System.Runtime">
-    <system:String x:Key="StringWelcome">Vitaj v strojopisnej hre!</system:String>
-    <system:String x:Key="StringChooseDictionary">Vyber slovník:</system:String>
-    <system:String x:Key="StringChooseDifficulty">Vyber obtiažnosť:</system:String>
-    <system:String x:Key="StringDifficultyEasy">ĽAHKÁ</system:String>
-    <system:String x:Key="StringDifficultyMedium">STREDNÁ</system:String>
-    <system:String x:Key="StringDifficultyHard">ŤAŽKÁ</system:String>
-    <system:String x:Key="StringStart">SPUSTI</system:String>
-    <system:String x:Key="StringStartConsole">Ak chceš hrať v konzoli, klikni sem</system:String>
+    <system:String x:Key="Welcome">Vitaj v strojopisnej hre!</system:String>
+    <system:String x:Key="ChooseDictionary">Vyber slovník:</system:String>
+    <system:String x:Key="ChooseDifficulty">Vyber obtiažnosť:</system:String>
+    <system:String x:Key="DifficultyEasy">ĽAHKÁ</system:String>
+    <system:String x:Key="DifficultyMedium">STREDNÁ</system:String>
+    <system:String x:Key="DifficultyHard">ŤAŽKÁ</system:String>
+    <system:String x:Key="Start">SPUSTI</system:String>
+    <system:String x:Key="StartConsole">Ak chceš hrať v konzoli, klikni sem</system:String>
+
+    <system:String x:Key="File">Súbor</system:String>
+    <system:String x:Key="Exit">Ukončiť</system:String>
+
+    <system:String x:Key="Edit">Úprava</system:String>
+    <system:String x:Key="BackgroundColor">Zmeň pozadie na náhodnú farbu</system:String>
+
+    <system:String x:Key="Stats">Štatistika</system:String>
+    <system:String x:Key="ShowStats">Zobraz štatistiku</system:String>
+    <system:String x:Key="ResetStats">Resetuj štatistiku</system:String>
+
+    <system:String x:Key="Language">Jazyk</system:String>
+    <system:String x:Key="English">English</system:String>
+    <system:String x:Key="Slovak">Slovensky</system:String>
+
+    <system:String x:Key="Help">Pomoc</system:String>
+    <system:String x:Key="AboutGame">O hre</system:String>
+    <system:String x:Key="HowToPlay">Ako hrať</system:String>
 </ResourceDictionary>
