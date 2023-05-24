@@ -20,7 +20,7 @@ namespace TypingGame.App
     {
         private readonly List<Dictionary> _dicts;
         private new const string Language = "lang.txt";
-        private string _languageCode;
+        private readonly string _languageCode;
 
         /// <summary>
         /// Constructor of class.
@@ -176,22 +176,22 @@ namespace TypingGame.App
         /// <param name="e"></param>
         private void MI_How_to_play(object sender, RoutedEventArgs e)
         {
-            if (_languageCode == "en")
+            switch (_languageCode)
             {
-                MessageBox.Show("Choose the dictionary, from which the words will be taken.\n" +
-                                "Next, choose the difficulty of the game, that determines the number of words displayed.\n" +
-                                "Then click on START\n" +
-                                "After starting, retype shown words with as little errors as possible.\n" +
-                                "At the end, your stats will be shown.", "How to play", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-
-            if (_languageCode == "sk")
-            {
-                MessageBox.Show("Vyber si slovník, z ktorého sa zoberú slová.\n" +
-                                "Následne vyber zložitosť hry, ktorá definuje počet slov v hre.\n" +
-                                "Potom klikni na SPUSTI\n" +
-                                "Po spustení, prepíš slová s čo najmenej chybami za najrýchlejší čas.\n" +
-                                "Na konci ti bude zobrazená štatistika.", "Ako hrať", MessageBoxButton.OK, MessageBoxImage.Information);
+                case "en":
+                    MessageBox.Show("Choose the dictionary, from which the words will be taken.\n" +
+                                    "Next, choose the difficulty of the game, that determines the number of words displayed.\n" +
+                                    "Then click on START\n" +
+                                    "After starting, retype shown words with as little errors as possible.\n" +
+                                    "At the end, your stats will be shown.", "How to play", MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
+                case "sk":
+                    MessageBox.Show("Vyber si slovník, z ktorého sa zoberú slová.\n" +
+                                    "Následne vyber zložitosť hry, ktorá definuje počet slov v hre.\n" +
+                                    "Potom klikni na SPUSTI\n" +
+                                    "Po spustení, prepíš slová s čo najmenej chybami za najrýchlejší čas.\n" +
+                                    "Na konci ti bude zobrazená štatistika.", "Ako hrať", MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
             }
         }
 
@@ -238,18 +238,12 @@ namespace TypingGame.App
         private void Change_Language()
         {
             ResourceDictionary dictionary = new();
-            switch (_languageCode)
+            dictionary.Source = _languageCode switch
             {
-                case "sk":
-                    dictionary.Source = new Uri("..\\LanguageResources.sk.xaml", UriKind.Relative);
-                    break;
-                case "en":
-                    dictionary.Source = new Uri("..\\LanguageResources.en.xaml", UriKind.Relative);
-                    break;
-                default:
-                    dictionary.Source = new Uri("..\\LanguageResources.en.xaml", UriKind.Relative);
-                    break;
-            }
+                "sk" => new Uri("..\\LanguageResources.sk.xaml", UriKind.Relative),
+                "en" => new Uri("..\\LanguageResources.en.xaml", UriKind.Relative),
+                _ => new Uri("..\\LanguageResources.en.xaml", UriKind.Relative)
+            };
             Resources.MergedDictionaries.Add(dictionary);
         }
     }
