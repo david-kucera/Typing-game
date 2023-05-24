@@ -42,3 +42,4 @@ D:\Workspace\typing-game\Typing Game\TypingGame.App\obj\Debug\net7.0-windows\ref
 D:\Workspace\typing-game\Typing Game\TypingGame.App\bin\Debug\net7.0-windows\Files\slovak.txt
 D:\Workspace\typing-game\Typing Game\TypingGame.App\obj\Debug\net7.0-windows\LanguageResources.en.baml
 D:\Workspace\typing-game\Typing Game\TypingGame.App\obj\Debug\net7.0-windows\LanguageResources.sk.baml
+D:\Workspace\typing-game\Typing Game\TypingGame.App\bin\Debug\net7.0-windows\lang.txt

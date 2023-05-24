@@ -27,4 +27,8 @@
     <system:String x:Key="Help">Pomoc</system:String>
     <system:String x:Key="AboutGame">O hre</system:String>
     <system:String x:Key="HowToPlay">Ako hrať</system:String>
+
+    <system:String x:Key="SlovakB">Slovenský</system:String>
+    <system:String x:Key="EnglishB">Anglický</system:String>
+    <system:String x:Key="ProgrammerB">Programátorský</system:String>
 </ResourceDictionary>

@@ -27,4 +27,8 @@
     <system:String x:Key="Help">Help</system:String>
     <system:String x:Key="AboutGame">About game</system:String>
     <system:String x:Key="HowToPlay">How to play</system:String>
+
+    <system:String x:Key="SlovakB">Slovak</system:String>
+    <system:String x:Key="EnglishB">English</system:String>
+    <system:String x:Key="ProgrammerB">Programmer</system:String>
 </ResourceDictionary>

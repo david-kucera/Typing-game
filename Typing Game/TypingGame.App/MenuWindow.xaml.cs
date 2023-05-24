@@ -19,6 +19,7 @@ namespace TypingGame.App
     public partial class MenuWindow : Window
     {
         private readonly List<Dictionary> _dicts;
+        private const string _language = "lang.txt";
 
         /// <summary>
         /// Constructor of class.
@@ -27,7 +28,7 @@ namespace TypingGame.App
         public MenuWindow()
         {
             InitializeComponent();
-            Change_Language("en");
+            Change_Language();
             Show();
 
             // Sets the window icon
@@ -41,20 +42,6 @@ namespace TypingGame.App
                 Dictionary.ENGLISH,
                 Dictionary.PROGRAMMER
             };
-
-            // Names of files for display in Combo Box
-            var dictionaries = new List<string>
-            {
-                "Slovak",
-                "English",
-                "Programmer"
-            };
-
-            // Filling values into Combo Box
-            foreach (var dic in dictionaries)
-            {
-                LanguageComboBox.Items.Add(dic);
-            }
 
             // Selects the first to be selected by native.
             LanguageComboBox.SelectedIndex = 0;
@@ -167,6 +154,7 @@ namespace TypingGame.App
         private void MI_About_game(object sender, RoutedEventArgs e)
         {
             var version = File.ReadAllText("version.txt");
+            // TODO localization here
             MessageBox.Show("Game version: " + version  + "\n"
                             + "Made by David Kučera in 2023 at FRI UNIZA", "About game", MessageBoxButton.OK, MessageBoxImage.None);
         }
@@ -178,6 +166,7 @@ namespace TypingGame.App
         /// <param name="e"></param>
         private void MI_How_to_play(object sender, RoutedEventArgs e)
         {
+            // TODO localization here
             MessageBox.Show("Choose the dictionary, from which the words will be taken.\n" +
                             "Next, choose the difficulty of the game, that determines the number of words displayed.\n" +
                             "Then click on START\n" +
@@ -193,23 +182,26 @@ namespace TypingGame.App
         private void MI_Reset_stats(object sender, RoutedEventArgs e)
         {
             File.WriteAllText("UserData\\Data.csv", string.Empty);
-            string header = "total_time;number_of_chars;number_of_errors;cpm;wpm\n";
+            const string header = "total_time;number_of_chars;number_of_errors;cpm;wpm\n";
             File.WriteAllText("UserData\\Data.csv", header);
         }
 
         private void Language_English(object sender, RoutedEventArgs e)
         {
-            Change_Language("en");
+            File.WriteAllText(_language, string.Empty);
+            File.WriteAllText(_language, "en");
         }
 
         private void Language_Slovak(object sender, RoutedEventArgs e)
         {
-            Change_Language("sk");
+            File.WriteAllText(_language, string.Empty);
+            File.WriteAllText(_language, "sk");
         }
 
-        private void Change_Language(string code)
+        private void Change_Language()
         {
-            ResourceDictionary dictionary = new ResourceDictionary();
+            var code = File.ReadAllText(_language);
+            ResourceDictionary dictionary = new();
             switch (code)
             {
                 case "sk":
@@ -222,7 +214,7 @@ namespace TypingGame.App
                     dictionary.Source = new Uri("..\\LanguageResources.en.xaml", UriKind.Relative);
                     break;
             }
-            this.Resources.MergedDictionaries.Add(dictionary);
+            Resources.MergedDictionaries.Add(dictionary);
         }
     }
 }

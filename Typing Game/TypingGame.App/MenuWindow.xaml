@@ -17,7 +17,11 @@
         </Grid.RowDefinitions>
         <Label Content="{DynamicResource Welcome}" HorizontalAlignment="Left" Height="65" Margin="172,55,0,0" VerticalAlignment="Top" Width="376" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="24" Grid.Row="1" Grid.Column="1"/>
         <Label Content="{DynamicResource ChooseDictionary}" HorizontalAlignment="Left" Margin="75,136,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Grid.Row="1" Grid.Column="1"/>
-        <ComboBox x:Name="LanguageComboBox" HorizontalAlignment="Left" Height="26" Margin="220,136,0,0" VerticalAlignment="Top" Width="280" Grid.Row="1" Grid.Column="1"/>
+        <ComboBox x:Name="LanguageComboBox" HorizontalAlignment="Left" Height="26" Margin="220,136,0,0" VerticalAlignment="Top" Width="280" Grid.Row="1" Grid.Column="1">
+            <ComboBoxItem Content="{DynamicResource SlovakB}"></ComboBoxItem>
+            <ComboBoxItem Content="{DynamicResource EnglishB}"></ComboBoxItem>
+            <ComboBoxItem Content="{DynamicResource ProgrammerB}"></ComboBoxItem>
+        </ComboBox>
         <Label Content="{DynamicResource ChooseDifficulty}" HorizontalAlignment="Left" Margin="75,200,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="1" Grid.Column="1"/>
         <RadioButton x:Name="EasyRadioBox" Content="{DynamicResource DifficultyEasy}" HorizontalAlignment="Left" Margin="235,205,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" IsChecked="True"/>
         <RadioButton x:Name="MediumRadioBox" Content="{DynamicResource DifficultyMedium}" HorizontalAlignment="Left" Margin="325,205,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" IsChecked="False"/>
@@ -28,22 +32,22 @@
                 Grid.Column="0" Click="Play_On_Console_Button_Click"/>
         <Menu x:Name="AboutMenu" Grid.ColumnSpan="3" Grid.Column="0" Margin="0,0,0,400" AllowDrop="True" Grid.Row="0" Grid.RowSpan="2">
             <MenuItem Header="{DynamicResource File}">
-                <MenuItem x:Name="MiExit" Header="{DynamicResource Exit}" Click="MI_Exit_Click"/>
+                <MenuItem Header="{DynamicResource Exit}" Click="MI_Exit_Click"/>
             </MenuItem>
             <MenuItem Header="{DynamicResource Edit}">
-                <MenuItem x:Name="MiChangeWallpaper" Header="{DynamicResource BackgroundColor}" Click="MI_Change_Background"/>
+                <MenuItem Header="{DynamicResource BackgroundColor}" Click="MI_Change_Background"/>
             </MenuItem>
             <MenuItem Header="{DynamicResource Stats}">
-                <MenuItem x:Name="MiShowStats" Header="{DynamicResource ShowStats}" Click="MI_Show_stats"/>
-                <MenuItem x:Name="MiResetStats" Header="{DynamicResource ResetStats}" Click="MI_Reset_stats"/>
+                <MenuItem Header="{DynamicResource ShowStats}" Click="MI_Show_stats"/>
+                <MenuItem Header="{DynamicResource ResetStats}" Click="MI_Reset_stats"/>
             </MenuItem>
             <MenuItem Header="{DynamicResource Language}">
-                <MenuItem Name="English" Header="{DynamicResource English}" Click="Language_English"></MenuItem>
-                <MenuItem Name="Slovak" Header="{DynamicResource Slovak}" Click="Language_Slovak"></MenuItem>
+                <MenuItem Header="{DynamicResource English}" Click="Language_English"></MenuItem>
+                <MenuItem Header="{DynamicResource Slovak}" Click="Language_Slovak"></MenuItem>
             </MenuItem>
             <MenuItem Header="{DynamicResource Help}">
-                <MenuItem x:Name="MiAboutGame" Header="{DynamicResource AboutGame}" Click="MI_About_game"/>
-                <MenuItem x:Name="MiHowToPlay" Header="{DynamicResource HowToPlay}" Click="MI_How_to_play"/>
+                <MenuItem Header="{DynamicResource AboutGame}" Click="MI_About_game"/>
+                <MenuItem Header="{DynamicResource HowToPlay}" Click="MI_How_to_play"/>
             </MenuItem>
         </Menu>
 
