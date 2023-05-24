@@ -19,7 +19,8 @@ namespace TypingGame.App
     public partial class MenuWindow : Window
     {
         private readonly List<Dictionary> _dicts;
-        private const string Language = "lang.txt";
+        private new const string Language = "lang.txt";
+        private string _languageCode;
 
         /// <summary>
         /// Constructor of class.
@@ -28,6 +29,7 @@ namespace TypingGame.App
         public MenuWindow()
         {
             InitializeComponent();
+            _languageCode = File.ReadAllText(Language);
             Change_Language();
             Show();
 
@@ -154,9 +156,17 @@ namespace TypingGame.App
         private void MI_About_game(object sender, RoutedEventArgs e)
         {
             var version = File.ReadAllText("version.txt");
-            // TODO localization here
-            MessageBox.Show("Game version: " + version  + "\n"
-                            + "Made by David Kučera in 2023 at FRI UNIZA", "About game", MessageBoxButton.OK, MessageBoxImage.None);
+            switch (_languageCode)
+            {
+                case "en":
+                    MessageBox.Show("Game version: " + version + "\n"
+                                    + "Made by David Kučera in 2023 at FRI UNIZA", "About game", MessageBoxButton.OK, MessageBoxImage.None);
+                    return;
+                case "sk":
+                    MessageBox.Show("Verzia hry: " + version + "\n"
+                                    + "Vytvoril David Kučera, 2023, FRI UNIZA", "O hre", MessageBoxButton.OK, MessageBoxImage.None);
+                    return;
+            }
         }
 
         /// <summary>
@@ -166,12 +176,23 @@ namespace TypingGame.App
         /// <param name="e"></param>
         private void MI_How_to_play(object sender, RoutedEventArgs e)
         {
-            // TODO localization here
-            MessageBox.Show("Choose the dictionary, from which the words will be taken.\n" +
-                            "Next, choose the difficulty of the game, that determines the number of words displayed.\n" +
-                            "Then click on START\n" +
-                            "After starting, retype shown words withou as little errors as possible.\n" +
-                            "At the end, your stats will be shown.", "How to play", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (_languageCode == "en")
+            {
+                MessageBox.Show("Choose the dictionary, from which the words will be taken.\n" +
+                                "Next, choose the difficulty of the game, that determines the number of words displayed.\n" +
+                                "Then click on START\n" +
+                                "After starting, retype shown words with as little errors as possible.\n" +
+                                "At the end, your stats will be shown.", "How to play", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+            if (_languageCode == "sk")
+            {
+                MessageBox.Show("Vyber si slovník, z ktorého sa zoberú slová.\n" +
+                                "Následne vyber zložitosť hry, ktorá definuje počet slov v hre.\n" +
+                                "Potom klikni na SPUSTI\n" +
+                                "Po spustení, prepíš slová s čo najmenej chybami za najrýchlejší čas.\n" +
+                                "Na konci ti bude zobrazená štatistika.", "Ako hrať", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         /// <summary>
@@ -188,6 +209,12 @@ namespace TypingGame.App
 
         private void Language_English(object sender, RoutedEventArgs e)
         {
+            if (_languageCode == "en")
+            {
+                MessageBox.Show("Language already in use!", "Language in use", MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+                return;
+            }
             File.WriteAllText(Language, string.Empty);
             File.WriteAllText(Language, "en");
             var newWindow = new MenuWindow();
@@ -196,6 +223,12 @@ namespace TypingGame.App
 
         private void Language_Slovak(object sender, RoutedEventArgs e)
         {
+            if (_languageCode == "sk")
+            {
+                MessageBox.Show("Jazy je už zvolený!", "Jazyk zvolený", MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+                return;
+            }
             File.WriteAllText(Language, string.Empty);
             File.WriteAllText(Language, "sk");
             var newWindow = new MenuWindow();
@@ -204,9 +237,8 @@ namespace TypingGame.App
 
         private void Change_Language()
         {
-            var code = File.ReadAllText(Language);
             ResourceDictionary dictionary = new();
-            switch (code)
+            switch (_languageCode)
             {
                 case "sk":
                     dictionary.Source = new Uri("..\\LanguageResources.sk.xaml", UriKind.Relative);
