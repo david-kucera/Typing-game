@@ -19,9 +19,10 @@ namespace TypingGame.App
     public partial class MenuWindow : Window
     {
         private readonly List<Dictionary> _dicts;
-        private new const string Language = "lang.txt";
+        private new const string Language = @"lang.txt";
         private readonly string _languageCode;
-        private new const string BackgroundColor = "bcg_color.txt";
+        private int _colorIndex;
+        private new const string BackgroundColor = @"bcg_color.txt";
 
         /// <summary>
         /// Constructor of class.
@@ -34,8 +35,8 @@ namespace TypingGame.App
             
             if (File.ReadAllText(BackgroundColor).Length != 0)
             {
-                var colorIndex = Convert.ToInt32(File.ReadAllText(BackgroundColor));
-                Change_Background(colorIndex);
+                _colorIndex = Convert.ToInt32(File.ReadAllText(BackgroundColor));
+                Change_Background(_colorIndex);
             }
             Change_Language();
             Show();
@@ -136,9 +137,13 @@ namespace TypingGame.App
         /// <param name="e"></param>
         private void MI_Change_Background(object sender, RoutedEventArgs e)
         {
+            // Get all brush colors
+            var brushes = typeof(Brushes).GetProperties().
+                Select(p => new { Name = p.Name, Brush = p.GetValue(null) as Brush }).
+                ToArray(); // TODO docs - linq usage
             // Choose random color from brushes and set it as window background
             var rnd = new Random();
-            var randomIndex = rnd.NextInt64(100);
+            var randomIndex = rnd.NextInt64(brushes.Length);
             File.WriteAllText(BackgroundColor, string.Empty);
             File.WriteAllText(BackgroundColor, randomIndex.ToString());
             Change_Background(randomIndex);
@@ -149,12 +154,27 @@ namespace TypingGame.App
             // Get all brush colors
             var brushes = typeof(Brushes).GetProperties().
                 Select(p => new { Name = p.Name, Brush = p.GetValue(null) as Brush }).
-                ToArray(); // TODO docs - linq usage
+                ToArray();
             Menu.Background = brushes[randomIndex].Brush;
+            _colorIndex = (int)randomIndex;
         }
 
         private void MI_Reset_background(object sender, RoutedEventArgs e)
         {
+            if (_colorIndex == 0)
+            {
+                switch (_languageCode)
+                {
+                    case "en":
+                        MessageBox.Show("Background is already reset!", "Already reset", MessageBoxButton.OK, MessageBoxImage.Error);
+                        break;
+                    case "sk":
+                        MessageBox.Show("Pozadie je už resetované!", "Už resetované", MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+                        break;
+                }
+                return;
+            }
             File.WriteAllText(BackgroundColor, "0");
             Change_Background(0);
         }
@@ -176,7 +196,7 @@ namespace TypingGame.App
         /// <param name="e"></param>
         private void MI_About_game(object sender, RoutedEventArgs e)
         {
-            var version = File.ReadAllText("version.txt");
+            var version = File.ReadAllText(@"version.txt");
             switch (_languageCode)
             {
                 case "en":
@@ -223,9 +243,9 @@ namespace TypingGame.App
         /// <param name="e"></param>
         private void MI_Reset_stats(object sender, RoutedEventArgs e)
         {
-            File.WriteAllText("UserData\\Data.csv", string.Empty);
+            File.WriteAllText(@"UserData\\Data.csv", string.Empty);
             const string header = "total_time;number_of_chars;number_of_errors;cpm;wpm\n";
-            File.WriteAllText("UserData\\Data.csv", header);
+            File.WriteAllText(@"UserData\\Data.csv", header);
         }
 
         private void Language_English(object sender, RoutedEventArgs e)
