@@ -17,7 +17,8 @@ namespace TypingGame.Console
         private const ConsoleColor BasicColor = ConsoleColor.White;
         private const ConsoleColor WrongColor = ConsoleColor.Red;
         private const ConsoleColor RightColor = ConsoleColor.Green;
-        private const string OutputFilePath = "UserData\\Data.csv";
+        private const string OutputFilePath = @"UserData\\Data.csv";
+        private const string ErrorWords = @"UserData\\errors.csv";
 
         /// <summary>
         /// Main for testing purposes.
@@ -49,6 +50,7 @@ namespace TypingGame.Console
                 SetUp(word, out posX, out posY);
 
                 bool writtenWord = false;
+                string wroteWord = "";
                 char[] chars = word.Chars;
 
                 while (!writtenWord)
@@ -61,6 +63,7 @@ namespace TypingGame.Console
                     for (int i = 0; i < word.Length; i++)   // Checking each char by char
                     {
                         char pressedKey = ReadKey();
+                        wroteWord += pressedKey;
                         if (pressedKey == 27)
                         {
                             var end = DateTime.Now;     // End the timer
@@ -93,6 +96,11 @@ namespace TypingGame.Console
                         }
                     }
                     writtenWord = true; // Jump to another word
+                    if (!wroteWord.Equals(word.Word))
+                    {
+                        var output = word.Word + ";" + wroteWord + "\n";
+                        File.AppendAllText(ErrorWords, output);
+                    }
                     if (!ended)
                     {
                         System.Console.Clear();
@@ -307,7 +315,6 @@ namespace TypingGame.Console
             System.Console.WriteLine("For better experience, set window size to full-screen");
             System.Console.WriteLine("");
             System.Console.WriteLine("If you are ready, press RETURN.");
-
         }
 
         /// <summary>
