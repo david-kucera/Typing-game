@@ -190,7 +190,7 @@ namespace TypingGame.Console
             var numberOfWritten = numberOfChars - numberOfErrors;
 
             var cpm = numberOfWritten / minutes;
-            var wpm = (double)(numberOfWritten / 4.7) / minutes;
+            var wpm = numberOfWritten / 4.7 / minutes;
 
             // Checks if values are not negative
             if (cpm < 0) cpm = 0;

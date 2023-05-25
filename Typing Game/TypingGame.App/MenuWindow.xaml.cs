@@ -93,7 +93,11 @@ namespace TypingGame.App
             var lang = LanguageComboBox.SelectedIndex;
             Bank bank = new(_dicts[lang]);
             Gameplay hra = new(get_difficulty(), bank);
-            _ = new GameWindow(hra.get_words());
+            GameWindow gw = new(hra.get_words());
+            if (get_difficulty() == Difficulty.HARD)
+            {
+                gw.TextBlock_Template.FontSize = 16;
+            }
             Close();
         }
 
