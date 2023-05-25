@@ -47,6 +47,8 @@
     <system:String x:Key="PlayAgain">Play again</system:String>
     <system:String x:Key="ShowStats2">Show stats</system:String>
 
-
+    <system:String x:Key="OverallStats">Your overall statistics</system:String>
+    <system:String x:Key="AvgNchG">Average number of chars typed in a game:</system:String>
+    <system:String x:Key="AvgErrors">Average number of errors in a game:</system:String>
 
 </ResourceDictionary>

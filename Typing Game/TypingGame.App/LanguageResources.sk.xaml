@@ -43,4 +43,10 @@
     <system:String x:Key="Awpm">Priemerné slovo (4.7 znaku) za minútu:</system:String>
     <system:String x:Key="PlayAgain">Hrať znova</system:String>
     <system:String x:Key="ShowStats2">Zobraz štatistiku</system:String>
+
+
+
+    <system:String x:Key="OverallStats">Tvoja celková štatistika</system:String>
+    <system:String x:Key="AvgNchG">Priemerný počet znakov napísaných za hru:</system:String>
+    <system:String x:Key="AvgErrors">Priemerný počet chýb za hru:</system:String>
 </ResourceDictionary>
