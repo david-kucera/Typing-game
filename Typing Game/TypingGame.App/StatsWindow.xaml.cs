@@ -3,7 +3,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using TypingGame.App.UserData;
@@ -13,7 +12,7 @@ namespace TypingGame.App
     /// <summary>
     /// Window to show overall stats of player that are stored in a .csv file.
     /// </summary>
-    public partial class StatsWindow : Window
+    public partial class StatsWindow
     {
         private new const string Language = @"lang.txt";
         private readonly string _languageCode;

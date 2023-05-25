@@ -12,7 +12,7 @@ namespace TypingGame.App
     /// <summary>
     /// Window of a current game stats.
     /// </summary>
-    public partial class StatWindow : Window
+    public partial class StatWindow
     {
         private readonly TimeSpan _totalTime;
         private readonly int _numberOfChars;

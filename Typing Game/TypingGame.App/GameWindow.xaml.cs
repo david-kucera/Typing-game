@@ -15,7 +15,7 @@ namespace TypingGame.App
     /// <summary>
     /// Gameplay takes place here in this window.
     /// </summary>
-    public partial class GameWindow : Window
+    public partial class GameWindow
     {
         private List<DataType> _words;
         private State[] _states;
@@ -35,7 +35,7 @@ namespace TypingGame.App
         {
             InitializeComponent();
 
-            long colorIndex = Convert.ToInt64(File.ReadAllText(BackgroundColor));
+            var colorIndex = Convert.ToInt64(File.ReadAllText(BackgroundColor));
             Change_Background(colorIndex);
 
             Show();
