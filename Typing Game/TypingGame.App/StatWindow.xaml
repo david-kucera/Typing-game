@@ -6,12 +6,12 @@
         mc:Ignorable="d"
         Title="Your game stats" Height="450" Width="800" ResizeMode="CanMinimize" Topmost="False">
     <Grid>
-        <Label Content="{DynamicResource Summary}" HorizontalAlignment="Left" Height="45" Margin="35,35,0,0" VerticalAlignment="Top" Width="265" FontSize="24" FontWeight="Bold"/>
-        <Label Content="{DynamicResource TotalTime}" HorizontalAlignment="Left" Height="35" Margin="35,100,0,0" VerticalAlignment="Top" Width="155" FontSize="16"/>
-        <Label Content="{DynamicResource TotalNumber}" HorizontalAlignment="Left" Height="35" Margin="35,150,0,0" VerticalAlignment="Top" Width="215" FontSize="16"/>
-        <Label Content="{DynamicResource Errors}" HorizontalAlignment="Left" Height="35" Margin="35,0,0,0" VerticalAlignment="Center" Width="145" FontSize="16"/>
-        <Label Content="{DynamicResource Acpm}" HorizontalAlignment="Left" Height="35" Margin="35,249,0,0" VerticalAlignment="Top" Width="310" FontSize="16"/>
-        <Label Content="{DynamicResource Awpm}" HorizontalAlignment="Left" Height="40" Margin="35,304,0,0" VerticalAlignment="Top" Width="275" FontSize="16"/>
+        <Label Content="{DynamicResource Summary}" HorizontalAlignment="Left" Height="45" Margin="35,35,0,0" VerticalAlignment="Top" Width="300" FontSize="24" FontWeight="Bold"/>
+        <Label Content="{DynamicResource TotalTime}" HorizontalAlignment="Left" Height="35" Margin="35,100,0,0" VerticalAlignment="Top" Width="300" FontSize="16"/>
+        <Label Content="{DynamicResource TotalNumber}" HorizontalAlignment="Left" Height="35" Margin="35,150,0,0" VerticalAlignment="Top" Width="300" FontSize="16"/>
+        <Label Content="{DynamicResource Errors}" HorizontalAlignment="Left" Height="35" Margin="35,0,0,0" VerticalAlignment="Center" Width="300" FontSize="16"/>
+        <Label Content="{DynamicResource Awpm}" HorizontalAlignment="Left" Height="35" Margin="35,249,0,0" VerticalAlignment="Top" Width="350" FontSize="16"/>
+        <Label Content="{DynamicResource Acpm}" HorizontalAlignment="Left" Height="40" Margin="35,304,0,0" VerticalAlignment="Top" Width="350" FontSize="16"/>
         <TextBlock x:Name="TextBlockLevel" HorizontalAlignment="Left" Height="55" Margin="35,349,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="735" IsEnabled="False" FontSize="16" FontStyle="Italic" Grid.ColumnSpan="2"/>
         <TextBox x:Name="TextBoxTotalTimeOfTyping" HorizontalAlignment="Left" Height="35" Margin="355,100,0,0" TextWrapping="Wrap" Text="Total_time_of_typing" VerticalAlignment="Top" Width="250" FontSize="16" FontWeight="Bold" TextAlignment="Center"/>
         <TextBox x:Name="TextBoxTotalNumberOfChars" HorizontalAlignment="Left" Height="35" Margin="355,150,0,0" TextWrapping="Wrap" Text="Total_number_of_chars" VerticalAlignment="Top" Width="250" FontSize="16" FontWeight="Bold" TextAlignment="Center"/>

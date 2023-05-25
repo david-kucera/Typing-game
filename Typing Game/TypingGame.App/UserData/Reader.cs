@@ -60,7 +60,7 @@ namespace TypingGame.App.UserData
             {
                 return 0.0;
             }
-            var value = _numberOfCpmList.Sum(double.Parse) / _numberOfCpmList.Count;
+            int value = (int)(_numberOfCpmList.Sum(double.Parse) / _numberOfCpmList.Count);
             return value;
         }
 
@@ -70,7 +70,7 @@ namespace TypingGame.App.UserData
             {
                 return 0.0;
             }
-            var value = _numberOfWpmList.Sum(double.Parse) / _numberOfWpmList.Count;
+            int value = (int)(_numberOfWpmList.Sum(double.Parse) / _numberOfWpmList.Count);
             return value;
         }
     }

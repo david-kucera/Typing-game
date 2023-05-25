@@ -68,7 +68,7 @@ namespace TypingGame.App
             TextBoxTotalTimeOfTyping.Text = _totalTime.ToString();
             TextBoxTotalNumberOfChars.Text = _numberOfChars.ToString();
             TextBoxNumberOfErrors.Text = _numberOfErrors.ToString();
-            TextBoxAvgWpm.Text = Math.Round(_wpm, 2).ToString(CultureInfo.CurrentCulture);
+            TextBoxAvgWpm.Text = Math.Round(_wpm).ToString(CultureInfo.CurrentCulture);
             TextBoxAvgCpm.Text = Math.Round(_cpm).ToString(CultureInfo.CurrentCulture);
         }
 
@@ -82,7 +82,7 @@ namespace TypingGame.App
             const string separator = ";";
             string[] newLine =
             {
-                _totalTime.ToString(), _numberOfChars.ToString(), _numberOfErrors.ToString(), Math.Round(_wpm, 2).ToString(CultureInfo.CurrentCulture), Math.Round(_cpm).ToString(CultureInfo.CurrentCulture)
+                _totalTime.ToString(), _numberOfChars.ToString(), _numberOfErrors.ToString(), Math.Round(_wpm).ToString(CultureInfo.CurrentCulture), Math.Round(_cpm).ToString(CultureInfo.CurrentCulture)
             };
             output.AppendLine(string.Join(separator, newLine));
             try
@@ -102,16 +102,33 @@ namespace TypingGame.App
         private void WriteIntoTextBlock()
         {
             var level = "";
-            if (_wpm <= 10) level = "Equivalent to one word every 6 seconds. Learn the proper typing technique and practice to improve your speed.";
-            else if (_wpm is > 0 and <= 10) level = "Equivalent to one word every 3 seconds. Focus on your technique and keep practising.";
-            else if (_wpm is > 10 and <= 20) level = "Better, but still below average. Keep practising to improve your speed and accuracy.";
-            else if (_wpm is > 20 and <= 30) level = "At 41 wpm, you are now an average typist. You still have significant room for improvement.";
-            else if (_wpm is > 30 and <= 40) level = "Congratulations! You're above average!";
-            else if (_wpm is > 40 and <= 50) level = "This is the speed required for most jobs. You can now be a professional typist.";
-            else if (_wpm is > 50 and <= 60) level = "You are way above average and would qualify for any typing job, assuming your accuracy is high enough.";
-            else if (_wpm is > 60 and <= 70) level = "You're a catch! Any employer looking for a typist would love to have you!";
-            else if (_wpm is > 70 and <= 80) level = "At this speed, you're probably a gamer, coder or genius. You're doing great!";
-            else if (_wpm > 80) level = "You're in the top 1% of typists! Congratulations!";
+            if (_languageCode == "en")
+            {
+                if (_wpm <= 10) level = "Equivalent to one word every 6 seconds. Learn the proper typing technique and practice to improve your speed.";
+                else if (_wpm is > 0 and <= 10) level = "Equivalent to one word every 3 seconds. Focus on your technique and keep practising.";
+                else if (_wpm is > 10 and <= 20) level = "Better, but still below average. Keep practising to improve your speed and accuracy.";
+                else if (_wpm is > 20 and <= 30) level = "At 41 wpm, you are now an average typist. You still have significant room for improvement.";
+                else if (_wpm is > 30 and <= 40) level = "Congratulations! You're above average!";
+                else if (_wpm is > 40 and <= 50) level = "This is the speed required for most jobs. You can now be a professional typist.";
+                else if (_wpm is > 50 and <= 60) level = "You are way above average and would qualify for any typing job, assuming your accuracy is high enough.";
+                else if (_wpm is > 60 and <= 70) level = "You're a catch! Any employer looking for a typist would love to have you!";
+                else if (_wpm is > 70 and <= 80) level = "At this speed, you're probably a gamer, coder or genius. You're doing great!";
+                else if (_wpm > 80) level = "You're in the top 1% of typists! Congratulations!";
+            }
+
+            if (_languageCode == "sk")
+            {
+                if (_wpm <= 10) level = "Ekvivalent jedného slova každých 6 sekúnd. Naučte sa správnu techniku písania a cvičte, aby ste zlepšili svoju rýchlosť.";
+                else if (_wpm is > 0 and <= 10) level = "Ekvivalent jedného slova každé 3 sekundy. Sústreďte sa na svoju techniku a pokračujte v cvičení.";
+                else if (_wpm is > 10 and <= 20) level = "Lepšie, ale stále pod priemerom. Pokračujte v cvičení, aby ste zvýšili svoju rýchlosť a presnosť.";
+                else if (_wpm is > 20 and <= 30) level = "Pri 41 wpm ste teraz priemerne rýchly. Máte však stále veľa miesta na zlepšenie.";
+                else if (_wpm is > 30 and <= 40) level = "Gratulujeme! Ste nadpriemerne rýchli!";
+                else if (_wpm is > 40 and <= 50) level = "Toto je rýchlosť potrebná pre väčšinu prác. Teraz môžete byť profesionálne písomne zručným človekom.";
+                else if (_wpm is > 50 and <= 60) level = "Ste výrazne nadpriemerne rýchli a kvalifikujete sa na akúkoľvek prácu, pri predpoklade, že vaša presnosť je dostatočná.";
+                else if (_wpm is > 60 and <= 70) level = "Ste výhra! Každý zamestnávateľ by vás mal rád!";
+                else if (_wpm is > 70 and <= 80) level = "Pri tejto rýchlosti ste pravdepodobne hráčom, programátorom alebo géniom. Robíte skvelú prácu!";
+                else if (_wpm > 80) level = "Ste v top 1%! Gratulujeme!";
+            }
             TextBlockLevel.Text = level;
         }
 
