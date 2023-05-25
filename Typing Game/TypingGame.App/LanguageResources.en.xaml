@@ -34,4 +34,19 @@
     <system:String x:Key="SlovakB">Slovak</system:String>
     <system:String x:Key="EnglishB">English</system:String>
     <system:String x:Key="ProgrammerB">Programmer</system:String>
+
+
+
+
+    <system:String x:Key="Summary">Summary of the game</system:String>
+    <system:String x:Key="TotalTime">Total time of typing:</system:String>
+    <system:String x:Key="TotalNumber">Total number of chars typed:</system:String>
+    <system:String x:Key="Errors">Number of errors:</system:String>
+    <system:String x:Key="Acpm">Average characters per minute (rounded):</system:String>
+    <system:String x:Key="Awpm">Average words (4.7 char) per minute:</system:String>
+    <system:String x:Key="PlayAgain">Play again</system:String>
+    <system:String x:Key="ShowStats2">Show stats</system:String>
+
+
+
 </ResourceDictionary>

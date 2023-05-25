@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Windows;
@@ -16,6 +17,8 @@ namespace TypingGame.App
         private readonly int _numberOfErrors;
         private readonly double _cpm;
         private readonly double _wpm;
+        private new const string Language = @"lang.txt";
+        private readonly string _languageCode;
 
         /// <summary>
         /// Constructor of StatWindow class.
@@ -29,10 +32,14 @@ namespace TypingGame.App
         public StatWindow(TimeSpan totalTime, int numberOfChars, int numberOfErrors, double cpm, double wpm)
         {
             InitializeComponent();
+            _languageCode = File.ReadAllText(Language);
+            Change_Language();
+
             // Sets the window icon
             // https://cdn-icons-png.flaticon.com/512/945/945414.png
             Uri iconUri = new Uri("icon.ico", UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(iconUri);
+
             Show();
             _totalTime = totalTime;
             _numberOfChars = numberOfChars;
@@ -52,8 +59,8 @@ namespace TypingGame.App
             TextBoxTotalTimeOfTyping.Text = _totalTime.ToString();
             TextBoxTotalNumberOfChars.Text = _numberOfChars.ToString();
             TextBoxNumberOfErrors.Text = _numberOfErrors.ToString();
-            TextBoxAvgWpm.Text = Math.Round(_wpm, 2).ToString();
-            TextBoxAvgCpm.Text = Math.Round(_cpm).ToString();
+            TextBoxAvgWpm.Text = Math.Round(_wpm, 2).ToString(CultureInfo.CurrentCulture);
+            TextBoxAvgCpm.Text = Math.Round(_cpm).ToString(CultureInfo.CurrentCulture);
         }
 
         /// <summary>
@@ -64,9 +71,9 @@ namespace TypingGame.App
             const string file = "UserData\\Data.csv";
             var output = new StringBuilder();
             const string separator = ";";
-            String[] newLine =
+            string[] newLine =
             {
-                _totalTime.ToString(), _numberOfChars.ToString(), _numberOfErrors.ToString(), Math.Round(_wpm, 2).ToString(), Math.Round(_cpm).ToString()
+                _totalTime.ToString(), _numberOfChars.ToString(), _numberOfErrors.ToString(), Math.Round(_wpm, 2).ToString(CultureInfo.CurrentCulture), Math.Round(_cpm).ToString(CultureInfo.CurrentCulture)
             };
             output.AppendLine(string.Join(separator, newLine));
             try
@@ -106,7 +113,7 @@ namespace TypingGame.App
         /// <param name="e"></param>
         private void PlayAgainButtonClick(object sender, RoutedEventArgs e)
         {
-            MenuWindow mw = new MenuWindow();
+            var mw = new MenuWindow();
             Close();
         }
 
@@ -117,7 +124,19 @@ namespace TypingGame.App
         /// <param name="e"></param>
         private void ShowStatsButtonClick(object sender, RoutedEventArgs e)
         {
-            StatsWindow sw = new StatsWindow();
+            var sw = new StatsWindow();
+        }
+
+        private void Change_Language()
+        {
+            ResourceDictionary dictionary = new();
+            dictionary.Source = _languageCode switch
+            {
+                "sk" => new Uri("..\\LanguageResources.sk.xaml", UriKind.Relative),
+                "en" => new Uri("..\\LanguageResources.en.xaml", UriKind.Relative),
+                _ => new Uri("..\\LanguageResources.en.xaml", UriKind.Relative)
+            };
+            Resources.MergedDictionaries.Add(dictionary);
         }
     }
 }

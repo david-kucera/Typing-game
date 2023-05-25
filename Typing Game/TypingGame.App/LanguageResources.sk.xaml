@@ -33,4 +33,14 @@
     <system:String x:Key="SlovakB">Slovenský</system:String>
     <system:String x:Key="EnglishB">Anglický</system:String>
     <system:String x:Key="ProgrammerB">Programátorský</system:String>
+
+
+    <system:String x:Key="Summary">Výsledok odohratej hry</system:String>
+    <system:String x:Key="TotalTime">Celkový čas písania:</system:String>
+    <system:String x:Key="TotalNumber">Celkový počet prepísaných znakov:</system:String>
+    <system:String x:Key="Errors">Počet chýb:</system:String>
+    <system:String x:Key="Acpm">Priemerný počet znakov za minútu (zaokrúhlené):</system:String>
+    <system:String x:Key="Awpm">Priemerné slovo (4.7 znaku) za minútu:</system:String>
+    <system:String x:Key="PlayAgain">Hrať znova</system:String>
+    <system:String x:Key="ShowStats2">Zobraz štatistiku</system:String>
 </ResourceDictionary>
