@@ -19,6 +19,7 @@ namespace TypingGame.App
     public partial class MenuWindow : Window
     {
         private readonly List<Dictionary> _dicts;
+        private readonly string Stats = @"UserData\\Data.csv";
         private new const string Language = @"lang.txt";
         private readonly string _languageCode;
         private int _colorIndex;
@@ -243,9 +244,23 @@ namespace TypingGame.App
         /// <param name="e"></param>
         private void MI_Reset_stats(object sender, RoutedEventArgs e)
         {
-            File.WriteAllText(@"UserData\\Data.csv", string.Empty);
+            if (File.ReadAllText(Stats).Equals("total_time;number_of_chars;number_of_errors;cpm;wpm\n"))
+            {
+                switch (_languageCode)
+                {
+                    case "en":
+                        MessageBox.Show("Stats already reset!", "Already reset", MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+                        return;
+                    case "sk":
+                        MessageBox.Show("Štatistika už je resetovaná!", "Už resetovaná", MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+                        break;
+                }
+            }
+            File.WriteAllText(Stats, string.Empty);
             const string header = "total_time;number_of_chars;number_of_errors;cpm;wpm\n";
-            File.WriteAllText(@"UserData\\Data.csv", header);
+            File.WriteAllText(Stats, header);
         }
 
         private void Language_English(object sender, RoutedEventArgs e)
