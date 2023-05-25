@@ -21,6 +21,7 @@ namespace TypingGame.App
         private readonly List<Dictionary> _dicts;
         private new const string Language = "lang.txt";
         private readonly string _languageCode;
+        private new const string BackgroundColor = "bcg_color.txt";
 
         /// <summary>
         /// Constructor of class.
@@ -30,6 +31,12 @@ namespace TypingGame.App
         {
             InitializeComponent();
             _languageCode = File.ReadAllText(Language);
+            
+            if (File.ReadAllText(BackgroundColor).Length != 0)
+            {
+                var colorIndex = Convert.ToInt32(File.ReadAllText(BackgroundColor));
+                Change_Background(colorIndex);
+            }
             Change_Language();
             Show();
 
@@ -129,13 +136,27 @@ namespace TypingGame.App
         /// <param name="e"></param>
         private void MI_Change_Background(object sender, RoutedEventArgs e)
         {
+            // Choose random color from brushes and set it as window background
+            var rnd = new Random();
+            var randomIndex = rnd.NextInt64(100);
+            File.WriteAllText(BackgroundColor, string.Empty);
+            File.WriteAllText(BackgroundColor, randomIndex.ToString());
+            Change_Background(randomIndex);
+        }
+
+        private void Change_Background(long randomIndex)
+        {
             // Get all brush colors
             var brushes = typeof(Brushes).GetProperties().
                 Select(p => new { Name = p.Name, Brush = p.GetValue(null) as Brush }).
                 ToArray(); // TODO docs - linq usage
-            // Choose random color from brushes and set it as window background
-            var rnd = new Random();
-            Menu.Background = brushes[rnd.NextInt64(brushes.Length)].Brush;
+            Menu.Background = brushes[randomIndex].Brush;
+        }
+
+        private void MI_Reset_background(object sender, RoutedEventArgs e)
+        {
+            File.WriteAllText(BackgroundColor, "0");
+            Change_Background(0);
         }
 
         /// <summary>
@@ -225,7 +246,7 @@ namespace TypingGame.App
         {
             if (_languageCode == "sk")
             {
-                MessageBox.Show("Jazy je už zvolený!", "Jazyk zvolený", MessageBoxButton.OK,
+                MessageBox.Show("Jazyk je už zvolený!", "Jazyk zvolený", MessageBoxButton.OK,
                     MessageBoxImage.Error);
                 return;
             }

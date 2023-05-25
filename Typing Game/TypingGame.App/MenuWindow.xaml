@@ -36,6 +36,7 @@
             </MenuItem>
             <MenuItem Header="{DynamicResource Edit}">
                 <MenuItem Header="{DynamicResource BackgroundColor}" Click="MI_Change_Background"/>
+                <MenuItem Header="{DynamicResource ResetBackgroundColor}" Click="MI_Reset_background"></MenuItem>
             </MenuItem>
             <MenuItem Header="{DynamicResource Stats}">
                 <MenuItem Header="{DynamicResource ShowStats}" Click="MI_Show_stats"/>

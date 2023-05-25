@@ -15,8 +15,11 @@
 
     <system:String x:Key="Edit">Edit</system:String>
     <system:String x:Key="BackgroundColor">Change to random background color</system:String>
+    <system:String x:Key="ResetBackgroundColor">Reset background color</system:String>
+    
 
-    <system:String x:Key="Stats">Stats</system:String>
+
+	<system:String x:Key="Stats">Stats</system:String>
     <system:String x:Key="ShowStats">Show my stats</system:String>
     <system:String x:Key="ResetStats">Reset my stats</system:String>
 
