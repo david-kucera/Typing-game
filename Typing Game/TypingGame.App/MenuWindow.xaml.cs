@@ -16,14 +16,14 @@ namespace TypingGame.App
     /// <summary>
     /// Menu WPF App - Window for game setup-options, player stats, help, etc.
     /// </summary>
-    public partial class MenuWindow : Window
+    public partial class MenuWindow
     {
         private readonly List<Dictionary> _dicts;
-        private readonly string Stats = @"UserData\\Data.csv";
+        private const string Stats = @"UserData\\Data.csv";
         private new const string Language = @"lang.txt";
         private readonly string _languageCode;
         private int _colorIndex;
-        private new const string BackgroundColor = @"bcg_color.txt";
+        private const string BackgroundColor = @"bcg_color.txt";
 
         /// <summary>
         /// Constructor of class.
@@ -91,8 +91,8 @@ namespace TypingGame.App
         {
             var lang = LanguageComboBox.SelectedIndex;
             Bank bank = new(_dicts[lang]);
-            Gameplay hra = new(get_difficulty(), bank); 
-            GameWindow gw = new(hra.get_words());
+            Gameplay hra = new(get_difficulty(), bank);
+            _ = new GameWindow(hra.get_words());
             Close();
         }
 
@@ -140,7 +140,7 @@ namespace TypingGame.App
         {
             // Get all brush colors
             var brushes = typeof(Brushes).GetProperties().
-                Select(p => new { Name = p.Name, Brush = p.GetValue(null) as Brush }).
+                Select(p => new { p.Name, Brush = p.GetValue(null) as Brush }).
                 ToArray(); // TODO docs - linq usage
             // Choose random color from brushes and set it as window background
             var rnd = new Random();
@@ -154,7 +154,7 @@ namespace TypingGame.App
         {
             // Get all brush colors
             var brushes = typeof(Brushes).GetProperties().
-                Select(p => new { Name = p.Name, Brush = p.GetValue(null) as Brush }).
+                Select(p => new { p.Name, Brush = p.GetValue(null) as Brush }).
                 ToArray();
             Menu.Background = brushes[randomIndex].Brush;
             _colorIndex = (int)randomIndex;
@@ -187,7 +187,7 @@ namespace TypingGame.App
         /// <param name="e"></param>
         private void MI_Show_stats(object sender, RoutedEventArgs e)
         {
-            var statsWindow = new StatsWindow();
+            new StatsWindow();
         }
 
         /// <summary>
