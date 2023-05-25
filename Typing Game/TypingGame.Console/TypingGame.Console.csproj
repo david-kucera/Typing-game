@@ -11,14 +11,4 @@
     <ProjectReference Include="..\TypingGame.Library\TypingGame.Library.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UserData\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="UserData\Data.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
