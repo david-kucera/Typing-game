@@ -160,7 +160,7 @@ namespace TypingGame.App
         /// <returns>Int value of number of chars in words list.</returns>
         private static int GetNumberOfChars(IEnumerable<DataType> words)
         {
-            return words.Sum(word => word.Length); // TODO docs - used linq
+            return words.Sum(word => word.Length);
         }
 
         private void Change_Background(long randomIndex)

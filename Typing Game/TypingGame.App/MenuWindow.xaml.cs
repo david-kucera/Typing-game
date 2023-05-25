@@ -142,7 +142,7 @@ namespace TypingGame.App
             // Get all brush colors
             var brushes = typeof(Brushes).GetProperties().
                 Select(p => new { p.Name, Brush = p.GetValue(null) as Brush }).
-                ToArray(); // TODO docs - linq usage
+                ToArray();
             // Choose random color from brushes and set it as window background
             var rnd = new Random();
             var randomIndex = rnd.NextInt64(brushes.Length);

@@ -121,12 +121,12 @@ namespace TypingGame.App
                 if (_wpm <= 10) level = "Ekvivalent jedného slova každých 6 sekúnd. Naučte sa správnu techniku písania a cvičte, aby ste zlepšili svoju rýchlosť.";
                 else if (_wpm is > 0 and <= 10) level = "Ekvivalent jedného slova každé 3 sekundy. Sústreďte sa na svoju techniku a pokračujte v cvičení.";
                 else if (_wpm is > 10 and <= 20) level = "Lepšie, ale stále pod priemerom. Pokračujte v cvičení, aby ste zvýšili svoju rýchlosť a presnosť.";
-                else if (_wpm is > 20 and <= 30) level = "Pri 41 wpm ste teraz priemerne rýchly. Máte však stále veľa miesta na zlepšenie.";
+                else if (_wpm is > 20 and <= 30) level = "Teraz ste priemerne rýchly. Máte však stále veľa miesta na zlepšenie.";
                 else if (_wpm is > 30 and <= 40) level = "Gratulujeme! Ste nadpriemerne rýchli!";
                 else if (_wpm is > 40 and <= 50) level = "Toto je rýchlosť potrebná pre väčšinu prác. Teraz môžete byť profesionálne písomne zručným človekom.";
                 else if (_wpm is > 50 and <= 60) level = "Ste výrazne nadpriemerne rýchli a kvalifikujete sa na akúkoľvek prácu, pri predpoklade, že vaša presnosť je dostatočná.";
-                else if (_wpm is > 60 and <= 70) level = "Ste výhra! Každý zamestnávateľ by vás mal rád!";
-                else if (_wpm is > 70 and <= 80) level = "Pri tejto rýchlosti ste pravdepodobne hráčom, programátorom alebo géniom. Robíte skvelú prácu!";
+                else if (_wpm is > 60 and <= 70) level = "Ste výhra! Každý zamestnávateľ by vás chcel mať!";
+                else if (_wpm is > 70 and <= 80) level = "Pri tejto rýchlosti ste pravdepodobne hráčom, programátorom alebo géniom. Skvelá práca!";
                 else if (_wpm > 80) level = "Ste v top 1%! Gratulujeme!";
             }
             TextBlockLevel.Text = level;
