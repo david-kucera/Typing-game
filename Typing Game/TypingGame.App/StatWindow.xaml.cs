@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace TypingGame.App
@@ -19,6 +21,7 @@ namespace TypingGame.App
         private readonly double _wpm;
         private new const string Language = @"lang.txt";
         private readonly string _languageCode;
+        private const string BackgroundColor = @"bcg_color.txt";
 
         /// <summary>
         /// Constructor of StatWindow class.
@@ -34,6 +37,8 @@ namespace TypingGame.App
             InitializeComponent();
             _languageCode = File.ReadAllText(Language);
             Change_Language();
+            long colorIndex = Convert.ToInt64(File.ReadAllText(BackgroundColor));
+            Change_Background(colorIndex);
 
             // Sets the window icon
             // https://cdn-icons-png.flaticon.com/512/945/945414.png
@@ -137,6 +142,14 @@ namespace TypingGame.App
                 _ => new Uri("..\\LanguageResources.en.xaml", UriKind.Relative)
             };
             Resources.MergedDictionaries.Add(dictionary);
+        }
+
+        private void Change_Background(long randomIndex)
+        {
+            var brushes = typeof(Brushes).GetProperties().
+                Select(p => new { p.Name, Brush = p.GetValue(null) as Brush }).
+                ToArray();
+            Background = brushes[randomIndex].Brush;
         }
     }
 }

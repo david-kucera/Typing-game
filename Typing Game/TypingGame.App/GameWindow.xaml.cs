@@ -24,6 +24,7 @@ namespace TypingGame.App
         private DateTime _endOfGame;
         private int _numberOfErrors;
         private const string ErrorWords = @"UserData\\errors.csv";
+        private const string BackgroundColor = @"bcg_color.txt";
 
         /// <summary>
         /// Constructor of GameWindow.
@@ -33,6 +34,10 @@ namespace TypingGame.App
         public GameWindow(List<DataType> words)
         {
             InitializeComponent();
+
+            long colorIndex = Convert.ToInt64(File.ReadAllText(BackgroundColor));
+            Change_Background(colorIndex);
+
             Show();
 
             // Sets the window icon
@@ -153,6 +158,14 @@ namespace TypingGame.App
         private static int GetNumberOfChars(IEnumerable<DataType> words)
         {
             return words.Sum(word => word.Length); // TODO docs - used linq
+        }
+
+        private void Change_Background(long randomIndex)
+        {
+            var brushes = typeof(Brushes).GetProperties().
+                Select(p => new { p.Name, Brush = p.GetValue(null) as Brush }).
+                ToArray();
+            Background = brushes[randomIndex].Brush;
         }
     }
 }
