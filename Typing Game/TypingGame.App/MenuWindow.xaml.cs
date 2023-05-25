@@ -39,6 +39,7 @@ namespace TypingGame.App
                 _colorIndex = Convert.ToInt32(File.ReadAllText(BackgroundColor));
                 Change_Background(_colorIndex);
             }
+
             Change_Language();
             Show();
 

@@ -26,8 +26,12 @@ namespace TypingGame.App
             InitializeComponent();
             _languageCode = File.ReadAllText(Language);
             Change_Language();
-            long colorIndex = Convert.ToInt64(File.ReadAllText(BackgroundColor));
-            Change_Background(colorIndex);
+
+            if (File.ReadAllText(BackgroundColor).Length != 0)
+            {
+                var colorIndex = Convert.ToInt32(File.ReadAllText(BackgroundColor));
+                Change_Background(colorIndex);
+            }
 
             // Sets the window icon
             // https://cdn-icons-png.flaticon.com/512/945/945414.png

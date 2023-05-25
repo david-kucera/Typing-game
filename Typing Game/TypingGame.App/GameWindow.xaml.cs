@@ -35,8 +35,11 @@ namespace TypingGame.App
         {
             InitializeComponent();
 
-            var colorIndex = Convert.ToInt64(File.ReadAllText(BackgroundColor));
-            Change_Background(colorIndex);
+            if (File.ReadAllText(BackgroundColor).Length != 0)
+            {
+                var colorIndex = Convert.ToInt32(File.ReadAllText(BackgroundColor));
+                Change_Background(colorIndex);
+            }
 
             Show();
 
