@@ -117,9 +117,12 @@ namespace TypingGame.App
             else
             {
                 _states[_indexCurrentWord] = State.INCORRECT;
-                var output = _words[_indexCurrentWord].Word + ";" + TB_Answer.Text + "\n";
+
+                var original = _words[_indexCurrentWord].Word;
+                var answer = TB_Answer.Text.Remove(TB_Answer.Text.Length - 1, 1);
+                var output =  original + ";" + answer + "\n";
                 File.AppendAllText(ErrorWords, output);
-                _numberOfErrors++;
+                Add_Number_of_errors(original, answer);
             }
 
             _indexCurrentWord++;
@@ -128,7 +131,7 @@ namespace TypingGame.App
             { 
                 _endOfGame = DateTime.Now;     // End the timer
                 var totalTime = _endOfGame - _startOfGame;
-                var numberOfChars = GetNumberOfChars(_words);
+                var numberOfChars = GetNumberOfChars(_words) - _numberOfErrors;
 
                 var seconds = totalTime.Seconds;
                 var minutes = totalTime.Minutes;
@@ -151,6 +154,52 @@ namespace TypingGame.App
             _states[_indexCurrentWord] = State.CURRENT;
             TB_Answer.Text = "";
             ChangeTextBlock();
+        }
+
+        private void Add_Number_of_errors(string original, string answer)
+        {
+            var difference = original.Length - answer.Length;
+
+            if (difference == 0) // when both have the same length
+            {
+                for (var i = 0; i < answer.Length; i++)
+                {
+                    if (!answer[i].Equals(original[i]))
+                    {
+                        _numberOfErrors++;
+                    }
+                }
+            }
+
+            if (difference > 0) // when original is longer
+            {
+                // Firstly check the written part
+                for (var i = 0; i < answer.Length; i++)
+                {
+                    if (!answer[i].Equals(original[i]))
+                    {
+                        _numberOfErrors++;
+                    }
+                }
+
+                // Then add non-written chars
+                _numberOfErrors += difference;
+            }
+
+            if (difference < 0) // when answer is longer
+            {
+                // Firstly check the written part
+                for (var i = 0; i < original.Length; i++)
+                {
+                    if (!answer[i].Equals(original[i]))
+                    {
+                        _numberOfErrors++;
+                    }
+                }
+
+                // Then add redundant chars
+                _numberOfErrors += -(difference);
+            }
         }
 
         /// <summary>
