@@ -17,8 +17,8 @@
             {
                 Dictionary.ENGLISH => @"Files\\english.txt",
                 Dictionary.PROGRAMMER => @"Files\\programmer.txt",
-                Dictionary.SLOVAK => @"Files\\slovak_words_generated.txt",
-                _ => @"Files\\slovak_words_generated.txt"
+                Dictionary.SLOVAK => @"Files\\slovak.txt",
+                _ => @"Files\\slovak.txt"
             };
             FillWords(FileReader.ReadWordsFromFile(path));
         }

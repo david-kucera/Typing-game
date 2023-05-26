@@ -46,7 +46,7 @@ namespace TypingGame.Library
                 // Adds word to bank only if it contains only aplhabetical characters (no special characters or numbers)
                 if (CheckWord(word))
                 {
-                    words.Add(new DataType(word));    // Adds a word converted to lower case
+                    words.Add(new DataType(word.ToLower()));    // Adds a word converted to lower case - due to CLI 
                 }
             }
             return words;

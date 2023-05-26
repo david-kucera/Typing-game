@@ -13,10 +13,10 @@
     <None Update="Files\programmer.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Files\slovak.txt">
+    <None Update="Files\slovak_unused.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Files\slovak_words_generated.txt">
+    <None Update="Files\slovak.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
