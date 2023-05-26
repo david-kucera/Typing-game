@@ -8,7 +8,7 @@
     <system:String x:Key="DifficultyMedium">STREDNÁ</system:String>
     <system:String x:Key="DifficultyHard">ŤAŽKÁ</system:String>
     <system:String x:Key="Start">SPUSTI</system:String>
-    <system:String x:Key="StartConsole">Ak chceš hrať v konzoli, klikni sem</system:String>
+    <system:String x:Key="StartConsole">Ak chceš hrať v konzole, klikni sem</system:String>
 
     <system:String x:Key="File">Súbor</system:String>
     <system:String x:Key="Exit">Ukončiť</system:String>

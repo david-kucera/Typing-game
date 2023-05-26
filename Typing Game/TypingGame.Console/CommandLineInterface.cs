@@ -309,9 +309,12 @@ namespace TypingGame.Console
         private static void Intro()
         {
             System.Console.WriteLine("Welcome to typing game!");
-            System.Console.WriteLine("Characters will appear on your screen, try to re-write them as fast as you can.");
-            System.Console.WriteLine("If you type incorrect character, don't worry, you'll have total of 3 lives.");
-            System.Console.WriteLine("- just continue like nothing happened");
+            System.Console.WriteLine("Words will appear on your screen, try to re-write them as fast as you can.");
+            System.Console.WriteLine("If you type incorrect character, don't worry, just continue like nothing happened.");
+            System.Console.WriteLine("   You will have: ");
+            System.Console.WriteLine("      20 words, 3 lives - if difficulty is se to EASY");
+            System.Console.WriteLine("      50 words, 2 lives - if difficulty is set to MEDIUM");
+            System.Console.WriteLine("      100 words, 1 life - if difficulty is set to HARD ");
             System.Console.WriteLine("");
             System.Console.WriteLine("For better experience, set window size to full-screen");
             System.Console.WriteLine("");

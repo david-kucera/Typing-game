@@ -32,7 +32,6 @@ namespace TypingGame.App
         public MenuWindow()
         {
             InitializeComponent();
-            _languageCode = File.ReadAllText(Language);
             
             if (File.ReadAllText(BackgroundColor).Length != 0)
             {
@@ -40,6 +39,7 @@ namespace TypingGame.App
                 Change_Background(_colorIndex);
             }
 
+            _languageCode = File.ReadAllText(Language);
             Change_Language();
             Show();
 
@@ -192,7 +192,7 @@ namespace TypingGame.App
         /// <param name="e"></param>
         private void MI_Show_stats(object sender, RoutedEventArgs e)
         {
-            new StatsWindow();
+            var statsWindow = new StatsWindow();
         }
 
         /// <summary>

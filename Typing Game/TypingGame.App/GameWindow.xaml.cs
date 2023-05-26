@@ -163,6 +163,10 @@ namespace TypingGame.App
             return words.Sum(word => word.Length);
         }
 
+        /// <summary>
+        /// Method changes the window background to index color parameter.
+        /// </summary>
+        /// <param name="randomIndex"></param>
         private void Change_Background(long randomIndex)
         {
             var brushes = typeof(Brushes).GetProperties().

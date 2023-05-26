@@ -46,7 +46,7 @@ namespace TypingGame.App
 
             // Sets the window icon
             // https://cdn-icons-png.flaticon.com/512/945/945414.png
-            Uri iconUri = new Uri("icon.ico", UriKind.RelativeOrAbsolute);
+            Uri iconUri = new("icon.ico", UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(iconUri);
 
             Show();

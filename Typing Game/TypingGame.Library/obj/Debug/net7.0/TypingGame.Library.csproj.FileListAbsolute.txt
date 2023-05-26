@@ -1,6 +1,5 @@
 D:\Workspace\typing-game\Typing Game\TypingGame.Library\bin\Debug\net7.0\Files\english.txt
 D:\Workspace\typing-game\Typing Game\TypingGame.Library\bin\Debug\net7.0\Files\programmer.txt
-D:\Workspace\typing-game\Typing Game\TypingGame.Library\bin\Debug\net7.0\Files\slovak_words_generated.txt
 D:\Workspace\typing-game\Typing Game\TypingGame.Library\bin\Debug\net7.0\TypingGame.Library.deps.json
 D:\Workspace\typing-game\Typing Game\TypingGame.Library\bin\Debug\net7.0\TypingGame.Library.dll
 D:\Workspace\typing-game\Typing Game\TypingGame.Library\bin\Debug\net7.0\TypingGame.Library.pdb
@@ -14,3 +13,4 @@ D:\Workspace\typing-game\Typing Game\TypingGame.Library\obj\Debug\net7.0\refint\
 D:\Workspace\typing-game\Typing Game\TypingGame.Library\obj\Debug\net7.0\TypingGame.Library.pdb
 D:\Workspace\typing-game\Typing Game\TypingGame.Library\obj\Debug\net7.0\ref\TypingGame.Library.dll
 D:\Workspace\typing-game\Typing Game\TypingGame.Library\bin\Debug\net7.0\Files\slovak.txt
+D:\Workspace\typing-game\Typing Game\TypingGame.Library\bin\Debug\net7.0\Files\slovak_unused.txt

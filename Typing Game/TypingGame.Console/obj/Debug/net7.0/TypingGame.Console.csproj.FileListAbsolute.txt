@@ -1,7 +1,6 @@
 D:\Workspace\typing-game\Typing Game\TypingGame.Console\bin\Debug\net7.0\TypingGame.Console.exe
 D:\Workspace\typing-game\Typing Game\TypingGame.Console\bin\Debug\net7.0\Files\english.txt
 D:\Workspace\typing-game\Typing Game\TypingGame.Console\bin\Debug\net7.0\Files\programmer.txt
-D:\Workspace\typing-game\Typing Game\TypingGame.Console\bin\Debug\net7.0\Files\slovak_words_generated.txt
 D:\Workspace\typing-game\Typing Game\TypingGame.Console\bin\Debug\net7.0\TypingGame.Console.deps.json
 D:\Workspace\typing-game\Typing Game\TypingGame.Console\bin\Debug\net7.0\TypingGame.Console.runtimeconfig.json
 D:\Workspace\typing-game\Typing Game\TypingGame.Console\bin\Debug\net7.0\TypingGame.Console.dll
@@ -20,3 +19,4 @@ D:\Workspace\typing-game\Typing Game\TypingGame.Console\obj\Debug\net7.0\TypingG
 D:\Workspace\typing-game\Typing Game\TypingGame.Console\obj\Debug\net7.0\TypingGame.Console.genruntimeconfig.cache
 D:\Workspace\typing-game\Typing Game\TypingGame.Console\obj\Debug\net7.0\ref\TypingGame.Console.dll
 D:\Workspace\typing-game\Typing Game\TypingGame.Console\bin\Debug\net7.0\Files\slovak.txt
+D:\Workspace\typing-game\Typing Game\TypingGame.Console\bin\Debug\net7.0\Files\slovak_unused.txt
