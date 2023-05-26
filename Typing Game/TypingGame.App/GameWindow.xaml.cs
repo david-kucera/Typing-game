@@ -146,7 +146,15 @@ namespace TypingGame.App
                 var cpm = numberOfWritten / inminutes;
                 var wpm = cpm / 4.7;
 
-                var statWindow = new StatWindow(totalTime, numberOfChars, _numberOfErrors, cpm, wpm);
+                if (numberOfChars <= 0)
+                {
+                    var win = new StatWindow(totalTime, 0, _numberOfErrors, 0, 0);
+                    win.TextBlockLevel.Text = "Why?";
+                    Close();
+                    return;
+                }
+
+                new StatWindow(totalTime, numberOfChars, _numberOfErrors, cpm, wpm);
                 Close();
                 return;
             }
