@@ -15,39 +15,38 @@ namespace TypingGame.Library
         public static List<DataType> ReadWordsFromFile(string filePath)
         {
             List<DataType> words = new();
-            string[] lines = File.ReadAllLines(filePath);
+            var lines = File.ReadAllLines(filePath);
 
             // For better ram optimalization
             Random rnd = new();
-            int numberOfRandomWords = 500;
-            string[] randomWords = new string[numberOfRandomWords];
-            for (int i = 0; i < numberOfRandomWords; i++)
+            const int numberOfRandomWords = 1000;
+            var randomWords = new string[numberOfRandomWords];
+            for (var i = 0; i < numberOfRandomWords; i++)
             {
-                int randomIndex = (int)rnd.NextInt64(lines.LongLength);
+                var randomIndex = (int)rnd.NextInt64(lines.LongLength);
                 randomWords[i] = lines[randomIndex];
             }
 
-            foreach (string line in randomWords)
+            foreach (var line in randomWords)
             {
-                string word = "";
-                for (int i = 0; i < line.Length; i++)
+                var word = "";
+                for (var i = 0; i < line.Length; i++)
                 {
                     if (line[i] == '\t' || line[i] == ' ' || line[i] == '\n')
                     {
-                        word = line.Substring(0, i);
+                        word = line[..i];
                         break;
                     }
-                    if (i == line.Length - 1)
-                    {
-                        word = line;
-                        break;
-                    }
+
+                    if (i != line.Length - 1) continue;
+                    word = line;
+                    break;
                 }
 
                 // Adds word to bank only if it contains only aplhabetical characters (no special characters or numbers)
                 if (CheckWord(word))
                 {
-                    words.Add(new DataType(word.ToLower()));    // Adds a word converted to lower case
+                    words.Add(new DataType(word));    // Adds a word converted to lower case
                 }
             }
             return words;
@@ -66,10 +65,8 @@ namespace TypingGame.Library
             // Checking for any special character in imported string
             if (!Regex.IsMatch(line, @"^[a-zA-Z]+$")) return false;
 
-            if (line.Length < 3) return false;
-
+            return line.Length >= 3;
             // If both controls have been passed
-            return true;
         }
     }
 }

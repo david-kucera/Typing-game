@@ -9,14 +9,14 @@
 
         /// <summary>
         /// Constructor of class Gameplay.
-        /// Sets up difficulty and words to be retyped and starts.
+        /// Sets up difficulty and words to be retyped for game.
         /// </summary>
-        /// <param name="difficuty">Difficulty of the game</param>
-        /// <param name="bank">Bank of words of the game</param>
-        public Gameplay(Difficulty difficuty, Bank bank)
+        /// <param name="difficulty">Difficulty of the game.</param>
+        /// <param name="bank">Bank of words of the game.</param>
+        public Gameplay(Difficulty difficulty, Bank bank)
         {
-            _difficulty = difficuty;
-            SetUp(difficuty); 
+            _difficulty = difficulty;
+            SetUp(difficulty); 
             FillWithRandomWords(ref _words, bank);
         }
 
@@ -25,29 +25,15 @@
             return _words;
         }
 
-        public Difficulty get_difficulty()
-        {
-            return _difficulty;
-        }
-
         public HealthPoint get_health_points()
         {
-            if (_difficulty == Difficulty.EASY)
+            return _difficulty switch
             {
-                return HealthPoint.THREE;
-            }
-
-            if (_difficulty == Difficulty.MEDIUM)
-            {
-                return HealthPoint.TWO;
-            }
-
-            if (_difficulty == Difficulty.HARD)
-            {
-                return HealthPoint.ONE;
-            }
-
-            return HealthPoint.THREE;
+                Difficulty.EASY => HealthPoint.THREE,
+                Difficulty.MEDIUM => HealthPoint.TWO,
+                Difficulty.HARD => HealthPoint.ONE,
+                _ => HealthPoint.THREE
+            };
         }
 
         /// <summary>
@@ -59,7 +45,7 @@
         {
             _numberOfWords = difficuty switch
             {
-                (Difficulty)0 => 20,    
+                0 => 20,    
                 (Difficulty)1 => 50,    
                 (Difficulty)2 => 100,   
                 _ => 100,
@@ -73,9 +59,9 @@
         /// <param name="bank">Bank of available words.</param>
         private void FillWithRandomWords(ref List<DataType> words, Bank bank)
         {
-            for (int i = 0; i < _numberOfWords; i++)
+            for (var i = 0; i < _numberOfWords; i++)
             {
-                int randomIndex = _rnd.Next(bank.Words.Count);
+                var randomIndex = _rnd.Next(bank.Words.Count);
                 words.Add(bank.Words[randomIndex]);
             }
         }

@@ -236,7 +236,7 @@ namespace TypingGame.App
                     MessageBox.Show("Vyber si slovník, z ktorého sa zoberú slová.\n" +
                                     "Následne vyber zložitosť hry, ktorá definuje počet slov v hre.\n" +
                                     "Potom klikni na SPUSTI\n" +
-                                    "Po spustení, prepíš slová s čo najmenej chybami za najrýchlejší čas.\n" +
+                                    "Po spustení, prepíš slová s čo najmenej chybami za čo najrýchlejší čas.\n" +
                                     "Na konci ti bude zobrazená štatistika.", "Ako hrať", MessageBoxButton.OK, MessageBoxImage.Information);
                     break;
             }

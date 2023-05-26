@@ -13,22 +13,13 @@
         /// <param name="dictionary">File from wich the reader will read</param>
         public Bank(Dictionary dictionary)
         {
-            string? path;
-            switch (dictionary)
+            var path = dictionary switch
             {
-                case Dictionary.ENGLISH:
-                    path = @"Files\\english.txt";
-                    break;
-                case Dictionary.PROGRAMMER:
-                    path = @"Files\\programmer.txt";
-                    break;
-                case Dictionary.SLOVAK:
-                    path = @"Files\\slovak_words_generated.txt";
-                    break;
-                default:
-                    path = @"Files\\slovak_words_generated.txt";
-                    break;
-            }
+                Dictionary.ENGLISH => @"Files\\english.txt",
+                Dictionary.PROGRAMMER => @"Files\\programmer.txt",
+                Dictionary.SLOVAK => @"Files\\slovak_words_generated.txt",
+                _ => @"Files\\slovak_words_generated.txt"
+            };
             FillWords(FileReader.ReadWordsFromFile(path));
         }
 
@@ -39,7 +30,7 @@
         public void FillWords(List<DataType> words) { _words = words; }
 
         /// <summary>
-        /// Getter of Words
+        /// Getter of Words.
         /// </summary>
         public List<DataType> Words
         {

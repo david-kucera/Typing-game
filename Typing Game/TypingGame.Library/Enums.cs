@@ -1,7 +1,7 @@
 ﻿namespace TypingGame.Library
 {
     /// <summary>
-    /// Enum containing levels of difficulty of the game.
+    /// Enum containing levels of difficulty of the game - number of words in a game.
     /// </summary>
     public enum Difficulty
     {
@@ -32,7 +32,7 @@
     }
 
     /// <summary>
-    /// Enum containing names of dictionaries.
+    /// Enum containing names of dictionaries available.
     /// </summary>
     public enum Dictionary
     {
