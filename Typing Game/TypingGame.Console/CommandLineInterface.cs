@@ -32,7 +32,7 @@ namespace TypingGame.Console
         /// <summary>
         /// Constructor of the game.
         /// </summary>
-        /// <param name="words">List of words to be retyped</param>
+        /// <param name="words">List of words to be retyped.</param>
         /// <param name="hp">Number of health points.</param>
         public CommandLineInterface(List<DataType> words, HealthPoint hp)
         {
@@ -49,9 +49,9 @@ namespace TypingGame.Console
                 int posX, posY;
                 SetUp(word, out posX, out posY);
 
-                bool writtenWord = false;
-                string wroteWord = "";
-                char[] chars = word.Chars;
+                var writtenWord = false;
+                var wroteWord = "";
+                var chars = word.Chars;
 
                 while (!writtenWord)
                 {
@@ -60,9 +60,9 @@ namespace TypingGame.Console
                         break;
                     }
                     System.Console.Beep(2000, 100);
-                    for (int i = 0; i < word.Length; i++)   // Checking each char by char
+                    for (var i = 0; i < word.Length; i++)   // Checking each char by char
                     {
-                        char pressedKey = ReadKey();
+                        var pressedKey = ReadKey();
                         wroteWord += pressedKey;
                         if (pressedKey == 27)
                         {
@@ -118,7 +118,7 @@ namespace TypingGame.Console
         }
 
         /// <summary>
-        /// Used for console manipulation
+        /// Used for console manipulation.
         /// </summary>
         [DllImport("Kernel32")]
         public static extern void FreeConsole();
@@ -162,7 +162,7 @@ namespace TypingGame.Console
         }
 
         /// <summary>
-        /// Reloads fields for console dimensions when user changes console window size.
+        /// Reloads fields for console dimensions when user changes console window size before the start of the game.
         /// </summary>
         private void ReloadFieldsConsole()
         {
@@ -171,7 +171,8 @@ namespace TypingGame.Console
         }
 
         /// <summary>
-        /// Writes basic stats about player's game - total typing time, number of typed chars, characters per minute, characters per second.
+        /// Writes basic stats about player's game - total typing time, number of typed chars, characters per minute, characters per second,
+        /// and saves them to file.
         /// </summary>
         /// <param name="totalTime">Total time spent typing</param>
         /// <param name="numberOfChars">Number of chars typed</param>
@@ -289,8 +290,8 @@ namespace TypingGame.Console
         /// <returns>Character typed</returns>
         private static char ReadKey()
         {
-            bool keyPressed = false;
-            char charInput = '.';
+            var keyPressed = false;
+            var charInput = '.';
             while (!keyPressed)
             {
                 if (System.Console.KeyAvailable)
@@ -322,7 +323,7 @@ namespace TypingGame.Console
         /// </summary>
         private static void WaitingForStart()
         {
-            char keyPressed = ReadKey();
+            var keyPressed = ReadKey();
             while (keyPressed != '\r')
             {
                 keyPressed = ReadKey();
