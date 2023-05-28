@@ -13,4 +13,3 @@ D:\Workspace\typing-game\Typing Game\TypingGame.Library\obj\Debug\net7.0\refint\
 D:\Workspace\typing-game\Typing Game\TypingGame.Library\obj\Debug\net7.0\TypingGame.Library.pdb
 D:\Workspace\typing-game\Typing Game\TypingGame.Library\obj\Debug\net7.0\ref\TypingGame.Library.dll
 D:\Workspace\typing-game\Typing Game\TypingGame.Library\bin\Debug\net7.0\Files\slovak.txt
-D:\Workspace\typing-game\Typing Game\TypingGame.Library\bin\Debug\net7.0\Files\slovak_unused.txt

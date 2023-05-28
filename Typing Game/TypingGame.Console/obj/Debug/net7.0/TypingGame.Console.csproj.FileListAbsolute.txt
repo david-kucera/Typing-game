@@ -19,4 +19,3 @@ D:\Workspace\typing-game\Typing Game\TypingGame.Console\obj\Debug\net7.0\TypingG
 D:\Workspace\typing-game\Typing Game\TypingGame.Console\obj\Debug\net7.0\TypingGame.Console.genruntimeconfig.cache
 D:\Workspace\typing-game\Typing Game\TypingGame.Console\obj\Debug\net7.0\ref\TypingGame.Console.dll
 D:\Workspace\typing-game\Typing Game\TypingGame.Console\bin\Debug\net7.0\Files\slovak.txt
-D:\Workspace\typing-game\Typing Game\TypingGame.Console\bin\Debug\net7.0\Files\slovak_unused.txt

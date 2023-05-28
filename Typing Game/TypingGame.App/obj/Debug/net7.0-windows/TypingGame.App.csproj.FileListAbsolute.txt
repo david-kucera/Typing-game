@@ -43,4 +43,3 @@ D:\Workspace\typing-game\Typing Game\TypingGame.App\obj\Debug\net7.0-windows\Lan
 D:\Workspace\typing-game\Typing Game\TypingGame.App\bin\Debug\net7.0-windows\lang.txt
 D:\Workspace\typing-game\Typing Game\TypingGame.App\bin\Debug\net7.0-windows\UserData\errors.csv
 D:\Workspace\typing-game\Typing Game\TypingGame.App\bin\Debug\net7.0-windows\bcg_color.txt
-D:\Workspace\typing-game\Typing Game\TypingGame.App\bin\Debug\net7.0-windows\Files\slovak_unused.txt
